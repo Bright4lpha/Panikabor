@@ -8,37 +8,41 @@ class Plateau {
     // methodes
     public Plateau() {
         this.plateau.add(new Piece("mecano", 'J', "E4"));
+        this.plateau.add(new Piece("capitaine", 'J', "E4"));
         this.plateau.add(new Piece("tache", 'T', "D2"));
         this.plateau.add(new Piece("gamin", 'J', "B4"));
         this.plateau.add(new Piece("tentacule", 'E', "D6"));
     }
 
     // getCase
-    public Piece getCase(int a, int b) {
+    public ArrayList<Piece> getCase(int a, int b) {
+        ArrayList<Piece> pieces = new ArrayList<Piece>();
         for (Piece p : this.plateau) {
             if ((p.getPosition().getX() == a) && (p.getPosition().getY() == b)) {
-                return p;
+                pieces.add(p);
             }
         }
-        return null;
+        return pieces;
     }
 
-    public Piece getCase(Position pos) {
+    public ArrayList<Piece> getCase(Position pos) {
+        ArrayList<Piece> pieces = new ArrayList<Piece>();
         for (Piece p : this.plateau) {
             if ((p.getPosition().getX() == pos.getX()) && (p.getPosition().getY() == pos.getY())) {
-                return p;
+                pieces.add(p);
             }
         }
-        return null;
+        return pieces;
     }
 
-    public Piece getCase(String piece) {
+    public ArrayList<Piece> getCase(String piece) {
+        ArrayList<Piece> pieces = new ArrayList<Piece>();
         for (Piece p : this.plateau) {
             if (p.getPosition().toString().equals(piece)) {
-                return p;
+                pieces.add(p);
             }
         }
-        return null;
+        return pieces;
     }
 
     // toString
@@ -52,11 +56,16 @@ class Plateau {
             } else {
                 chaine += i + "|";
                 for (int a = 0; a < 8; a++) {
-                    Piece piece = getCase(a, i - 1);
-                    if (piece == null) {
+                    ArrayList<Piece> pieces = getCase(a, i - 1);
+                    if (pieces.size() == 0) {
                         chaine += "   |";
+                    } else if (pieces.size() == 1) {
+                        chaine += pieces.get(0).getNomCourt() + "|";
                     } else {
-                        chaine += piece.getNomCourt() + "|";
+                        for (int j = 0; j < pieces.size(); j++) {
+                            chaine += pieces.get(j).getNomCourt();
+                        }
+                        chaine += "|";
                     }
                 }
                 chaine += i + "\n";
@@ -102,12 +111,12 @@ class Plateau {
     }
 
     public void deplacer(Position from, Position to) {
-        Piece piece_from = this.getCase(from);
-        Piece piece_to = this.getCase(to);
-        if (piece_to != null) {
-            this.remove(piece_to); // on supprime la pièce d'arrivée du plateau
+        ArrayList<Piece> piece_from = this.getCase(from);
+        ArrayList<Piece> piece_to = this.getCase(to);
+        if (piece_from.size() == 1) {
+            piece_from.get(0).setPosition(to);
         }
-        piece_from.setPosition(to);
+        
     }
 
     // main pour tests
@@ -121,16 +130,16 @@ class Plateau {
         System.out.println();
 
         System.out.println("Test de getCase(0, 1) --> MeJ en A2");
-        Piece p1 = plato.getCase(0, 1);
+        ArrayList<Piece> p1 = plato.getCase(0, 1);
         System.out.println(p1);
 
         System.out.println("Test de getCase(pos) --> (3, 1) --> TaT en D2");
         Position pos = new Position(3, 1);
-        Piece p2 = plato.getCase(pos);
+        ArrayList<Piece> p2 = plato.getCase(pos);
         System.out.println(p2);
 
         System.out.println("Test de getCase('B4') --> GaJ en B4");
-        Piece p3 = plato.getCase("B4");
+        ArrayList<Piece> p3 = plato.getCase("B4");
         System.out.println(p3);
 
         System.out.println();
@@ -147,5 +156,8 @@ class Plateau {
 
         System.out.println("Test de getPiecesJoueurs");
         System.out.println(plato.getPiecesJoueur());
+
+        plato.deplacer(pos, new Position(3,2));
+        System.out.println(plato);
     }
 }

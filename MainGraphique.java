@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import MG2D.*;
@@ -28,8 +29,16 @@ class MainGraphique {
         // ajout des pieces sur le plateau
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 7; j++) {
-                if (plato.getCase(i, j) != null) {
-                    f.ajouter(new Texture("./images/" + plato.getCase(i, j).getNomLong() + ".png", new Point(i * 100, j * 100), 100, 100));
+                ArrayList<Piece> pieces = new ArrayList<Piece>();
+                pieces = plato.getCase(i, j);
+                if (pieces.size() != 0) {
+                    if (pieces.size() == 1) {
+                        f.ajouter(new Texture("./images/" + pieces.get(0).getNomLong() + ".png", new Point(i * 100, j * 100), 100, 100));
+                    }
+                    else if (pieces.size() == 2) {
+                        f.ajouter(new Texture("./images/" + pieces.get(0).getNomLong() + ".png", new Point(i * 100, j * 100), 50, 50));
+                        f.ajouter(new Texture("./images/" + pieces.get(1).getNomLong() + ".png", new Point((i * 100)+50, (j * 100)+50), 50, 50));
+                    }
                 }   
         f.rafraichir(); 
             }
@@ -61,33 +70,38 @@ class MainGraphique {
     }
 
     public void deplacements_possibles_pieces(Fenetre f, Position p, Plateau plato) {
-        Piece piece = plato.getCase(p);
-        ArrayList<Position> pieces;
-        if (piece != null) {
-            pieces = piece.getDeplacementPossible(plato);
-            this.afficher_cercle(f, pieces);
+        ArrayList<Piece> pieces = plato.getCase(p);
+        ArrayList<Position> pieces_poss;
+        if (pieces.size() != 0) {
+            if (pieces.size() == 1) {
+                pieces_poss = pieces.get(0).getDeplacementPossible(plato);
+                this.afficher_cercle(f, pieces_poss);
+            }
         }
     }
 
     public void retirer_deplacements_possibles_pieces(Fenetre f, Position p, Plateau plato) {
-        Piece piece = plato.getCase(p);
-        ArrayList<Position> pieces;
-        if (piece != null) {
-            pieces = piece.getDeplacementPossible(plato);
-            this.supprimer_cercle(f, pieces);
+        ArrayList<Piece> pieces = plato.getCase(p);
+        ArrayList<Position> pieces_poss;
+        if (pieces.size() != 0) {
+            if (pieces.size() == 1) {
+                pieces_poss = pieces.get(0).getDeplacementPossible(plato);
+            this.supprimer_cercle(f, pieces_poss);
+            }
         }
     }
 
     public boolean deplacements_souris(Fenetre f, Position from, Position to, Plateau plato) {
         boolean dep_piece = false;
-        Piece piece_from = plato.getCase(from);
-        Piece piece_to = plato.getCase(to);
+        ArrayList<Piece> piece_from = plato.getCase(from);
+        ArrayList<Piece> piece_to = plato.getCase(to);
         ArrayList<Position> pieces;
 
         // si il y a une piece sur la case de départ
-        if (piece_from != null) {            
+        if (piece_from.size() != 0) {            
             // récupère les déplacements possibles de la pièce
-            pieces = piece_from.getDeplacementPossible(plato);
+            if (piece_from.size() == 1) {
+                pieces = piece_from.get(0).getDeplacementPossible(plato);
 
             // Le clic est-il un déplacement ?
             // est-ce que la position d'arrivée est dans les déplacements possibles
@@ -103,16 +117,18 @@ class MainGraphique {
             else {
                 this.retirer_deplacements_possibles_pieces(f, from, plato);
                 // si la pièce d'arriver est de la couleur du joueur
-                if (piece_to != null) {
+                if (piece_to.size() != 0) {
                     this.deplacements_possibles_pieces(f, to, plato);
                 }
                 
                 f.rafraichir();
                 
             }
+            }
+            
         }
         else {
-            if (piece_to != null) {
+            if (piece_to.size() != 0) {
                     this.retirer_deplacements_possibles_pieces(f, from, plato);
                     this.deplacements_possibles_pieces(f, to, plato);
                     f.rafraichir();
