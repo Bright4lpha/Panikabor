@@ -180,7 +180,7 @@ class Plateau {
 
     public void deplacer(Piece p, Position from, Position to) {
         ArrayList<Piece> piece_from = this.getCase(from);
-        ArrayList<Piece> piece_to = this.getCase(to);
+        // ArrayList<Piece> piece_to = this.getCase(to);
         this.remove(p);
         if (piece_from.size() == 1) {
             piece_from.get(0).setPosition(to);
