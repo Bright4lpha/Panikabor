@@ -7,14 +7,14 @@ class Plateau {
 
     // methodes
     public Plateau() {
-        for (int i = 0; i <= 70; i++) {
+        for (int i = 0; i <= 20; i++) {
             this.plateau.add(new ArrayList<Piece>());
         }
-        this.plateau.get(0).add(new Piece("tache", 'T', "D2"));
-        // this.plateau.get(54).add(new Piece("mecano", 'J', "E4"));
-        // this.plateau.get(54).add(new Piece("capitaine", 'J', "E4"));
-        // this.plateau.get(41).add(new Piece("gamin", 'J', "B4"));
-        // this.plateau.get(53).add(new Piece("tentacule", 'E', "D6"));
+        this.plateau.get(0).add(new Piece("mecano", 'J', "E4"));
+        this.plateau.get(0).add(new Piece("capitaine", 'J', "E4"));
+        this.plateau.get(1).add(new Piece("tache", 'T', "D2"));
+        this.plateau.get(3).add(new Piece("gamin", 'J', "B4"));
+        this.plateau.get(2).add(new Piece("tentacule", 'E', "D6"));
     }
 
     // getCase
@@ -46,31 +46,31 @@ class Plateau {
     public String toString() {
         String chaine = "";
         String ligne = " |---|---|---|---|---|---|---|---| \n";
-        chaine = chaine + getCase(2);
+        int indice = 0;
+        for (int i = 10; i >= 0; i--) {
+            chaine += ligne;
+            if (i == 0) {
+                chaine += "   A   B   C   D   E   F   G   H   ";
+            } else {
+                chaine += i + "|";
+                for (int a = 0; a < 8; a++) {
+                    ArrayList<Piece> pieces = getCase(indice);
+                    if (pieces.size() == 0) {
+                        chaine += "   |";
+                    } else if (pieces.size() == 1) {
+                        chaine += pieces.get(0).getNomCourt() + "|";
+                    } else {
+                        for (int j = 0; j < pieces.size(); j++) {
+                            chaine += pieces.get(j).getNomCourt();
+                        }
+                        chaine += "|";
+                    }
+                    indice = indice+1;
+                }
+                chaine += i + "\n";
+            }
+        }
         return chaine;
-        // for (int i = 7; i >= 0; i--) {
-        //     chaine += ligne;
-        //     if (i == 0) {
-        //         chaine += "   A   B   C   D   E   F   G   H   ";
-        //     } else {
-        //         chaine += i + "|";
-        //         for (int a = 0; a < 8; a++) {
-        //             ArrayList<Piece> pieces = getCase(a, i - 1);
-        //             if (pieces.size() == 0) {
-        //                 chaine += "   |";
-        //             } else if (pieces.size() == 1) {
-        //                 chaine += pieces.get(0).getNomCourt() + "|";
-        //             } else {
-        //                 for (int j = 0; j < pieces.size(); j++) {
-        //                     chaine += pieces.get(j).getNomCourt();
-        //                 }
-        //                 chaine += "|";
-        //             }
-        //         }
-        //         chaine += i + "\n";
-        //     }
-        // }
-        // return chaine;
     }
 
     // getPieces
@@ -124,18 +124,16 @@ class Plateau {
         System.out.println("Test de Plateau");
         System.out.println("création d'un plateau plato");
         Plateau plato = new Plateau();
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 11; i++) {
             System.out.println(plato.getCase(i));
         }
-        //System.out.println(plato);
-        System.out.println();
-        Piece p = plato.getCase(2).get(0);
-        plato.getCase(2).remove(p);
-        System.out.println();
-        // for (int i = 0; i < 5; i++) {
-        //     if (plato.getCase(i) != null){
-        //         System.out.println(plato.getCase(i));
-        //     }
+        System.out.println(plato);
+        // System.out.println();
+        // Piece p = plato.getCase(2).get(0);
+        // plato.getCase(2).remove(p);
+        // System.out.println();
+        // for (int i = 0; i < 71; i++) {
+        //     System.out.println(plato.getCase(i));
         // }
 
         // System.out.println("Test de getCase(0, 1) --> MeJ en A2");
