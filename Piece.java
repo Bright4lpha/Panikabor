@@ -5,6 +5,7 @@ class Piece {
     private String nom;
     private char type;
     private Position position;
+    private int indice;
 
     // methodes
     // constructeur par défaut
@@ -12,6 +13,7 @@ class Piece {
         this.nom = "tache";
         this.type = 'T';
         this.position = new Position(0,1);
+        this.indice = 0;
     }
     
     // constructeur par copie
@@ -19,10 +21,11 @@ class Piece {
         this.nom = p.getNom();
         this.type = p.getType();
         this.position = p.getPosition();
+        this.indice = p.getIndice();
     }
     
     // constructeur avec paramètres int
-    public Piece(String n, char t, int x, int y) {
+    public Piece(String n, char t, int x, int y, int i) {
         this.nom = n.toLowerCase();
         if ((t == 'E') || (t == 'T') || (t == 'J')) {
             this.type = t;
@@ -31,10 +34,11 @@ class Piece {
             System.out.println("Le type ne correspond pas");
         }
         this.position = new Position(x, y);
+        this.indice = i;
     }
     
     // constructeur avec paramètres position
-    public Piece(String n, char t, Position pos) {
+    public Piece(String n, char t, Position pos, int i) {
         this.nom = n.toLowerCase();
         if ((t == 'E') || (t == 'T') || (t == 'J')) {
             this.type = t;
@@ -43,10 +47,11 @@ class Piece {
             System.out.println("Le type ne correspond pas");
         }
         this.position = new Position(pos);
+        this.indice = i;
     }
 
     // constructeur avec paramètres string
-    public Piece(String n, char t, String str) {
+    public Piece(String n, char t, String str, int i) {
         this.nom = n.toLowerCase();
         if ((t == 'E') || (t == 'T') || (t == 'J')) {
             this.type = t;
@@ -55,6 +60,7 @@ class Piece {
             System.out.println("Le type ne correspond pas");
         }
         this.position = new Position(str);  
+        this.indice = i;
     }
 
     // getter
@@ -70,6 +76,10 @@ class Piece {
         return this.position;
     }
 
+    public int getIndice() {
+        return this.indice;
+    }
+
     // setter
     public void setNom(String nom) {
         this.nom = nom;
@@ -81,6 +91,10 @@ class Piece {
 
     public void setPosition(Position position) {
         this.position = position;
+    }
+
+    public void setIndice(int i) {
+        this.indice = i;
     }
     
     public ArrayList<Position> getDeplacementPossible(Plateau p) {
@@ -127,9 +141,7 @@ class Piece {
 
             // en haut à gauche
             if ((0<x-1)&&(x-1<7)&&(0<y+1)&&(y+1<6)) {
-                if ((p.getCase(x-1, y+1).size() == 0)) {
-                    pos.add(new Position(x-1, y+1));
-                }
+                pos.add(new Position(x-1, y+1));
             }
             
 
@@ -188,7 +200,7 @@ class Piece {
         if (obj != null) {
             if (this.getClass() == obj.getClass()) {
                 Piece other = (Piece) obj;
-                if ((this.nom == other.nom)&&(this.type == other.type)&&(this.position.equals(other.position))){
+                if ((this.nom == other.nom)&&(this.type == other.type)&&(this.position.equals(other.position))&&(this.indice == other.indice)){
                     egaux = true;
                 }
             }
@@ -224,31 +236,31 @@ class Piece {
 
         System.out.println();
 
-        Piece b = new Piece("tentacule", 'E', 2, 6);
-        System.out.println("Constructeur par paramètres ('tentacule', 'E', 2, 6) --> tentacule en C7");
+        Piece b = new Piece("tentacule", 'E', 2, 6, 0);
+        System.out.println("Constructeur par paramètres ('tentacule', 'E', 2, 6, 0) --> tentacule en C7");
         System.out.println(b);
 
         System.out.println();
 
-        Piece c = new Piece("mécano", 'J', new Position(3, 7));
-        System.out.println("Constructeur par paramètres ('mécano', 'J', pos(3,7)) --> mécano en D8");
+        Piece c = new Piece("mécano", 'J', new Position(3, 7), 0);
+        System.out.println("Constructeur par paramètres ('mécano', 'J', pos(3,7), 0) --> mécano en D8");
         System.out.println(c);
 
         System.out.println();
 
-        Piece d = new Piece("capitaine", 'J', "C4");
-        System.out.println("Constructeur par paramètres ('capitaine', 'J', 'C4') --> capitaine en C4");
+        Piece d = new Piece("capitaine", 'J', "C4", 0);
+        System.out.println("Constructeur par paramètres ('capitaine', 'J', 'C4', 0) --> capitaine en C4");
         System.out.println(d);
 
         System.out.println();
 
 
         Piece e = new Piece();
-        System.out.println("getNomCourt");
+        System.out.println("getNomCourt TaT");
         System.out.println(e.getNomCourt());
 
         Piece f = new Piece();
-        System.out.println("getNomLong");
+        System.out.println("getNomLong tache_T");
         System.out.println(f.getNomLong());
 
         System.out.println("equals de A2 et A2");
@@ -259,7 +271,7 @@ class Piece {
 
         System.out.println("equals de A2 et A5");
         Piece i = new Piece();
-        Piece j = new Piece("patatiso", 'E', 0 , 4);
+        Piece j = new Piece("patatiso", 'E', 0 , 4, 0);
         bool = i.equals(j);
         System.out.println(bool);
     }

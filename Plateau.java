@@ -11,7 +11,7 @@ class Plateau {
             this.plateau.add(new ArrayList<Piece>());
         }
         this.plateau.get(34).add(new Piece("mecano", 'J', "E4"));//34
-        this.plateau.get(34).add(new Piece("capitaine", 'J', "E4"));
+        this.plateau.get(34).add(new Piece("capitaine", 'J', "E4"));//34
         this.plateau.get(13).add(new Piece("tache", 'T', "D2"));//13
         this.plateau.get(31).add(new Piece("gamin", 'J', "B4"));//31
         this.plateau.get(53).add(new Piece("tentacule", 'E', "D6"));//53
@@ -178,6 +178,11 @@ class Plateau {
         }
     }
 
+    public void remove(int c, int indice) {
+        Piece p = this.getCase(c).get(indice);
+        this.remove(p);
+    }
+
     public void deplacer(Piece p, Position from, Position to) {
         ArrayList<Piece> piece_from = this.getCase(from);
         // ArrayList<Piece> piece_to = this.getCase(to);
@@ -226,10 +231,11 @@ class Plateau {
 
         Piece p = new Piece("gamin", 'J', "B4");
         // plato.remove(p);
+        // plato.remove(31,0);
         // System.out.println(plato);
 
         System.out.println("Déplacer");
-        plato.deplacer(p, new Position(1, 3), new Position(2, 3));
-        System.out.println(plato);
+        // plato.deplacer(p, new Position(1, 3), new Position(2, 3));
+        // System.out.println(plato);
     }
 }
