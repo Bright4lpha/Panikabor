@@ -15,6 +15,7 @@ public class Main {
         Position actual_pos_souris = new Position(-1, -1);
         Point pos;
         boolean dep_piece = false;
+        int indice = 0;
 
         while(true) {
             try {
@@ -26,11 +27,34 @@ public class Main {
                 // stockage de la position de la souris
                 pos = new Point(souris.getPosition());
                 // position actuelle de la souris
+                int a = actual_pos_souris.getX();
+                int b = actual_pos_souris.getY();
+                // connaitre l'indice de la pièce sur la case
+                if (((a%100)>=50)&&((b%100)>=50)) {
+                    indice = 3;
+                }
+                if (((a%100)>=50)&&((b%100)<50)) {
+                    indice = 1;
+                }
+                if (((a%100)<50)&&((b%100)>=50)) {
+                    indice = 2;
+                }
+                if (((a%100)<50)&&((b%100)<50)) {
+                    indice = 0;
+                }
+
                 actual_pos_souris.setX(pos.getX()/100);
                 actual_pos_souris.setY(pos.getY()/100);
 
                 // test les actions à effectuer en fonction de la position de la souris
-                dep_piece = graphique.deplacements_souris(f, last_pos_souris, actual_pos_souris, plato);
+                System.out.print("last_pos_souris : ");
+                System.out.println(last_pos_souris);
+                System.out.print("actual_pos_souris : ");
+                System.out.println(actual_pos_souris);
+                System.out.print("indice : ");
+                System.out.println(indice);
+
+                dep_piece = graphique.deplacements_souris(f, last_pos_souris, actual_pos_souris, plato, indice);
                 System.out.println(plato);
 
                 if (dep_piece == true) {

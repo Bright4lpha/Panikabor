@@ -106,24 +106,25 @@ class MainGraphique {
         }
     }
 
-    public boolean deplacements_souris(Fenetre f, Position from, Position to, Plateau plato) {
+    public boolean deplacements_souris(Fenetre f, Position from, Position to, Plateau plato, int indice) {
         boolean dep_piece = false;
         ArrayList<Piece> piece_from = plato.getCase(from);
         ArrayList<Piece> piece_to = plato.getCase(to);
         ArrayList<Position> pieces;
 
         // si il y a une piece sur la case de départ
-        if (piece_from.size() != 0) {            
+        if (piece_from != null) {
+            // la piece qu'on veut déplacer
+            Piece la_piece = piece_from.get(indice);
             // récupère les déplacements possibles de la pièce
-            if (piece_from.size() == 1) {
-                pieces = piece_from.get(0).getDeplacementPossible(plato);
+            pieces = la_piece.getDeplacementPossible(plato);
 
             // Le clic est-il un déplacement ?
             // est-ce que la position d'arrivée est dans les déplacements possibles
             boolean trouve = pieces.contains(to);
             // si oui
             if (trouve == true) {
-                // plato.deplacer(from, to); // déplace la pièce sur le plateau
+                plato.deplacer(la_piece, from, to, indice); // déplace la pièce sur le plateau
                 this.supprimer_cercle(f, pieces); // supprime les cercles
                 dep_piece = true;
                 f.rafraichir();
@@ -139,14 +140,14 @@ class MainGraphique {
                 f.rafraichir();
                 
             }
-            }
-            
         }
         else {
             if (piece_to.size() != 0) {
+                if (piece_from != null) {
                     this.retirer_deplacements_possibles_pieces(f, from, plato);
                     this.deplacements_possibles_pieces(f, to, plato);
                     f.rafraichir();
+                }
             }
         }
         f.rafraichir();

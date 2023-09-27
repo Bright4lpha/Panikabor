@@ -34,11 +34,17 @@ class Plateau {
     }
 
     public ArrayList<Piece> getCase(int a, int b) {
+        if (a<0 || b<0) {
+            return null;
+        }
         String chaine = "" + b + a;
         return this.plateau.get(Integer.parseInt(chaine));
     }
 
     public ArrayList<Piece> getCase(Position pos) {
+        if (pos.getX()<0 || pos.getY()<0) {
+            return null;
+        }
         String position = "" + pos.getY() + pos.getX();
         return this.plateau.get(Integer.parseInt(position));
     }
@@ -188,14 +194,17 @@ class Plateau {
         this.remove(p);
     }
 
-    public void deplacer(Piece p, Position from, Position to) {
+    public void deplacer(Piece p, Position from, Position to, int indice) {
         ArrayList<Piece> piece_from = this.getCase(from);
         // ArrayList<Piece> piece_to = this.getCase(to);
         // retire la piece
         this.remove(p);
         // si la case de départ ne contient qu'une pièce
         if (piece_from.size() == 1) {
-            piece_from.get(0).setPosition(to);
+            piece_from.get(indice).setPosition(to);
+        }
+        if (piece_from.size() == 2) {
+            piece_from.get(indice).setPosition(to);
         }
         this.getCase(to).add(p);
     }
