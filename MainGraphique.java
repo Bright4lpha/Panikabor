@@ -7,9 +7,9 @@ import MG2D.geometrie.*;
 class MainGraphique {
     
     public MainGraphique(Fenetre f, Plateau plato) {
-        for (int i=0;i<8;i++) { // lignes
+        for (int i=0;i<10;i++) { // lignes
             for (int j=0;j<7;j++) { // colonnes
-                if ((i==0) | (i==7) | (j==0) | (j==6)) {
+                if ((i==0) | (i==7) | (j==0) | (j==6)| (i==8) | (i==9)) {
                     f.ajouter(new Carre(Couleur.JAUNE, new Point(i*100, j*100), 100, true));
                 }
                 else if (((i==1 && (j==1|j==5))) | ((i==5 && (j==1|j==5)))){
@@ -29,17 +29,32 @@ class MainGraphique {
         // ajout des pieces sur le plateau
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 7; j++) {
-                ArrayList<Piece> pieces = new ArrayList<Piece>();
-                pieces = plato.getCase(i, j);
-                if (pieces.size() != 0) {
-                    if (pieces.size() == 1) {
-                        f.ajouter(new Texture("./images/" + pieces.get(0).getNomLong() + ".png", new Point(i * 100, j * 100), 100, 100));
+                ArrayList<Piece> pieces_case = plato.getCase(i, j);
+                // pour chaque piece de la case
+                for (int a = 0; a < pieces_case.size(); a++) {
+                    // si il n'y a qu'une piece sur la case
+                    if (pieces_case.size() == 1) {
+                        if (pieces_case.get(a).getIndice() == 0) {
+                            f.ajouter(new Texture("./images/" + pieces_case.get(a).getNomLong() + ".png", new Point(i * 100, j * 100), 100, 100));
+                        }
                     }
-                    else if (pieces.size() == 2) {
-                        f.ajouter(new Texture("./images/" + pieces.get(0).getNomLong() + ".png", new Point(i * 100, j * 100), 50, 50));
-                        f.ajouter(new Texture("./images/" + pieces.get(1).getNomLong() + ".png", new Point((i * 100)+50, (j * 100)+50), 50, 50));
+                    // si il y a plusieurs pièces
+                    else {
+                        if (pieces_case.get(a).getIndice() == 0) {
+                            f.ajouter(new Texture("./images/" + pieces_case.get(a).getNomLong() + ".png", new Point(i * 100, j * 100), 50, 50));
+                        }
+                        if (pieces_case.get(a).getIndice() == 1) {
+                            f.ajouter(new Texture("./images/" + pieces_case.get(a).getNomLong() + ".png", new Point((i * 100)+50, (j * 100)), 50, 50));
+                        }
+                        if (pieces_case.get(a).getIndice() == 2) {
+                            f.ajouter(new Texture("./images/" + pieces_case.get(a).getNomLong() + ".png", new Point((i * 100), (j * 100)+50), 50, 50));
+                        }
+                        if (pieces_case.get(a).getIndice() == 3) {
+                            f.ajouter(new Texture("./images/" + pieces_case.get(a).getNomLong() + ".png", new Point((i * 100)+50, (j * 100)+50), 50, 50));
+                        }
                     }
-                }   
+                    
+                }
         f.rafraichir(); 
             }
         }   
@@ -108,7 +123,7 @@ class MainGraphique {
             boolean trouve = pieces.contains(to);
             // si oui
             if (trouve == true) {
-                plato.deplacer(from, to); // déplace la pièce sur le plateau
+                // plato.deplacer(from, to); // déplace la pièce sur le plateau
                 this.supprimer_cercle(f, pieces); // supprime les cercles
                 dep_piece = true;
                 f.rafraichir();

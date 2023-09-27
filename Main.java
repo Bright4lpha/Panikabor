@@ -8,7 +8,7 @@ public class Main {
 
     public static void main(String[] args) {
         Plateau plato = new Plateau();        
-        Fenetre f = new Fenetre("Mon jeu", 800, 700);
+        Fenetre f = new Fenetre("Mon jeu", 1000, 700);
         MainGraphique graphique = new MainGraphique(f, plato);
         Souris souris = f.getSouris();
         Position last_pos_souris = new Position(-1, -1);
