@@ -1,6 +1,9 @@
 import MG2D.Fenetre;
 import MG2D.Souris;
 import MG2D.geometrie.Point;
+
+import java.util.ArrayList;
+
 import MG2D.*;
 import MG2D.geometrie.*;
 
@@ -17,18 +20,28 @@ public class Main {
         boolean dep_piece = false;
         int indice = 0;
 
+        // System.out.println("Déplacements");
+        // Piece ma_piece = plato.getCase(34).get(1);
+        // System.out.println(ma_piece.getDeplacementPossible(plato));
+
+
         while(true) {
             try {
                 Thread.sleep(40);
             } catch (Exception e) {}
-            
+
             // si il y a un clic
             if (souris.getClicGauche()) {
                 // stockage de la position de la souris
                 pos = new Point(souris.getPosition());
+                
+                actual_pos_souris.setX(pos.getX()/100);
+                actual_pos_souris.setY(pos.getY()/100);
+
                 // position actuelle de la souris
-                int a = actual_pos_souris.getX();
-                int b = actual_pos_souris.getY();
+                int a = pos.getX();
+                int b = pos.getY();
+
                 // connaitre l'indice de la pièce sur la case
                 if (((a%100)>=50)&&((b%100)>=50)) {
                     indice = 3;
@@ -42,10 +55,7 @@ public class Main {
                 if (((a%100)<50)&&((b%100)<50)) {
                     indice = 0;
                 }
-
-                actual_pos_souris.setX(pos.getX()/100);
-                actual_pos_souris.setY(pos.getY()/100);
-
+                
                 // test les actions à effectuer en fonction de la position de la souris
                 System.out.print("last_pos_souris : ");
                 System.out.println(last_pos_souris);
@@ -53,10 +63,12 @@ public class Main {
                 System.out.println(actual_pos_souris);
                 System.out.print("indice : ");
                 System.out.println(indice);
-
+                
                 dep_piece = graphique.deplacements_souris(f, last_pos_souris, actual_pos_souris, plato, indice);
+                
                 System.out.println(plato);
 
+                System.out.println(dep_piece);
                 if (dep_piece == true) {
                     actual_pos_souris = new Position(-1, -1);
                     last_pos_souris.setX(-1);
@@ -67,6 +79,8 @@ public class Main {
                     last_pos_souris.setX(actual_pos_souris.getX());
                     last_pos_souris.setY(actual_pos_souris.getY());
                 }
+                // System.out.println(actual_pos_souris);
+                // System.out.println(last_pos_souris);
             }
             f.rafraichir();
         }

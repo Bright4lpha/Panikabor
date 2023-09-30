@@ -87,7 +87,7 @@ class MainGraphique {
     public void deplacements_possibles_pieces(Fenetre f, Position p, Plateau plato) {
         ArrayList<Piece> pieces = plato.getCase(p);
         ArrayList<Position> pieces_poss;
-        if (pieces.size() != 0) {
+        if (pieces != null) {
             if (pieces.size() == 1) {
                 pieces_poss = pieces.get(0).getDeplacementPossible(plato);
                 this.afficher_cercle(f, pieces_poss);
@@ -98,7 +98,7 @@ class MainGraphique {
     public void retirer_deplacements_possibles_pieces(Fenetre f, Position p, Plateau plato) {
         ArrayList<Piece> pieces = plato.getCase(p);
         ArrayList<Position> pieces_poss;
-        if (pieces.size() != 0) {
+        if (pieces != null) {
             if (pieces.size() == 1) {
                 pieces_poss = pieces.get(0).getDeplacementPossible(plato);
             this.supprimer_cercle(f, pieces_poss);
@@ -113,42 +113,49 @@ class MainGraphique {
         ArrayList<Position> pieces;
 
         // si il y a une piece sur la case de départ
-        if (piece_from != null) {
-            // la piece qu'on veut déplacer
-            Piece la_piece = piece_from.get(indice);
-            // récupère les déplacements possibles de la pièce
-            pieces = la_piece.getDeplacementPossible(plato);
+        
+        if (piece_from!=null) {
+            System.out.println(piece_from.size());
+            if (piece_from.size()>indice && piece_from.size() > 0) {
+                System.out.println("Il y a une pièce sur la case");
+                // la piece qu'on veut déplacer
+                Piece la_piece = piece_from.get(indice);
+                System.out.println(la_piece);
+                // récupère les déplacements possibles de la pièce
+                pieces = la_piece.getDeplacementPossible(plato);
+                System.out.println("les déplacements" + pieces);
 
-            // Le clic est-il un déplacement ?
-            // est-ce que la position d'arrivée est dans les déplacements possibles
-            boolean trouve = pieces.contains(to);
-            // si oui
-            if (trouve == true) {
-                plato.deplacer(la_piece, from, to, indice); // déplace la pièce sur le plateau
-                this.supprimer_cercle(f, pieces); // supprime les cercles
-                dep_piece = true;
-                f.rafraichir();
-            }
-            // si non
-            else {
-                this.retirer_deplacements_possibles_pieces(f, from, plato);
-                // si la pièce d'arriver est de la couleur du joueur
-                if (piece_to.size() != 0) {
-                    this.deplacements_possibles_pieces(f, to, plato);
+                // Le clic est-il un déplacement ?
+                // est-ce que la position d'arrivée est dans les déplacements possibles
+                boolean trouve = pieces.contains(to);
+                // si oui
+                if (trouve == true) {
+                    //plato.deplacer(la_piece, from, to, indice); // déplace la pièce sur le plateau
+                    this.supprimer_cercle(f, pieces); // supprime les cercles
+                    dep_piece = true;
+                    f.rafraichir();
                 }
-                
-                f.rafraichir();
-                
-            }
-        }
-        else {
-            if (piece_to.size() != 0) {
-                if (piece_from != null) {
+                // si non
+                else {
                     this.retirer_deplacements_possibles_pieces(f, from, plato);
-                    this.deplacements_possibles_pieces(f, to, plato);
+                    // si la pièce d'arriver est de la couleur du joueur
+                    if (piece_to != null) {
+                        this.deplacements_possibles_pieces(f, to, plato);
+                    }
+                    
                     f.rafraichir();
                 }
             }
+            else {
+                if (piece_to != null) {
+                        this.retirer_deplacements_possibles_pieces(f, from, plato);
+                        this.deplacements_possibles_pieces(f, to, plato);
+                        f.rafraichir();
+                }
+            }
+        }
+        else {
+            System.out.println("Il n'y a pas de pièce sur la case");
         }
         f.rafraichir();
         return dep_piece;
