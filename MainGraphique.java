@@ -130,7 +130,7 @@ class MainGraphique {
                 boolean trouve = pieces.contains(to);
                 // si oui
                 if (trouve == true) {
-                    //plato.deplacer(la_piece, from, to, indice); // déplace la pièce sur le plateau
+                    plato.deplacer(la_piece, from, to, indice); // déplace la pièce sur le plateau
                     this.supprimer_cercle(f, pieces); // supprime les cercles
                     dep_piece = true;
                     f.rafraichir();

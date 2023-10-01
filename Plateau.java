@@ -196,16 +196,28 @@ class Plateau {
 
     public void deplacer(Piece p, Position from, Position to, int indice) {
         ArrayList<Piece> piece_from = this.getCase(from);
-        // ArrayList<Piece> piece_to = this.getCase(to);
-        // retire la piece
+        ArrayList<Piece> piece_to = this.getCase(to);
+
+        // retirer la piece et décaler les pièces existantes
         this.remove(p);
+        if (piece_from.size() > 1) {
+            System.out.println("la liste est bien supérieure à 1");
+            for (int i = 0; i <= piece_from.size(); i++) {
+                Piece piece = piece_from.get(i);
+                int ind = piece.getIndice();
+                piece.setIndice(ind-1);
+            }
+        }
+        
+        // if (piece_to.size() > 0) {
+        //     p.setIndice(piece_to.size());
+        // }
+        else {
+            p.setIndice(0);
+        }
         // si la case de départ ne contient qu'une pièce
-        if (piece_from.size() == 1) {
-            piece_from.get(indice).setPosition(to);
-        }
-        if (piece_from.size() == 2) {
-            piece_from.get(indice).setPosition(to);
-        }
+        //piece_from.get(indice).setPosition(to);
+        p.setPosition(to);
         this.getCase(to).add(p);
     }
 

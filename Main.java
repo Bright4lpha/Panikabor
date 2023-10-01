@@ -66,7 +66,7 @@ public class Main {
                 
                 dep_piece = graphique.deplacements_souris(f, last_pos_souris, actual_pos_souris, plato, indice);
                 
-                System.out.println(plato);
+                System.out.println(plato); 
 
                 System.out.println(dep_piece);
                 if (dep_piece == true) {
