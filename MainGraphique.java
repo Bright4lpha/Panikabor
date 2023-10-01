@@ -148,7 +148,7 @@ class MainGraphique {
                 if (piece_from.size() == 1) {
                     plato.deplacer(piece_from.get(0), from, to, last_indice, actual_indice); // déplace la pièce sur le plateau
                 }
-                if (piece_from.size() == 2) {
+                if (piece_from.size() > 1) {
                     System.out.println("deplace == 2");
                     plato.deplacer(piece_from.get(last_indice), from, to, last_indice, actual_indice); // déplace la pièce sur le plateau
                     f.rafraichir();

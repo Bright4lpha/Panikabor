@@ -221,20 +221,80 @@ class Plateau {
         // p.setPosition(to);
         // this.getCase(to).add(p);
 
-        // Retirer la pièce
-        if (piece_from.size() == 1) {
-            this.remove(p);
+        if (piece_from.size() > 1) {
+            if (piece_from.size() == last_indice+1) {
+                this.remove(p);
+            }
+            else {
+                if (piece_from.size() == 2) {
+                    if (last_indice == 0) {
+                        Piece piece = piece_from.get(1);
+                        this.remove(p);
+                        this.remove(piece);
+                        piece.setIndice(0);
+                        this.getCase(from).add(piece);
+                    }
+                }
+                if (piece_from.size() == 3) {
+                    if (last_indice == 0) {
+                        Piece piece = piece_from.get(1);
+                        Piece piece_2 = piece_from.get(2);
+                        this.remove(p);
+                        this.remove(piece);
+                        this.remove(piece_2);
+                        piece.setIndice(0);
+                        piece_2.setIndice(1);
+                        this.getCase(from).add(piece);
+                        this.getCase(from).add(piece_2);
+                    }
+                    if (last_indice == 1) {
+                        Piece piece_2 = piece_from.get(2);
+                        this.remove(p);
+                        this.remove(piece_2);
+                        piece_2.setIndice(1);
+                        this.getCase(from).add(piece_2);
+                    }
+                }
+                if (piece_from.size() == 4) {
+                    if (last_indice == 0) {
+                        Piece piece_1 = piece_from.get(1);
+                        Piece piece_2 = piece_from.get(2);
+                        Piece piece_3 = piece_from.get(3);
+                        this.remove(p);
+                        this.remove(piece_1);
+                        this.remove(piece_2);
+                        this.remove(piece_3);
+                        piece_1.setIndice(0);
+                        piece_2.setIndice(1);
+                        piece_3.setIndice(2);
+                        this.getCase(from).add(piece_1);
+                        this.getCase(from).add(piece_2);
+                        this.getCase(from).add(piece_3);
+                    }
+                    if (last_indice == 1) {
+                        Piece piece_2 = piece_from.get(2);
+                        Piece piece_3 = piece_from.get(3);
+                        this.remove(p);
+                        this.remove(piece_2);
+                        this.remove(piece_3);
+                        piece_2.setIndice(1);
+                        piece_3.setIndice(2);
+                        this.getCase(from).add(piece_2);
+                        this.getCase(from).add(piece_3);
+                    }
+                    if (last_indice == 2) {
+                        Piece piece_3 = piece_from.get(3);
+                        this.remove(p);
+                        this.remove(piece_3);
+                        piece_3.setIndice(2);
+                        this.getCase(from).add(piece_3);
+                    }
+                }
+            }
+            
         }
-        if (piece_from.size() == 2) {
-            System.out.println("2 pions");
-            Piece piece = piece_from.get(1);
-            System.out.println("piece : " + piece);
-            System.out.println("piece indice : " + piece.getIndice());
+        else {
             this.remove(p);
-            this.remove(piece);
-            piece.setIndice(0);
-            System.out.println("piece indice : " + piece.getIndice());
-            this.getCase(from).add(piece);
         }
 
 
