@@ -122,8 +122,6 @@ class MainGraphique {
                 pieces = piece_from.get(indice).getDeplacementPossible(plato);
             }
 
-            
-
             // Le clic est-il un déplacement ?
             // est-ce que la position d'arrivée est dans les déplacements possibles
             boolean trouve = pieces.contains(to);

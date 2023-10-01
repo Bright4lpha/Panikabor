@@ -220,10 +220,19 @@ class Plateau {
         // p.setPosition(to);
         // this.getCase(to).add(p);
 
-
+        // Retirer la pièce
         this.remove(p);
+
+        // Bien placer la pièce sur la case d'arrivée
         p.setPosition(to);
+        p.setIndice(piece_to.size());
         this.getCase(to).add(p);
+
+
+        // // Déplacement basique pour 1 pièce
+        // this.remove(p);
+        // p.setPosition(to);
+        // this.getCase(to).add(p);
     }
 
     // main pour tests
