@@ -1,5 +1,6 @@
 import java.util.ArrayList;
-
+import MG2D.*;
+import MG2D.geometrie.*;
 class Plateau {
     // attributs
     private ArrayList<ArrayList<Piece>> plateau = new ArrayList<ArrayList<Piece>>();
@@ -11,7 +12,7 @@ class Plateau {
             this.plateau.add(new ArrayList<Piece>());
         }
         this.plateau.get(34).add(new Piece("mecano", 'J', "E4", 0));//34
-        //this.plateau.get(34).add(new Piece("capitaine", 'J', "E4", 1));//34
+        this.plateau.get(34).add(new Piece("capitaine", 'J', "E4", 1));//34
         this.plateau.get(13).add(new Piece("tache", 'T', "D2", 0));//13
         this.plateau.get(31).add(new Piece("gamin", 'J', "B4", 0));//31
         this.plateau.get(53).add(new Piece("tentacule", 'E', "D6", 0));//53
@@ -194,7 +195,7 @@ class Plateau {
         this.remove(p);
     }
 
-    public void deplacer(Piece p, Position from, Position to, int indice) {
+    public void deplacer(Piece p, Position from, Position to, int last_indice, int actual_indice) {
         ArrayList<Piece> piece_from = this.getCase(from);
         ArrayList<Piece> piece_to = this.getCase(to);
 
@@ -221,7 +222,21 @@ class Plateau {
         // this.getCase(to).add(p);
 
         // Retirer la pièce
-        this.remove(p);
+        if (piece_from.size() == 1) {
+            this.remove(p);
+        }
+        if (piece_from.size() == 2) {
+            System.out.println("2 pions");
+            Piece piece = piece_from.get(1);
+            System.out.println("piece : " + piece);
+            System.out.println("piece indice : " + piece.getIndice());
+            this.remove(p);
+            this.remove(piece);
+            piece.setIndice(0);
+            System.out.println("piece indice : " + piece.getIndice());
+            this.getCase(from).add(piece);
+        }
+
 
         // Bien placer la pièce sur la case d'arrivée
         p.setPosition(to);
@@ -233,6 +248,24 @@ class Plateau {
         // this.remove(p);
         // p.setPosition(to);
         // this.getCase(to).add(p);
+    }
+
+    public int trouve_indice(int a, int b) {
+        int indice = 0;
+        // connaitre l'indice de la pièce sur la case
+        if (((a%100)>=50)&&((b%100)>=50)) {
+            indice = 3;
+        }
+        if (((a%100)>=50)&&((b%100)<50)) {
+            indice = 1;
+        }
+        if (((a%100)<50)&&((b%100)>=50)) {
+            indice = 2;
+        }
+        if (((a%100)<50)&&((b%100)<50)) {
+            indice = 0;
+        }
+        return indice;
     }
 
     // main pour tests

@@ -106,7 +106,7 @@ class MainGraphique {
         }
     }
 
-    public boolean deplacements_souris(Fenetre f, Position from, Position to, Plateau plato, int indice) {
+    public boolean deplacements_souris(Fenetre f, Position from, Position to, Plateau plato, int last_indice, int actual_indice) {
         boolean dep_piece = false;
         ArrayList<Piece> piece_from = plato.getCase(from);
         ArrayList<Piece> piece_to = plato.getCase(to);
@@ -115,20 +115,43 @@ class MainGraphique {
         // si il y a une piece sur la case de départ
         if (piece_from != null) {
             // récupère les déplacements possibles de la pièce
+            System.out.println("piece_from : " + piece_from);
+            System.out.println("bool : " + (piece_from == null));
+            if (piece_from.size() == 0) {
+                return dep_piece;
+            }
             if (piece_from.size() == 1) {
                 pieces = piece_from.get(0).getDeplacementPossible(plato);
             }
             else {
-                pieces = piece_from.get(indice).getDeplacementPossible(plato);
+                if (last_indice == 0) {
+                    pieces = piece_from.get(0).getDeplacementPossible(plato);
+                }
+                else if (last_indice == 1) {
+                    pieces = piece_from.get(1).getDeplacementPossible(plato);
+                }
+                else if (last_indice == 2) {
+                    pieces = piece_from.get(2).getDeplacementPossible(plato);
+                }
+                else {
+                    pieces = piece_from.get(3).getDeplacementPossible(plato);
+                }
             }
+            System.out.println(pieces);
 
             // Le clic est-il un déplacement ?
             // est-ce que la position d'arrivée est dans les déplacements possibles
             boolean trouve = pieces.contains(to);
+            System.out.println("trouve : " + trouve);
             // si oui
             if (trouve == true) {
                 if (piece_from.size() == 1) {
-                    plato.deplacer(piece_from.get(0), from, to, indice); // déplace la pièce sur le plateau
+                    plato.deplacer(piece_from.get(0), from, to, last_indice, actual_indice); // déplace la pièce sur le plateau
+                }
+                if (piece_from.size() == 2) {
+                    System.out.println("deplace == 2");
+                    plato.deplacer(piece_from.get(last_indice), from, to, last_indice, actual_indice); // déplace la pièce sur le plateau
+                    f.rafraichir();
                 }
                 this.supprimer_cercle(f, pieces); // supprime les cercles
                 dep_piece = true;

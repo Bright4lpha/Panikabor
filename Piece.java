@@ -102,8 +102,8 @@ class Piece {
         int x = this.position.getX();
         int y = this.position.getY();
 
-        //if (p.getCase(this.position).size() == 1) {
-    // en haut à droite
+        //if (p.getCase(this.position).size() == 1) {  
+        // en haut à droite
             if ((0<x+1)&&(x+1<7)&&(0<y+1)&&(y+1<6)) {
                 pos.add(new Position(x+1, y+1));
             }
