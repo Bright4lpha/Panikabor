@@ -11,7 +11,7 @@ class Plateau {
             this.plateau.add(new ArrayList<Piece>());
         }
         this.plateau.get(34).add(new Piece("mecano", 'J', "E4", 0));//34
-        this.plateau.get(34).add(new Piece("capitaine", 'J', "E4", 1));//34
+        //this.plateau.get(34).add(new Piece("capitaine", 'J', "E4", 1));//34
         this.plateau.get(13).add(new Piece("tache", 'T', "D2", 0));//13
         this.plateau.get(31).add(new Piece("gamin", 'J', "B4", 0));//31
         this.plateau.get(53).add(new Piece("tentacule", 'E', "D6", 0));//53
@@ -198,25 +198,30 @@ class Plateau {
         ArrayList<Piece> piece_from = this.getCase(from);
         ArrayList<Piece> piece_to = this.getCase(to);
 
-        // retirer la piece et décaler les pièces existantes
-        this.remove(p);
-        if (piece_from.size() > 1) {
-            System.out.println("la liste est bien supérieure à 1");
-            for (int i = 0; i <= piece_from.size(); i++) {
-                Piece piece = piece_from.get(i);
-                int ind = piece.getIndice();
-                piece.setIndice(ind-1);
-            }
-        }
-        
-        // if (piece_to.size() > 0) {
-        //     p.setIndice(piece_to.size());
+        // // retirer la piece et décaler les pièces existantes
+        // this.remove(p);
+        // if (piece_from.size() > 1) {
+        //     System.out.println("la liste est bien supérieure à 1");
+        //     for (int i = 0; i <= piece_from.size(); i++) {
+        //         Piece piece = piece_from.get(i);
+        //         int ind = piece.getIndice();
+        //         piece.setIndice(ind-1);
+        //     }
         // }
-        else {
-            p.setIndice(0);
-        }
-        // si la case de départ ne contient qu'une pièce
-        //piece_from.get(indice).setPosition(to);
+        
+        // // if (piece_to.size() > 0) {
+        // //     p.setIndice(piece_to.size());
+        // // }
+        // else {
+        //     p.setIndice(0);
+        // }
+        // // si la case de départ ne contient qu'une pièce
+        // //piece_from.get(indice).setPosition(to);
+        // p.setPosition(to);
+        // this.getCase(to).add(p);
+
+
+        this.remove(p);
         p.setPosition(to);
         this.getCase(to).add(p);
     }
