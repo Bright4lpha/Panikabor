@@ -299,6 +299,17 @@ class Plateau {
 
 
         // Bien placer la pièce sur la case d'arrivée
+        // Y a t il un ennemi sur la case d'arrivée
+        boolean ennemi = false;
+        for (int i = 0; i < piece_to.size(); i++) {
+            if (piece_to.get(i).getType() == 'E') {
+                ennemi = true;
+            }
+        }
+        if (p.getType() == 'J' && ennemi==true) {
+            int de = this.lancer_de();
+            System.out.println("Lancer de dé : " + de);
+        }
         p.setPosition(to);
         p.setIndice(piece_to.size());
         this.getCase(to).add(p);
@@ -326,6 +337,10 @@ class Plateau {
             indice = 0;
         }
         return indice;
+    }
+
+    public int lancer_de() {
+        return (int)((Math.random() * (5 + 1))+1);
     }
 
     // main pour tests
@@ -372,5 +387,10 @@ class Plateau {
         System.out.println("Déplacer");
         // plato.deplacer(p, new Position(1, 3), new Position(2, 3));
         // System.out.println(plato);
+
+        System.out.println("Lancer de dé : " + plato.lancer_de());
+        for (int i = 0; i < 10; i++) {
+            System.out.println(plato.lancer_de());
+        }
     }
 }

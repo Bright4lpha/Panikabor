@@ -124,17 +124,23 @@ class MainGraphique {
                 pieces = piece_from.get(0).getDeplacementPossible(plato);
             }
             else {
-                if (last_indice == 0) {
-                    pieces = piece_from.get(0).getDeplacementPossible(plato);
-                }
-                else if (last_indice == 1) {
-                    pieces = piece_from.get(1).getDeplacementPossible(plato);
-                }
-                else if (last_indice == 2) {
-                    pieces = piece_from.get(2).getDeplacementPossible(plato);
+                // si indice>=size
+                if (last_indice < piece_from.size()) {
+                    if (last_indice == 1) {
+                        pieces = piece_from.get(1).getDeplacementPossible(plato);
+                    }
+                    else if (last_indice == 2) {
+                        pieces = piece_from.get(2).getDeplacementPossible(plato);
+                    }
+                    else if (last_indice == 3) {
+                        pieces = piece_from.get(3).getDeplacementPossible(plato);
+                    }
+                    else {
+                        pieces = piece_from.get(0).getDeplacementPossible(plato);
+                    }
                 }
                 else {
-                    pieces = piece_from.get(3).getDeplacementPossible(plato);
+                    return false;
                 }
             }
             System.out.println(pieces);
@@ -164,9 +170,7 @@ class MainGraphique {
                 if (piece_to != null) {
                     this.deplacements_possibles_pieces(f, to, plato);
                 }
-                
                 f.rafraichir();
-                
             }
         }
         else {
