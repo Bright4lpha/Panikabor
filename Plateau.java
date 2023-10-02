@@ -313,14 +313,15 @@ class Plateau {
         p.setPosition(to);
         p.setIndice(piece_to.size());
         this.getCase(to).add(p);
-
-
-        // // Déplacement basique pour 1 pièce
-        // this.remove(p);
-        // p.setPosition(to);
-        // this.getCase(to).add(p);
     }
 
+    /**
+     * Fonction qui renvoie l'indice de la piece sur la case
+     * à partir de la position du clic de la souris
+     * @param a 
+     * @param b
+     * @return int
+     */
     public int trouve_indice(int a, int b) {
         int indice = 0;
         // connaitre l'indice de la pièce sur la case
@@ -339,6 +340,10 @@ class Plateau {
         return indice;
     }
 
+    /**
+     * Fonction de lancer de dé à 6 faces
+     * @return int
+     */
     public int lancer_de() {
         return (int)((Math.random() * (5 + 1))+1);
     }
