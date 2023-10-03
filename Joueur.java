@@ -1,0 +1,40 @@
+abstract class Joueur extends Piece {
+        
+    public Joueur() {
+        this.position = new Position(0,1);
+        this.indice = 0;
+    }
+    
+    // constructeur par copie
+    public Joueur(Joueur p) {
+        this.position = p.getPosition();
+        this.indice = p.getIndice();
+    }
+    
+    // constructeur avec paramètres int
+    public Joueur(int x, int y, int i) {
+        this.position = new Position(x, y);
+        this.indice = i;
+    }
+    
+    // constructeur avec paramètres position
+    public Joueur(Position pos, int i) {
+        this.position = new Position(pos);
+        this.indice = i;
+    }
+
+    // constructeur avec paramètres string
+    public Joueur(String str, int i) {
+        this.position = new Position(str);  
+        this.indice = i;
+    }
+
+    // Accesseurs //
+
+    // Getter //
+
+    public abstract String getNom();
+    public char getType() {
+        return 'J';
+    }
+}

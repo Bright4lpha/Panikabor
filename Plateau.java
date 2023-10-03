@@ -11,11 +11,12 @@ class Plateau {
         for (int i = 0; i <= 70; i++) {
             this.plateau.add(new ArrayList<Piece>());
         }
-        this.plateau.get(34).add(new Piece("mecano", 'J', "E4", 0));//34
-        this.plateau.get(34).add(new Piece("capitaine", 'J', "E4", 1));//34
-        this.plateau.get(13).add(new Piece("tache", 'T', "D2", 0));//13
-        this.plateau.get(31).add(new Piece("gamin", 'J', "B4", 0));//31
-        this.plateau.get(53).add(new Piece("tentacule", 'E', "D6", 0));//53
+        this.plateau.get(34).add(new Mecano("E4", 0));//34
+        this.plateau.get(34).add(new Capitaine("E4", 1));//34
+        this.plateau.get(13).add(new Tache("D2", 0));//13
+        this.plateau.get(31).add(new Gamin("B4", 0));//31
+        this.plateau.get(53).add(new Crituma("D6", 0));//53
+        this.plateau.get(42).add(new Roswell("C5", 0));//42
     }
 
 /*
@@ -142,7 +143,7 @@ class Plateau {
             if (p.size() != 0) {
                 for (int i = 0; i < p.size(); i++) {
                     if (p.get(i).getType() == 'T') {
-                        tache.add(new Piece(p.get(i).getNom(), p.get(i).getType(), p.get(i).getPosition(), p.get(i).getIndice()));
+                        tache.add(p.get(i));
                     } 
                 }
             }
@@ -156,7 +157,7 @@ class Plateau {
             if (p.size() != 0) {
                 for (int i = 0; i < p.size(); i++) {
                     if (p.get(i).getType() == 'E') {
-                        ennemi.add(new Piece(p.get(i).getNom(), p.get(i).getType(), p.get(i).getPosition(), p.get(i).getIndice()));
+                        ennemi.add(p.get(i));
                     } 
                 }
             }
@@ -170,7 +171,7 @@ class Plateau {
             if (p.size() != 0) {
                 for (int i = 0; i < p.size(); i++) {
                     if (p.get(i).getType() == 'J') {
-                        joueur.add(new Piece(p.get(i).getNom(), p.get(i).getType(), p.get(i).getPosition(), p.get(i).getIndice()));
+                        joueur.add(p.get(i));
                     } 
                 }
             }
