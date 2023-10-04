@@ -140,17 +140,22 @@ public class Capitaine extends Joueur {
     }
     
 
-    public int combat(Ennemi ennemi) {
+    public int combat(Piece ennemi) {
+        System.out.println("Combat :");
         if (ennemi.getNomCourt() == "Te_E") {
             this.passe_tour = false;
             return -1;
         }
         else {
             int de_joueur = this.lancer_de();
+            System.out.println("Lancer de dé : " + de_joueur);
             if (de_joueur > 4) {
                 return 1;
             }   
             else {
+                System.out.println("PV : " + this.getPV());
+                this.pv = this.pv -1;
+                System.out.println("PV : " + this.getPV());
                 return 0;
             }
         }

@@ -65,6 +65,6 @@ abstract class Joueur extends Piece {
     // -1 --> passe son tour
     // 0 --> perdu
     // 1 --> gagné
-    public abstract int combat(Ennemi ennemi);
+    public abstract int combat(Piece ennemi);
 
 }

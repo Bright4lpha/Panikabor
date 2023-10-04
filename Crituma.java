@@ -106,5 +106,7 @@ public class Crituma extends Ennemi {
         return pos;
     }
 
-
+    public int combat(Piece ennemi) {
+        return -2;
+    }
 }

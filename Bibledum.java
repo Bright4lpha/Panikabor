@@ -134,7 +134,7 @@ public class Bibledum extends Joueur {
         return (int)((Math.random() * (5 + 1))+1);
     }
 
-    public int combat(Ennemi ennemi) {
+    public int combat(Piece ennemi) {
         if (ennemi.getNomCourt() == "Te_E") {
             this.passe_tour = false;
             return -1;
@@ -145,6 +145,7 @@ public class Bibledum extends Joueur {
                 return 1;
             }   
             else {
+                this.pv = this.pv -1;
                 return 0;
             }
         }

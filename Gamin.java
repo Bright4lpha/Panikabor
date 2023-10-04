@@ -135,7 +135,7 @@ public class Gamin extends Joueur {
     }
 
 
-    public int combat(Ennemi ennemi) {
+    public int combat(Piece ennemi) {
         if (ennemi.getNomCourt() == "Te_E") {
             this.passe_tour = false;
             return -1;
@@ -146,6 +146,7 @@ public class Gamin extends Joueur {
                 return 1;
             }   
             else {
+                this.pv = this.pv -1;
                 return 0;
             }
         }

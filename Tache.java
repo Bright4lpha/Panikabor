@@ -125,4 +125,8 @@ class Tache extends Piece {
         return pos;
     }
 
+    public int combat(Piece ennemi) {
+        return -3;
+    }
+
 }

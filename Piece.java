@@ -103,6 +103,8 @@ abstract class Piece {
         return chaine;
     }
 
+    public abstract int combat(Piece Ennemi);
+
 /*    public static void main(String[] args) {
         System.out.println("Test de Piece");
         Piece a = new Piece();
