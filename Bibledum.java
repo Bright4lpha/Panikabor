@@ -42,7 +42,7 @@ public class Bibledum extends Joueur {
     public int getPV() {
         return this.pv;
     }
-    
+
     public ArrayList<Position> getDeplacementPossible(Plateau p) {
         ArrayList<Position> pos = new ArrayList<Position>();
         int x = this.position.getX();
@@ -124,5 +124,29 @@ public class Bibledum extends Joueur {
         
 
         return pos;
+    }
+
+    /**
+     * Fonction de lancer de dé à 6 faces
+     * @return int
+     */
+    public int lancer_de() {
+        return (int)((Math.random() * (5 + 1))+1);
+    }
+
+    public int combat(Ennemi ennemi) {
+        if (ennemi.getNomCourt() == "Te_E") {
+            this.passe_tour = false;
+            return -1;
+        }
+        else {
+            int de_joueur = this.lancer_de();
+            if (de_joueur > 4) {
+                return 1;
+            }   
+            else {
+                return 0;
+            }
+        }
     }
 }

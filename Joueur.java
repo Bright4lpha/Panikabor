@@ -59,4 +59,12 @@ abstract class Joueur extends Piece {
     }
 
     public abstract int getPV();
+
+    // Méthodes //
+    // Combat //
+    // -1 --> passe son tour
+    // 0 --> perdu
+    // 1 --> gagné
+    public abstract int combat(Ennemi ennemi);
+
 }

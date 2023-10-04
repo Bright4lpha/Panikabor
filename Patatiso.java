@@ -120,4 +120,6 @@ public class Patatiso extends Ennemi{
 
         return pos;
     }
+
+    
 }

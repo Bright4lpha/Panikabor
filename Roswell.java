@@ -120,4 +120,6 @@ public class Roswell extends Ennemi {
 
         return pos;
     }
+
+
 }

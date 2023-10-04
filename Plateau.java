@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import MG2D.*;
 import MG2D.geometrie.*;
+
 class Plateau {
     // attributs
     private ArrayList<ArrayList<Piece>> plateau = new ArrayList<ArrayList<Piece>>();

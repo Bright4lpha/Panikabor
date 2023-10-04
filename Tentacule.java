@@ -121,4 +121,6 @@ public class Tentacule extends Ennemi {
 
         return pos;
     }
+
+    
 }

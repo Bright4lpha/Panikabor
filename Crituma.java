@@ -105,4 +105,6 @@ public class Crituma extends Ennemi {
 
         return pos;
     }
+
+
 }
