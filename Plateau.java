@@ -15,7 +15,7 @@ class Plateau {
         // this.plateau.get(34).add(new Mecano("E4", 0));//34
         // this.plateau.get(34).add(new Capitaine("E4", 1));//34
         // this.plateau.get(13).add(new Tache("D2", 0));//13
-        // this.plateau.get(31).add(new Gamin("B4", 0));//31
+        this.plateau.get(31).add(new Gamin("B4", 0));//31
         // this.plateau.get(53).add(new Crituma("D6", 0));//53
         // this.plateau.get(42).add(new Roswell("C5", 0));//42
 
