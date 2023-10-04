@@ -39,6 +39,10 @@ public class Mecano extends Joueur {
         return "Mecano";
     }
 
+    public int getPV() {
+        return this.pv;
+    }
+
     public ArrayList<Position> getDeplacementPossible(Plateau p) {
         ArrayList<Position> pos = new ArrayList<Position>();
         int x = this.position.getX();
@@ -120,5 +124,16 @@ public class Mecano extends Joueur {
         
 
         return pos;
+    }
+
+
+
+    /**
+     * Fonction de lancer de dé à 6 faces
+     * Elle a la capacité d'ajouter 1 à son lancé
+     * @return int
+     */
+    public int lancer_de() {
+        return (int)((Math.random() * (5 + 1))+2);
     }
 }

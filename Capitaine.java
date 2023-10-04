@@ -5,30 +5,35 @@ public class Capitaine extends Joueur {
     public Capitaine() {
         this.position = new Position(0,1);
         this.indice = 0;
+        this.pv = 4;
     }
     
     // constructeur par copie
     public Capitaine(Capitaine p) {
         this.position = p.getPosition();
         this.indice = p.getIndice();
+        this.pv = 4;
     }
     
     // constructeur avec paramètres int
     public Capitaine(int x, int y, int i) {
         this.position = new Position(x, y);
         this.indice = i;
+        this.pv = 4;
     }
     
     // constructeur avec paramètres position
     public Capitaine(Position pos, int i) {
         this.position = new Position(pos);
         this.indice = i;
+        this.pv = 4;
     }
 
     // constructeur avec paramètres string
     public Capitaine(String str, int i) {
         this.position = new Position(str);
         this.indice = i;
+        this.pv = 4;
     }
 
     // Accesseurs //
@@ -37,6 +42,10 @@ public class Capitaine extends Joueur {
 
     public String getNom() {
         return "capitaine";
+    }
+
+    public int getPV() {
+        return this.pv;
     }
 
     public ArrayList<Position> getDeplacementPossible(Plateau p) {

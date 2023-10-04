@@ -39,6 +39,10 @@ public class Bibledum extends Joueur {
         return "bibledum";
     }
 
+    public int getPV() {
+        return this.pv;
+    }
+    
     public ArrayList<Position> getDeplacementPossible(Plateau p) {
         ArrayList<Position> pos = new ArrayList<Position>();
         int x = this.position.getX();

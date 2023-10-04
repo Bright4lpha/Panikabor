@@ -44,80 +44,64 @@ public class Crituma extends Ennemi {
         int x = this.position.getX();
         int y = this.position.getY();
 
-        //if (p.getCase(this.position).size() == 1) {  
-        // en haut à droite
-            if ((0<x+1)&&(x+1<7)&&(0<y+1)&&(y+1<6)) {
-                pos.add(new Position(x+1, y+1));
-            }
-            
-
-            // à droite
-            if ((0<x+1)&&(x+1<7)&&(0<y)&&(y<6)) {
-                pos.add(new Position(x+1, y));
-            }
-            
-
-            // en bas à droite
-            if ((0<x+1)&&(x+1<7)&&(0<y-1)&&(y-1<6)) {
-                pos.add(new Position(x+1, y-1));
-            }
-            
-
-            // en bas
-            if ((0<x)&&(x<7)&&(0<y-1)&&(y-1<6)) {
-                pos.add(new Position(x, y-1));
-            }
-            
-
-            // en bas à gauche
-            if ((0<x-1)&&(x-1<7)&&(0<y-1)&&(y-1<6)) {
-                pos.add(new Position(x-1, y-1));
-            }
-            
-
-            // à gauche
-            if ((0<x-1)&&(x-1<7)&&(0<y)&&(y<6)) {
-                pos.add(new Position(x-1, y));
-            }
-            
-
-            // en haut à gauche
-            if ((0<x-1)&&(x-1<7)&&(0<y+1)&&(y+1<6)) {
-                pos.add(new Position(x-1, y+1));
-            }
-            
-
-            // en haut
-            if ((0<x)&&(x<7)&&(0<y+1)&&(y+1<6)) {
-                pos.add(new Position(x, y+1));
-            }
-            Position temp;
-            if (pos.contains(temp = new Position(1,1))) {
-                pos.remove(temp);
-            }
-            if (pos.contains(temp = new Position(1,5))) {
-                pos.remove(temp);
-            }
-            if (pos.contains(temp = new Position(5,1))) {
-                pos.remove(temp);
-            }
-            if (pos.contains(temp = new Position(5,5))) {
-                pos.remove(temp);
-            }
-            if (pos.contains(temp = new Position(6,1))) {
-                pos.remove(temp);
-            }
-            if (pos.contains(temp = new Position(6,2))) {
-                pos.remove(temp);
-            }
-            if (pos.contains(temp = new Position(6,4))) {
-                pos.remove(temp);
-            }
-            if (pos.contains(temp = new Position(6,5))) {
-                pos.remove(temp);
-            }
-        //}
+        // à droite
+        if ((0<x+1)&&(x+1<7)&&(0<y)&&(y<6)) {
+            pos.add(new Position(x+1, y));
+        }
+        if ((0<x+2)&&(x+2<7)&&(0<y)&&(y<6)) {
+            pos.add(new Position(x+2, y));
+        }
         
+        // en bas
+        if ((0<x)&&(x<7)&&(0<y-1)&&(y-1<6)) {
+            pos.add(new Position(x, y-1));
+        }
+        if ((0<x)&&(x<7)&&(0<y-2)&&(y-2<6)) {
+            pos.add(new Position(x, y-2));
+        }
+        
+        // à gauche
+        if ((0<x-1)&&(x-1<7)&&(0<y)&&(y<6)) {
+            pos.add(new Position(x-1, y));
+        }
+        if ((0<x-2)&&(x-2<7)&&(0<y)&&(y<6)) {
+            pos.add(new Position(x-2, y));
+        }
+
+        // en haut
+        if ((0<x)&&(x<7)&&(0<y+1)&&(y+1<6)) {
+            pos.add(new Position(x, y+1));
+        }
+        if ((0<x)&&(x<7)&&(0<y+2)&&(y+2<6)) {
+            pos.add(new Position(x, y+2));
+        }
+
+
+        Position temp;
+        if (pos.contains(temp = new Position(1,1))) {
+            pos.remove(temp);
+        }
+        if (pos.contains(temp = new Position(1,5))) {
+            pos.remove(temp);
+        }
+        if (pos.contains(temp = new Position(5,1))) {
+            pos.remove(temp);
+        }
+        if (pos.contains(temp = new Position(5,5))) {
+            pos.remove(temp);
+        }
+        if (pos.contains(temp = new Position(6,1))) {
+            pos.remove(temp);
+        }
+        if (pos.contains(temp = new Position(6,2))) {
+            pos.remove(temp);
+        }
+        if (pos.contains(temp = new Position(6,4))) {
+            pos.remove(temp);
+        }
+        if (pos.contains(temp = new Position(6,5))) {
+            pos.remove(temp);
+        }        
 
         return pos;
     }
