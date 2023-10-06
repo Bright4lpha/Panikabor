@@ -140,6 +140,13 @@ public class Capitaine extends Joueur {
     }
     
 
+    // Les capacités sont effectués AVANT les combats.
+    // Le but est d'éviter le combat ou l'annuler
+    // Capitaine ne peut annuler aucun combat
+    public boolean capacite() {
+        return false;
+    }
+
     public int combat(Piece ennemi) {
         System.out.println("Combat :");
         if (ennemi.getNomCourt() == "Te_E") {

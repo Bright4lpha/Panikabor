@@ -12,14 +12,14 @@ class Plateau {
         for (int i = 0; i <= 70; i++) {
             this.plateau.add(new ArrayList<Piece>());
         }
-        // this.plateau.get(34).add(new Mecano("E4", 0));//34
+        this.plateau.get(34).add(new Mecano("E4", 0));//34
         // this.plateau.get(34).add(new Capitaine("E4", 1));//34
         // this.plateau.get(13).add(new Tache("D2", 0));//13
         // this.plateau.get(31).add(new Gamin("B4", 0));//31
         // this.plateau.get(53).add(new Crituma("D6", 0));//53
         // this.plateau.get(42).add(new Roswell("C5", 0));//42
 
-        this.plateau.get(34).add(new Capitaine("E4", 0));//34
+        this.plateau.get(43).add(new Capitaine("E4", 0));//34
         this.plateau.get(33).add(new Roswell("D4", 0));//33
     }
 
@@ -200,7 +200,7 @@ class Plateau {
         this.remove(p);
     }
 
-    public void deplacer(Piece p, Position from, Position to, int last_indice, int actual_indice) {
+    public void deplacer(Piece p, Position from, Position to, int last_indice, int actual_indice, Fenetre f) {
         ArrayList<Piece> piece_from = this.getCase(from);
         ArrayList<Piece> piece_to = this.getCase(to);
 
@@ -301,13 +301,34 @@ class Plateau {
         if (p.getType() == 'J'&& ennemi==true) {
             int com = p.combat(piece_to.get(0));
             if (com == 1) {
+                // Panneau save = f.getP();
                 Fenetre victoire = new Fenetre("Victoire", 300, 300);
-                //victoire.rafraichir();
+                victoire.rafraichir();
+                try {
+                    Thread.sleep(1500);
+                } catch (Exception e) {}
+                victoire.fermer();
             }
             else if (com == 0) {
-                Fenetre perdu = new Fenetre("Perdu", 300, 300);
-                //perdu.rafraichir();
-            }
+                if (p.getPV() ==0) {
+                    Fenetre perdu = new Fenetre("Mort", 300, 300);
+                    perdu.rafraichir();
+                    try {
+                        Thread.sleep(1500);
+                    } catch (Exception e) {}
+                    perdu.fermer();
+                    this.remove(p);
+                }
+                else {
+                    Fenetre perdu = new Fenetre("Perdu", 300, 300);
+                    perdu.rafraichir();
+                    try {
+                        Thread.sleep(1500);
+                    } catch (Exception e) {}
+                    perdu.fermer();
+                }
+                
+            }            
             // System.out.println(p.combat(piece_to.get(0)));
         }
     }

@@ -42,6 +42,11 @@ class Tache extends Piece {
         return 'T';
     }
 
+    // Inutile pour les taches
+    public int getPV() {
+        return -1;
+    }
+
     public ArrayList<Position> getDeplacementPossible(Plateau p) {
         ArrayList<Position> pos = new ArrayList<Position>();
         int x = this.position.getX();
@@ -123,6 +128,11 @@ class Tache extends Piece {
         
 
         return pos;
+    }
+
+    // Les capacités sont effectués AVANT les combats.
+    public boolean capacite() {
+        return false;
     }
 
     public int combat(Piece ennemi) {

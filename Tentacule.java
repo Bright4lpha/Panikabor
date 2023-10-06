@@ -38,6 +38,10 @@ public class Tentacule extends Ennemi {
     public String getNom() {
         return "tentacule";
     }
+    // Inutile pour les ennemis
+    public int getPV() {
+        return -1;
+    }
 
     public ArrayList<Position> getDeplacementPossible(Plateau p) {
         ArrayList<Position> pos = new ArrayList<Position>();
@@ -120,6 +124,11 @@ public class Tentacule extends Ennemi {
         
 
         return pos;
+    }
+
+    // Les capacités sont effectués AVANT les combats.
+    public boolean capacite() {
+        return false;
     }
 
     public int combat(Piece ennemi) {

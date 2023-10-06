@@ -124,23 +124,17 @@ class MainGraphique {
                 pieces = piece_from.get(0).getDeplacementPossible(plato);
             }
             else {
-                // si indice>=size
-                if (last_indice < piece_from.size()) {
-                    if (last_indice == 1) {
-                        pieces = piece_from.get(1).getDeplacementPossible(plato);
-                    }
-                    else if (last_indice == 2) {
-                        pieces = piece_from.get(2).getDeplacementPossible(plato);
-                    }
-                    else if (last_indice == 3) {
-                        pieces = piece_from.get(3).getDeplacementPossible(plato);
-                    }
-                    else {
-                        pieces = piece_from.get(0).getDeplacementPossible(plato);
-                    }
+                if (last_indice == 0) {
+                    pieces = piece_from.get(0).getDeplacementPossible(plato);
+                }
+                else if (last_indice == 1) {
+                    pieces = piece_from.get(1).getDeplacementPossible(plato);
+                }
+                else if (last_indice == 2) {
+                    pieces = piece_from.get(2).getDeplacementPossible(plato);
                 }
                 else {
-                    return false;
+                    pieces = piece_from.get(3).getDeplacementPossible(plato);
                 }
             }
             System.out.println(pieces);
@@ -152,11 +146,11 @@ class MainGraphique {
             // si oui
             if (trouve == true) {
                 if (piece_from.size() == 1) {
-                    plato.deplacer(piece_from.get(0), from, to, last_indice, actual_indice); // déplace la pièce sur le plateau
+                    plato.deplacer(piece_from.get(0), from, to, last_indice, actual_indice, f); // déplace la pièce sur le plateau
                 }
                 if (piece_from.size() > 1) {
                     System.out.println("deplace == 2");
-                    plato.deplacer(piece_from.get(last_indice), from, to, last_indice, actual_indice); // déplace la pièce sur le plateau
+                    plato.deplacer(piece_from.get(last_indice), from, to, last_indice, actual_indice, f); // déplace la pièce sur le plateau
                     f.rafraichir();
                 }
                 this.supprimer_cercle(f, pieces); // supprime les cercles
@@ -170,7 +164,9 @@ class MainGraphique {
                 if (piece_to != null) {
                     this.deplacements_possibles_pieces(f, to, plato);
                 }
+                
                 f.rafraichir();
+                
             }
         }
         else {

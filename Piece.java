@@ -104,6 +104,8 @@ abstract class Piece {
     }
 
     public abstract int combat(Piece Ennemi);
+    public abstract int getPV();
+    public abstract boolean capacite();
 
 /*    public static void main(String[] args) {
         System.out.println("Test de Piece");

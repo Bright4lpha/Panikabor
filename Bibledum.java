@@ -134,6 +134,13 @@ public class Bibledum extends Joueur {
         return (int)((Math.random() * (5 + 1))+1);
     }
 
+    // Les capacités sont effectués AVANT les combats.
+    // Le but est d'éviter le combat ou l'annuler
+    // Bibledum peut annuler les capacités de Crituma, Tentacule et Roswell
+    public boolean capacite() {
+        return false;
+    }
+
     public int combat(Piece ennemi) {
         if (ennemi.getNomCourt() == "Te_E") {
             this.passe_tour = false;

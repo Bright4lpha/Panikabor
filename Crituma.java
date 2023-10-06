@@ -39,6 +39,11 @@ public class Crituma extends Ennemi {
         return "crituma";
     }
 
+    // Inutile pour les ennemis
+    public int getPV() {
+        return -1;
+    }
+
     public ArrayList<Position> getDeplacementPossible(Plateau p) {
         ArrayList<Position> pos = new ArrayList<Position>();
         int x = this.position.getX();
@@ -104,6 +109,11 @@ public class Crituma extends Ennemi {
         }        
 
         return pos;
+    }
+
+    // Les capacités sont effectués AVANT les combats.
+    public boolean capacite() {
+        return false;
     }
 
     public int combat(Piece ennemi) {
