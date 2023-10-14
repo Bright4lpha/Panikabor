@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 
+import MG2D.Fenetre;
+
 public class Bibledum extends Joueur {
     
     public Bibledum() {
@@ -141,7 +143,7 @@ public class Bibledum extends Joueur {
         return false;
     }
 
-    public int combat(Piece ennemi) {
+    public int combat(Piece ennemi, Fenetre f) {
         if (ennemi.getNomCourt() == "Te_E") {
             this.passe_tour = false;
             return -1;

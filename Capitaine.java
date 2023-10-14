@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import MG2D.*;
+import MG2D.geometrie.*;
 
 public class Capitaine extends Joueur {
     
@@ -147,7 +149,7 @@ public class Capitaine extends Joueur {
         return false;
     }
 
-    public int combat(Piece ennemi) {
+    public int combat(Piece ennemi, Fenetre f) {
         System.out.println("Combat :");
         if (ennemi.getNomCourt() == "Te_E") {
             this.passe_tour = false;
@@ -156,6 +158,8 @@ public class Capitaine extends Joueur {
         else {
             int de_joueur = this.lancer_de();
             System.out.println("Lancer de dé : " + de_joueur);
+            f.ajouter(new Texture("./images/de_" + de_joueur + ".png", new Point(800, 300), 100, 100));
+            f.rafraichir();
             if (de_joueur > 4) {
                 return 1;
             }   

@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 
+import MG2D.Fenetre;
+
 public class Crituma extends Ennemi {
     
     public Crituma() {
@@ -116,7 +118,7 @@ public class Crituma extends Ennemi {
         return false;
     }
 
-    public int combat(Piece ennemi) {
+    public int combat(Piece ennemi, Fenetre f) {
         return -2;
     }
 }

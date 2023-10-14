@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 
+import MG2D.Fenetre;
+
 public class Patatiso extends Ennemi{
     public Patatiso() {
         this.position = new Position(0,1);
@@ -130,7 +132,7 @@ public class Patatiso extends Ennemi{
         return false;
     }
 
-    public int combat(Piece ennemi) {
+    public int combat(Piece ennemi, Fenetre f) {
         return -2;
     }
 }

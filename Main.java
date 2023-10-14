@@ -46,7 +46,7 @@ public class Main {
 
                 // position ancienne de la souris
                 int c = pos.getX();
-                int d = pos.getY();
+                int d = pos.getY(); 
 
                 actual_indice = plato.trouve_indice(a, b);
                 

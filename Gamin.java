@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 
+import MG2D.Fenetre;
+
 public class Gamin extends Joueur {
     
     public Gamin() {
@@ -141,7 +143,7 @@ public class Gamin extends Joueur {
         return false;
     }
 
-    public int combat(Piece ennemi) {
+    public int combat(Piece ennemi, Fenetre f) {
         if (ennemi.getNomCourt() == "Te_E") {
             this.passe_tour = false;
             return -1;

@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 
+import MG2D.Fenetre;
+
 public class Tentacule extends Ennemi {
     
     public Tentacule() {
@@ -131,7 +133,7 @@ public class Tentacule extends Ennemi {
         return false;
     }
 
-    public int combat(Piece ennemi) {
+    public int combat(Piece ennemi, Fenetre f) {
         return -2;
     }
 }

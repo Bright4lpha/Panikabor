@@ -299,10 +299,12 @@ class Plateau {
         this.getCase(to).add(p);
 
         if (p.getType() == 'J'&& ennemi==true) {
-            int com = p.combat(piece_to.get(0));
+            int com = p.combat(piece_to.get(0), f);
             if (com == 1) {
                 // Panneau save = f.getP();
-                Fenetre victoire = new Fenetre("Victoire", 300, 300);
+                Fenetre victoire = new Fenetre("Victoire", 500, 700);
+                victoire.ajouter(new Texture("./images/" + p.getNomLong() + ".png", new Point(0, 200)));
+                victoire.ajouter(new Texture("./images/vic.png", new Point(0, 0)));
                 victoire.rafraichir();
                 try {
                     Thread.sleep(1500);
@@ -311,7 +313,9 @@ class Plateau {
             }
             else if (com == 0) {
                 if (p.getPV() ==0) {
-                    Fenetre perdu = new Fenetre("Mort", 300, 300);
+                    Fenetre perdu = new Fenetre("Mort", 500, 700);
+                    perdu.ajouter(new Texture("./images/" + p.getNomLong() + ".png", new Point(0, 200)));
+                    perdu.ajouter(new Texture("./images/mort.png", new Point(0, 0)));
                     perdu.rafraichir();
                     try {
                         Thread.sleep(1500);
@@ -320,7 +324,9 @@ class Plateau {
                     this.remove(p);
                 }
                 else {
-                    Fenetre perdu = new Fenetre("Perdu", 300, 300);
+                    Fenetre perdu = new Fenetre("Perdu", 500, 700);
+                    perdu.ajouter(new Texture("./images/" + p.getNomLong() + ".png", new Point(0, 200)));
+                    perdu.ajouter(new Texture("./images/pdv.png", new Point(0, 0)));
                     perdu.rafraichir();
                     try {
                         Thread.sleep(1500);

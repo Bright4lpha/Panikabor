@@ -55,6 +55,7 @@ class MainGraphique {
                     }
                     
                 }
+        f.ajouter(new Texture("./images/de.png", new Point(800, 300), 100, 100));
         f.rafraichir(); 
             }
         }   

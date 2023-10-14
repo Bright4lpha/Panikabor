@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 
+import MG2D.Fenetre;
+
 class Tache extends Piece {
         
     public Tache() {
@@ -135,7 +137,7 @@ class Tache extends Piece {
         return false;
     }
 
-    public int combat(Piece ennemi) {
+    public int combat(Piece ennemi, Fenetre f) {
         return -3;
     }
 

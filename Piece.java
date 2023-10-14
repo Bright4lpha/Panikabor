@@ -1,5 +1,6 @@
 import java.util.ArrayList;
-
+import MG2D.*;
+import MG2D.geometrie.*;
 abstract class Piece {
     // attributs
     protected Position position;
@@ -103,7 +104,7 @@ abstract class Piece {
         return chaine;
     }
 
-    public abstract int combat(Piece Ennemi);
+    public abstract int combat(Piece Ennemi, Fenetre f);
     public abstract int getPV();
     public abstract boolean capacite();
 
