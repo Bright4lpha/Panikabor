@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 
 import MG2D.Fenetre;
+import MG2D.geometrie.Point;
+import MG2D.geometrie.Texture;
 
 public class Gamin extends Joueur {
     
@@ -139,8 +141,37 @@ public class Gamin extends Joueur {
     // Les capacités sont effectués AVANT les combats.
     // Le but est d'éviter le combat ou l'annuler
     // Gamin peut fuir devant Roswell, Crituma et Patatiso
-    public boolean capacite() {
-        return false;
+    public boolean capacite(Piece ennemi, Fenetre f) {
+        if (ennemi.getNomCourt() == "Te_E") {
+            return false;
+        }
+        else {
+            int de_joueur = this.lancer_de();
+            f.ajouter(new Texture("./images/de_" + de_joueur + ".png", new Point(800, 300), 100, 100));
+            f.rafraichir();
+            if (de_joueur > 4) {
+                Fenetre victoire = new Fenetre("Capacite", 500, 700);
+                victoire.ajouter(new Texture("./images/" + this.getNomLong() + ".png", new Point(0, 200)));
+                victoire.ajouter(new Texture("./images/vic.png", new Point(0, 0)));
+                victoire.rafraichir();
+                try {
+                    Thread.sleep(1500);
+                } catch (Exception e) {}
+                victoire.fermer();
+                return true;
+            }   
+            else {
+                Fenetre perdu = new Fenetre("Capacite", 500, 700);
+                perdu.ajouter(new Texture("./images/" + this.getNomLong() + ".png", new Point(0, 200)));
+                // perdu.ajouter(new Texture("./images/.png", new Point(0, 0)));
+                perdu.rafraichir();
+                try {
+                    Thread.sleep(1500);
+                } catch (Exception e) {}
+                perdu.fermer();
+                return false;
+            }
+        }
     }
 
     public int combat(Piece ennemi, Fenetre f) {
@@ -150,6 +181,8 @@ public class Gamin extends Joueur {
         }
         else {
             int de_joueur = this.lancer_de();
+            f.ajouter(new Texture("./images/de_" + de_joueur + ".png", new Point(800, 300), 100, 100));
+            f.rafraichir();
             if (de_joueur > 4) {
                 return 1;
             }   

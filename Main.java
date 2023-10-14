@@ -2,15 +2,15 @@ import MG2D.Fenetre;
 import MG2D.Souris;
 import MG2D.geometrie.Point;
 
-import java.util.ArrayList;
+// import java.util.ArrayList;
 
-import MG2D.*;
-import MG2D.geometrie.*;
+//import MG2D.*;
+//import MG2D.geometrie.*;
 
 public class Main {
 
     public static void main(String[] args) {
-        Main main;
+        // Main main;
         Plateau plato = new Plateau();        
         Fenetre f = new Fenetre("Mon jeu", 1000, 700);
         MainGraphique graphique = new MainGraphique(f, plato);

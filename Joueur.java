@@ -1,5 +1,5 @@
 import MG2D.*;
-import MG2D.geometrie.*;
+// import MG2D.geometrie.*;
 
 abstract class Joueur extends Piece {
     

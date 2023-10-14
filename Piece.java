@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 import MG2D.*;
-import MG2D.geometrie.*;
+// import MG2D.geometrie.*;
 abstract class Piece {
     // attributs
     protected Position position;
@@ -106,7 +106,7 @@ abstract class Piece {
 
     public abstract int combat(Piece Ennemi, Fenetre f);
     public abstract int getPV();
-    public abstract boolean capacite();
+    public abstract boolean capacite(Piece Ennemi, Fenetre f);
 
 /*    public static void main(String[] args) {
         System.out.println("Test de Piece");

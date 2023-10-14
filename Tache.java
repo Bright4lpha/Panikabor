@@ -133,7 +133,7 @@ class Tache extends Piece {
     }
 
     // Les capacités sont effectués AVANT les combats.
-    public boolean capacite() {
+    public boolean capacite(Piece Ennemi, Fenetre f) {
         return false;
     }
 

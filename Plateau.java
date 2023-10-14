@@ -19,8 +19,8 @@ class Plateau {
         // this.plateau.get(53).add(new Crituma("D6", 0));//53
         // this.plateau.get(42).add(new Roswell("C5", 0));//42
 
-        this.plateau.get(43).add(new Capitaine("E4", 0));//34
-        this.plateau.get(33).add(new Roswell("D4", 0));//33
+        this.plateau.get(43).add(new Gamin("E4", 0));//34
+        this.plateau.get(33).add(new Crituma("D4", 0));//33
     }
 
 /*
@@ -297,44 +297,57 @@ class Plateau {
         p.setPosition(to);
         p.setIndice(piece_to.size());
         this.getCase(to).add(p);
-
+        
         if (p.getType() == 'J'&& ennemi==true) {
-            int com = p.combat(piece_to.get(0), f);
-            if (com == 1) {
-                // Panneau save = f.getP();
-                Fenetre victoire = new Fenetre("Victoire", 500, 700);
-                victoire.ajouter(new Texture("./images/" + p.getNomLong() + ".png", new Point(0, 200)));
-                victoire.ajouter(new Texture("./images/vic.png", new Point(0, 0)));
+            if (p.capacite(piece_to.get(0), f) == true) {
+                Fenetre victoire = new Fenetre("Pas de combat", 500, 700);
+                // victoire.ajouter(new Texture("./images/" + p.getNomLong() + ".png", new Point(0, 200)));
+                // victoire.ajouter(new Texture("./images/vic.png", new Point(0, 0)));
                 victoire.rafraichir();
                 try {
                     Thread.sleep(1500);
                 } catch (Exception e) {}
                 victoire.fermer();
             }
-            else if (com == 0) {
-                if (p.getPV() ==0) {
-                    Fenetre perdu = new Fenetre("Mort", 500, 700);
-                    perdu.ajouter(new Texture("./images/" + p.getNomLong() + ".png", new Point(0, 200)));
-                    perdu.ajouter(new Texture("./images/mort.png", new Point(0, 0)));
-                    perdu.rafraichir();
+            else {
+                int com = p.combat(piece_to.get(0), f);
+                if (com == 1) {
+                    // Panneau save = f.getP();
+                    Fenetre victoire = new Fenetre("Victoire", 500, 700);
+                    victoire.ajouter(new Texture("./images/" + p.getNomLong() + ".png", new Point(0, 200)));
+                    victoire.ajouter(new Texture("./images/vic.png", new Point(0, 0)));
+                    victoire.rafraichir();
                     try {
                         Thread.sleep(1500);
                     } catch (Exception e) {}
-                    perdu.fermer();
-                    this.remove(p);
+                    victoire.fermer();
                 }
-                else {
-                    Fenetre perdu = new Fenetre("Perdu", 500, 700);
-                    perdu.ajouter(new Texture("./images/" + p.getNomLong() + ".png", new Point(0, 200)));
-                    perdu.ajouter(new Texture("./images/pdv.png", new Point(0, 0)));
-                    perdu.rafraichir();
-                    try {
-                        Thread.sleep(1500);
-                    } catch (Exception e) {}
-                    perdu.fermer();
-                }
-                
-            }            
+                else if (com == 0) {
+                    if (p.getPV() ==0) {
+                        Fenetre perdu = new Fenetre("Mort", 500, 700);
+                        perdu.ajouter(new Texture("./images/" + p.getNomLong() + ".png", new Point(0, 200)));
+                        perdu.ajouter(new Texture("./images/mort.png", new Point(0, 0)));
+                        perdu.rafraichir();
+                        try {
+                            Thread.sleep(1500);
+                        } catch (Exception e) {}
+                        perdu.fermer();
+                        this.remove(p);
+                    }
+                    else {
+                        Fenetre perdu = new Fenetre("Perdu", 500, 700);
+                        perdu.ajouter(new Texture("./images/" + p.getNomLong() + ".png", new Point(0, 200)));
+                        perdu.ajouter(new Texture("./images/pdv.png", new Point(0, 0)));
+                        perdu.rafraichir();
+                        try {
+                            Thread.sleep(1500);
+                        } catch (Exception e) {}
+                        perdu.fermer();
+                    }
+                    
+                }    
+            }
+                    
             // System.out.println(p.combat(piece_to.get(0)));
         }
     }

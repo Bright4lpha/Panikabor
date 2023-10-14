@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 
 import MG2D.Fenetre;
+import MG2D.geometrie.Point;
+import MG2D.geometrie.Texture;
 
 public class Mecano extends Joueur {
     
@@ -142,7 +144,7 @@ public class Mecano extends Joueur {
     // Les capacités sont effectués AVANT les combats.
     // Le but est d'éviter le combat ou l'annuler
     // Mecano ne peut annuler aucun combat
-    public boolean capacite() {
+    public boolean capacite(Piece ennemi, Fenetre f) {
         return false;
     }
 
@@ -153,6 +155,8 @@ public class Mecano extends Joueur {
         }
         else {
             int de_joueur = this.lancer_de();
+            f.ajouter(new Texture("./images/de_" + de_joueur + ".png", new Point(800, 300), 100, 100));
+            f.rafraichir();
             if (de_joueur > 4) {
                 return 1;
             }   

@@ -145,7 +145,7 @@ public class Capitaine extends Joueur {
     // Les capacités sont effectués AVANT les combats.
     // Le but est d'éviter le combat ou l'annuler
     // Capitaine ne peut annuler aucun combat
-    public boolean capacite() {
+    public boolean capacite(Piece Ennemi, Fenetre f) {
         return false;
     }
 
@@ -160,7 +160,7 @@ public class Capitaine extends Joueur {
             System.out.println("Lancer de dé : " + de_joueur);
             f.ajouter(new Texture("./images/de_" + de_joueur + ".png", new Point(800, 300), 100, 100));
             f.rafraichir();
-            if (de_joueur > 4) {
+            if (de_joueur > 3) {
                 return 1;
             }   
             else {
