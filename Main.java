@@ -1,6 +1,7 @@
 import MG2D.Fenetre;
 import MG2D.Souris;
 import MG2D.geometrie.Point;
+import MG2D.audio.Musique;
 
 // import java.util.ArrayList;
 
@@ -28,6 +29,8 @@ public class Main {
         boolean dep_piece = false;
         int last_indice = 0;
         int actual_indice = 0;
+        Musique son = new Musique("D:\\Music\\this_is_what_space_feels_like.mp3");
+        son.lecture();
 
         // System.out.println("Déplacements");
         // Piece ma_piece = plato.getCase(34).get(1);
@@ -38,6 +41,7 @@ public class Main {
                 Thread.sleep(40);
             } catch (Exception e) {}
 
+            // menu et changement de fenetre
             if (souris.getClicGauche()) {
                 // stockage de la position de la souris
                 pos = new Point(souris.getPosition());
@@ -46,25 +50,34 @@ public class Main {
                 actual_pos_souris.setY(pos.getY());
 
                 System.out.println(pos);
+                // si on est dans le jeu alors les deplacements sont ceux du jeu
                 if (num_fenetre == 1) {
                     num_fenetre = graphique.deplacements_souris(f, pos);
                 }
+                // si on est dans les crédits alors on peut revenir au menu
                 if (num_fenetre == 2) {
                     num_fenetre = credits.deplacements_souris(f, pos);
                 }
+                // si on est dans le menu alors on peu aller dans les crédits, le jeu ou quitter
                 if (num_fenetre == 0) {
                     num_fenetre = menu.deplacements_souris(f, pos);
                 }
                 System.out.println("indice " + num_fenetre);
 
+                // si on est dans le jeu alors on l'affiche
                 if (num_fenetre == 1) {
                     graphique.afficher(f, plato);
                 }
+                // si on est dans les crédits alors on l'affiche
                 if (num_fenetre == 2) {
                     credits.afficher(f);
                 }
+                // si on est dans le menu alors on l'affiche
                 if (num_fenetre == 0) {
                     menu.afficher(f);
+                }
+                if (num_fenetre == 3) {
+                    f.fermer();
                 }
             }
 
