@@ -14,17 +14,18 @@ class MainGraphique {
     // }
     
     public MainGraphique(Fenetre f, Plateau plato) {
-        f.ajouter(new Rectangle(Couleur.BLANC, new Point(0,0), 1000, 700, true));
+        // f.ajouter(new Rectangle(Couleur.BLANC, new Point(0,0), 1000, 700, true));
+        f.ajouter(new Texture("./images/space.png", new Point(0, 0)));
         for (int i=0;i<10;i++) { // lignes
             for (int j=0;j<7;j++) { // colonnes
                 if ((i==0) | (i==7) | (j==0) | (j==6)| (i==8) | (i==9)) {
-                    f.ajouter(new Carre(Couleur.JAUNE, new Point(i*100, j*100), 100, true));
+                    //f.ajouter(new Carre(Couleur.JAUNE, new Point(i*100, j*100), 100, true));
                 }
                 else if (((i==1 && (j==1|j==5))) | ((i==5 && (j==1|j==5)))){
-                    f.ajouter(new Carre(Couleur.JAUNE, new Point(i*100, j*100), 100, true));
+                    //f.ajouter(new Carre(Couleur.JAUNE, new Point(i*100, j*100), 100, true));
                 }
                 else if (((i==6 && (j==1|j==2|j==4|j==5)))) {
-                    f.ajouter(new Carre(Couleur.JAUNE, new Point(i*100, j*100), 100, true));
+                    //f.ajouter(new Carre(Couleur.JAUNE, new Point(i*100, j*100), 100, true));
                 }
                 else if ((i%2==0 && j%2==1) | (i%2==1 && j%2==0)) {
                     f.ajouter(new Carre(Couleur.BLANC, new Point(i*100, j*100), 100, true));
@@ -71,17 +72,18 @@ class MainGraphique {
     }
 
     public void afficher(Fenetre f, Plateau plato) {
-        f.ajouter(new Rectangle(Couleur.BLANC, new Point(0,0), 1000, 700, true));
+        // f.ajouter(new Rectangle(Couleur.BLANC, new Point(0,0), 1000, 700, true));
+        f.ajouter(new Texture("./images/space.png", new Point(0, 0)));
         for (int i=0;i<10;i++) { // lignes
             for (int j=0;j<7;j++) { // colonnes
                 if ((i==0) | (i==7) | (j==0) | (j==6)| (i==8) | (i==9)) {
-                    f.ajouter(new Carre(Couleur.JAUNE, new Point(i*100, j*100), 100, true));
+                    // f.ajouter(new Carre(Couleur.JAUNE, new Point(i*100, j*100), 100, true));
                 }
                 else if (((i==1 && (j==1|j==5))) | ((i==5 && (j==1|j==5)))){
-                    f.ajouter(new Carre(Couleur.JAUNE, new Point(i*100, j*100), 100, true));
+                    // f.ajouter(new Carre(Couleur.JAUNE, new Point(i*100, j*100), 100, true));
                 }
                 else if (((i==6 && (j==1|j==2|j==4|j==5)))) {
-                    f.ajouter(new Carre(Couleur.JAUNE, new Point(i*100, j*100), 100, true));
+                    // f.ajouter(new Carre(Couleur.JAUNE, new Point(i*100, j*100), 100, true));
                 }
                 else if ((i%2==0 && j%2==1) | (i%2==1 && j%2==0)) {
                     f.ajouter(new Carre(Couleur.BLANC, new Point(i*100, j*100), 100, true));
