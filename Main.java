@@ -31,16 +31,14 @@ public class Main {
         boolean dep_piece = false;
         int last_indice = 0;
         int actual_indice = 0;
-        Joueur j1;
-        Joueur j2;
-        Joueur j3;
-        Joueur j4;
+        Joueur J1 = new Capitaine();
+        Joueur J2 = new Gamin();
+        Joueur J3 = new Bibledum();
+        Joueur J4 = new Mecano();
+        String tour = "E";
+        int nb_joueur = 4;
+        int cmpt_tour = 0;
 
-
-
-        // System.out.println("Déplacements");
-        // Piece ma_piece = plato.getCase(34).get(1);
-        // System.out.println(ma_piece.getDeplacementPossible(plato));
         int num_fenetre = 0;
         while(true) {
             try {
@@ -65,7 +63,7 @@ public class Main {
                 if (num_fenetre == 2) {
                     num_fenetre = credits.deplacements_souris(f, pos);
                 }
-                // si on est dans le choix des joueurs 
+                // si on est dans le choix des joueurs // à continuer ne fonctionne pas
                 if (num_fenetre == 4) {
                     int r = choix.deplacements_souris(f, pos);
                     // Si il y a un joueur
@@ -73,151 +71,151 @@ public class Main {
                         choix_p.afficher(f);
                         int r_p = choix_p.deplacements_souris(f, pos);
                         if (r_p == 1) {
-                            j1 = new Capitaine();
+                            J1 = new Capitaine();
                         }
                         if (r_p == 2) {
-                            j1 = new Gamin();
+                            J1 = new Gamin();
                         }
                         if (r_p == 3) {
-                            j1 = new Bibledum();
+                            J1 = new Bibledum();
                         }
                         if (r_p == 4) {
-                            j1 = new Mecano();
+                            J1 = new Mecano();
                         }
                     }
-                    // si il y a 2 joueurs
+                    // si il y a 2 Joueurs
                     if (r == 12) {
                         choix_p.afficher(f);
                         int r_p = choix_p.deplacements_souris(f, pos);
                         if (r_p == 1) {
-                            j1 = new Capitaine();
+                            J1 = new Capitaine();
                         }
                         if (r_p == 2) {
-                            j1 = new Gamin();
+                            J1 = new Gamin();
                         }
                         if (r_p == 3) {
-                            j1 = new Bibledum();
+                            J1 = new Bibledum();
                         }
                         if (r_p == 4) {
-                            j1 = new Mecano();
+                            J1 = new Mecano();
                         }
                         choix_p.afficher(f);
                         r_p = choix_p.deplacements_souris(f, pos);
                         if (r_p == 1) {
-                            j2 = new Capitaine();
+                            J2 = new Capitaine();
                         }
                         if (r_p == 2) {
-                            j2 = new Gamin();
+                            J2 = new Gamin();
                         }
                         if (r_p == 3) {
-                            j2 = new Bibledum();
+                            J2 = new Bibledum();
                         }
                         if (r_p == 4) {
-                            j2 = new Mecano();
+                            J2 = new Mecano();
                         }
                     }
-                    // si il y a 3 joueurs
+                    // si il y a 3 Joueurs
                     if (r == 13) {
                         choix_p.afficher(f);
                         int r_p = choix_p.deplacements_souris(f, pos);
                         if (r_p == 1) {
-                            j1 = new Capitaine();
+                            J1 = new Capitaine();
                         }
                         if (r_p == 2) {
-                            j1 = new Gamin();
+                            J1 = new Gamin();
                         }
                         if (r_p == 3) {
-                            j1 = new Bibledum();
+                            J1 = new Bibledum();
                         }
                         if (r_p == 4) {
-                            j1 = new Mecano();
+                            J1 = new Mecano();
                         }
                         choix_p.afficher(f);
                         r_p = choix_p.deplacements_souris(f, pos);
                         if (r_p == 1) {
-                            j2 = new Capitaine();
+                            J2 = new Capitaine();
                         }
                         if (r_p == 2) {
-                            j2 = new Gamin();
+                            J2 = new Gamin();
                         }
                         if (r_p == 3) {
-                            j2 = new Bibledum();
+                            J2 = new Bibledum();
                         }
                         if (r_p == 4) {
-                            j2 = new Mecano();
+                            J2 = new Mecano();
                         }
                         choix_p.afficher(f);
                         r_p = choix_p.deplacements_souris(f, pos);
                         if (r_p == 1) {
-                            j3 = new Capitaine();
+                            J3 = new Capitaine();
                         }
                         if (r_p == 2) {
-                            j3 = new Gamin();
+                            J3 = new Gamin();
                         }
                         if (r_p == 3) {
-                            j3 = new Bibledum();
+                            J3 = new Bibledum();
                         }
                         if (r_p == 4) {
-                            j3 = new Mecano();
+                            J3 = new Mecano();
                         }
                     }
-                    // si il y a 4 joueurs
+                    // si il y a 4 Joueurs
                     if (r == 14) {
                         choix_p.afficher(f);
                         int r_p = choix_p.deplacements_souris(f, pos);
                         if (r_p == 1) {
-                            j1 = new Capitaine();
+                            J1 = new Capitaine();
                         }
                         if (r_p == 2) {
-                            j1 = new Gamin();
+                            J1 = new Gamin();
                         }
                         if (r_p == 3) {
-                            j1 = new Bibledum();
+                            J1 = new Bibledum();
                         }
                         if (r_p == 4) {
-                            j1 = new Mecano();
+                            J1 = new Mecano();
                         }
                         choix_p.afficher(f);
                         r_p = choix_p.deplacements_souris(f, pos);
                         if (r_p == 1) {
-                            j2 = new Capitaine();
+                            J2 = new Capitaine();
                         }
                         if (r_p == 2) {
-                            j2 = new Gamin();
+                            J2 = new Gamin();
                         }
                         if (r_p == 3) {
-                            j2 = new Bibledum();
+                            J2 = new Bibledum();
                         }
                         if (r_p == 4) {
-                            j2 = new Mecano();
+                            J2 = new Mecano();
                         }
                         choix_p.afficher(f);
                         r_p = choix_p.deplacements_souris(f, pos);
                         if (r_p == 1) {
-                            j3 = new Capitaine();
+                            J3 = new Capitaine();
                         }
                         if (r_p == 2) {
-                            j3 = new Gamin();
+                            J3 = new Gamin();
                         }
                         if (r_p == 3) {
-                            j3 = new Bibledum();
+                            J3 = new Bibledum();
                         }
                         if (r_p == 4) {
-                            j3 = new Mecano();
+                            J3 = new Mecano();
                         }
                         choix_p.afficher(f);
                         r_p = choix_p.deplacements_souris(f, pos);
                         if (r_p == 1) {
-                            j4 = new Capitaine();
+                            J4 = new Capitaine();
                         }
                         if (r_p == 2) {
-                            j4 = new Gamin();
+                            J4 = new Gamin();
                         }
                         if (r_p == 3) {
-                            j4 = new Bibledum();
+                            J4 = new Bibledum();
                         }
                         if (r_p == 4) {
-                            j4 = new Mecano();
+                            J4 = new Mecano();
                         }
                     }
                     num_fenetre = 1;
@@ -227,7 +225,7 @@ public class Main {
                     num_fenetre = menu.deplacements_souris(f, pos);
                 }
                 
-                System.out.println("indice " + num_fenetre);
+                // System.out.println("indice " + num_fenetre);
 
                 // si on est dans le jeu alors on l'affiche
                 if (num_fenetre == 1) {
@@ -251,6 +249,7 @@ public class Main {
                 }
             }
 
+            // jeu principal
             if (num_fenetre == 1) {
                 while(num_fenetre == 1) {
                     try {
@@ -287,7 +286,7 @@ public class Main {
                         System.out.print("indice : ");
                         System.out.println(last_indice);
                         
-                        dep_piece = graphique.deplacements_souris(f, last_pos_souris, actual_pos_souris, plato, last_indice, actual_indice);
+                        dep_piece = graphique.deplacements_souris(f, last_pos_souris, actual_pos_souris, plato, last_indice, actual_indice, tour);
                         
                         
                         System.out.println(plato); 
@@ -300,6 +299,22 @@ public class Main {
                             last_pos_souris.setY(-1);
                             last_indice = 0;
                             graphique = new MainGraphique(f, plato);
+
+                            // changement de joueur
+                            if (tour.equals("E")) {
+                                tour = "J";
+                                cmpt_tour += 1; 
+                            }
+                            else {
+                                if (cmpt_tour < nb_joueur) {
+                                    tour = "J";
+                                    cmpt_tour += 1;
+                                }
+                                else {
+                                    tour = "E";
+                                    cmpt_tour = 0;
+                                }
+                            }
                         }
                         else {
                             last_pos_souris.setX(actual_pos_souris.getX());
@@ -313,7 +328,5 @@ public class Main {
                 }
             }
         }
-
-    
     }
 }

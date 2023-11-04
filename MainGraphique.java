@@ -188,7 +188,7 @@ class MainGraphique {
         }
     }
 
-    public boolean deplacements_souris(Fenetre f, Position from, Position to, Plateau plato, int last_indice, int actual_indice) {
+    public boolean deplacements_souris(Fenetre f, Position from, Position to, Plateau plato, int last_indice, int actual_indice, String t) {
         boolean dep_piece = false;
         ArrayList<Piece> piece_from = plato.getCase(from);
         ArrayList<Piece> piece_to = plato.getCase(to);
@@ -203,20 +203,54 @@ class MainGraphique {
                 return dep_piece;
             }
             if (piece_from.size() == 1) {
-                pieces = piece_from.get(0).getDeplacementPossible(plato);
-            }
-            else {
-                if (last_indice == 0) {
+                Piece p = piece_from.get(0);
+                System.out.println(p.getNomCourt());
+                System.out.println(t);
+                System.out.println(p.getNomCourt().substring(p.getNomCourt().length() - 1));
+                if (p.getNomCourt().substring(p.getNomCourt().length() - 1).equals(t)) {
                     pieces = piece_from.get(0).getDeplacementPossible(plato);
                 }
+                else {
+                    Fenetre victoire = new Fenetre("Ce n'est pas ton tour !", 500, 200);
+                    victoire.ajouter(new Texture("./images/tour.png", new Point(0, 000)));
+                    victoire.rafraichir();
+                    try {
+                        Thread.sleep(1000);
+                    } catch (Exception e) {}
+                    victoire.fermer();
+                    pieces = new ArrayList<Position>();
+                }
+            }
+            else {
+                Piece p;
+                if (last_indice == 0) {
+                    p = piece_from.get(0);
+                    // pieces = piece_from.get(0).getDeplacementPossible(plato);
+                }
                 else if (last_indice == 1) {
-                    pieces = piece_from.get(1).getDeplacementPossible(plato);
+                    p = piece_from.get(1);
+                    // pieces = piece_from.get(1).getDeplacementPossible(plato);
                 }
                 else if (last_indice == 2) {
-                    pieces = piece_from.get(2).getDeplacementPossible(plato);
+                    p = piece_from.get(2);
+                    // pieces = piece_from.get(2).getDeplacementPossible(plato);
                 }
                 else {
-                    pieces = piece_from.get(3).getDeplacementPossible(plato);
+                    p = piece_from.get(3);
+                    // pieces = piece_from.get(3).getDeplacementPossible(plato);
+                }
+                if (p.getNomCourt().substring(p.getNomCourt().length() - 1).equals(t)) {
+                    pieces = p.getDeplacementPossible(plato);
+                }
+                else {
+                    Fenetre victoire = new Fenetre("Ce n'est pas ton tour !", 500, 200);
+                    victoire.ajouter(new Texture("./images/tour.png", new Point(0, 000)));
+                    victoire.rafraichir();
+                    try {  
+                        Thread.sleep(1000);
+                    } catch (Exception e) {}
+                    victoire.fermer();
+                    pieces = new ArrayList<Position>();
                 }
             }
             System.out.println(pieces);
