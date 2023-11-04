@@ -15,9 +15,6 @@ public class Main {
     public static void main(String[] args) {
 
         // Menu d'accueil
-
-
-
         // Main main;
         Plateau plato = new Plateau();        
         Fenetre f = new Fenetre("Mon jeu", 1000, 700);
