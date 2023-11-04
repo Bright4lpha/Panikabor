@@ -12,7 +12,7 @@ class Plateau {
         for (int i = 0; i <= 70; i++) {
             this.plateau.add(new ArrayList<Piece>());
         }
-        this.plateau.get(34).add(new Mecano("E4", 0));//34
+        this.plateau.get(34).add(new Bibledum("E4", 0));//34
         // this.plateau.get(34).add(new Capitaine("E4", 1));//34
         // this.plateau.get(13).add(new Tache("D2", 0));//13
         // this.plateau.get(31).add(new Gamin("B4", 0));//31
