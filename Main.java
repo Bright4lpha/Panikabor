@@ -7,6 +7,7 @@ import MG2D.geometrie.Point;
 //import MG2D.*;
 //import MG2D.geometrie.*;
 
+// test
 public class Main {
 
     public static void main(String[] args) {
