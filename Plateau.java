@@ -362,7 +362,8 @@ class Plateau {
         
         // si c'est un alien qui va sur la case d'un joueur
         if (p.getType() == 'E' && ami==true) {
-            Piece amiP = piece_to.get(0);
+            if (piece_to.size()>1) {
+                Piece amiP = piece_to.get(0);
             System.out.println(amiP.getNomCourt());
             System.out.println(p.getNomCourt());
             if (amiP.capacite(piece_to.get(0), f) == true) {
@@ -414,6 +415,8 @@ class Plateau {
                 }  else {
                     System.out.println("retour -1 ?");
                 }  
+            }
+            
             }
                     
             // System.out.println(p.combat(piece_to.get(0)));

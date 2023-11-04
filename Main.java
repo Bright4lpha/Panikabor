@@ -279,12 +279,9 @@ public class Main {
                         
                         
                         // test les actions à effectuer en fonction de la position de la souris
-                        System.out.print("last_pos_souris : ");
-                        System.out.println(last_pos_souris);
-                        System.out.print("actual_pos_souris : ");
-                        System.out.println(actual_pos_souris);
-                        System.out.print("indice : ");
-                        System.out.println(last_indice);
+                        System.out.println("last_pos_souris : " + last_pos_souris);
+                        System.out.println("actual_pos_souris : "+ actual_pos_souris);
+                        System.out.println("indice : "+ last_indice);
                         
                         dep_piece = graphique.deplacements_souris(f, last_pos_souris, actual_pos_souris, plato, last_indice, actual_indice, tour);
                         
