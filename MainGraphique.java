@@ -94,7 +94,7 @@ class MainGraphique {
                 }
             }
         }
-        f.ajouter(new Texture("./images/case_bureau.jpg", new Point(500, 400), 100, 100));
+        // f.ajouter(new Texture("./images/case_bureau.jpg", new Point(500, 400), 100, 100));
         // ajout des pieces sur le plateau
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 7; j++) {
@@ -131,63 +131,6 @@ class MainGraphique {
         }   
     }
 
-    public void afficher(Fenetre f, Plateau plato) {
-        // f.ajouter(new Rectangle(Couleur.BLANC, new Point(0,0), 1000, 700, true));
-        f.ajouter(new Texture("./images/space.png", new Point(0, 0)));
-        for (int i=0;i<10;i++) { // lignes
-            for (int j=0;j<7;j++) { // colonnes
-                if ((i==0) | (i==7) | (j==0) | (j==6)| (i==8) | (i==9)) {
-                    // f.ajouter(new Carre(Couleur.JAUNE, new Point(i*100, j*100), 100, true));
-                }
-                else if (((i==1 && (j==1|j==5))) | ((i==5 && (j==1|j==5)))){
-                    // f.ajouter(new Carre(Couleur.JAUNE, new Point(i*100, j*100), 100, true));
-                }
-                else if (((i==6 && (j==1|j==2|j==4|j==5)))) {
-                    // // f.ajouter(new Carre(Couleur.JAUNE, new Point(i*100, j*100), 100, true));
-                }
-                else if ((i%2==0 && j%2==1) | (i%2==1 && j%2==0)) {
-                    f.ajouter(new Carre(Couleur.BLANC, new Point(i*100, j*100), 100, true));
-                }
-                else {
-                    f.ajouter(new Carre(Couleur.GRIS_FONCE, new Point(i*100, j*100), 100, true));
-                }
-            }
-        }
-        // ajout des pieces sur le plateau
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 7; j++) {
-                ArrayList<Piece> pieces_case = plato.getCase(i, j);
-                // pour chaque piece de la case
-                for (int a = 0; a < pieces_case.size(); a++) {
-                    // si il n'y a qu'une piece sur la case
-                    if (pieces_case.size() == 1) {
-                        if (pieces_case.get(a).getIndice() == 0) {
-                            f.ajouter(new Texture("./images/" + pieces_case.get(a).getNomLong() + ".png", new Point(i * 100, j * 100), 100, 100));
-                        }
-                    }
-                    // si il y a plusieurs pièces
-                    else {
-                        if (pieces_case.get(a).getIndice() == 0) {
-                            f.ajouter(new Texture("./images/" + pieces_case.get(a).getNomLong() + ".png", new Point(i * 100, j * 100), 50, 50));
-                        }
-                        if (pieces_case.get(a).getIndice() == 1) {
-                            f.ajouter(new Texture("./images/" + pieces_case.get(a).getNomLong() + ".png", new Point((i * 100)+50, (j * 100)), 50, 50));
-                        }
-                        if (pieces_case.get(a).getIndice() == 2) {
-                            f.ajouter(new Texture("./images/" + pieces_case.get(a).getNomLong() + ".png", new Point((i * 100), (j * 100)+50), 50, 50));
-                        }
-                        if (pieces_case.get(a).getIndice() == 3) {
-                            f.ajouter(new Texture("./images/" + pieces_case.get(a).getNomLong() + ".png", new Point((i * 100)+50, (j * 100)+50), 50, 50));
-                        }
-                    }
-                    
-                }
-        f.ajouter(new Texture("./images/de.png", new Point(800, 300), 100, 100));
-        f.ajouter(new Carre(Couleur.ROSE, new Point(0,340), 20, true));
-        f.rafraichir(); 
-            }
-        }   
-    }
 
     public void afficher_cercle(Fenetre f, ArrayList<Position> dep) {
         int x, y;
