@@ -1,6 +1,9 @@
 import MG2D.Fenetre;
 import MG2D.Souris;
 import MG2D.geometrie.Point;
+import MG2D.audio.Bruitage;
+import MG2D.audio.Musique;
+import MG2D.audio.MusiqueATester;
 
 // import java.util.ArrayList;
 
@@ -23,6 +26,7 @@ public class Main {
         int last_indice = 0;
         int actual_indice = 0;
 
+
         // System.out.println("Déplacements");
         // Piece ma_piece = plato.getCase(34).get(1);
         // System.out.println(ma_piece.getDeplacementPossible(plato));
@@ -35,6 +39,7 @@ public class Main {
 
             // si il y a un clic
             if (souris.getClicGauche()) {
+                
                 // stockage de la position de la souris
                 pos = new Point(souris.getPosition());
                 
