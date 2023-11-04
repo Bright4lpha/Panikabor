@@ -151,7 +151,7 @@ public class Capitaine extends Joueur {
 
     public int combat(Piece ennemi, Fenetre f) {
         System.out.println("Combat :");
-        if (ennemi.getNomCourt() == "Te_E") {
+        if (ennemi.getNomCourt().equals("TeE")) {
             this.passe_tour = false;
             return -1;
         }

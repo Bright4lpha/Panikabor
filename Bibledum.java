@@ -175,7 +175,7 @@ public class Bibledum extends Joueur {
     }
 
     public int combat(Piece ennemi, Fenetre f) {
-        if (ennemi.getNomCourt() == "Te_E") {
+        if (ennemi.getNomCourt().equals("TeE")) {
             this.passe_tour = false;
             return -1;
         }

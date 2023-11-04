@@ -290,9 +290,13 @@ class Plateau {
         // Bien placer la pièce sur la case d'arrivée
         // Y a t il un ennemi sur la case d'arrivée
         boolean ennemi = false;
+        boolean ami = true;
         for (int i = 0; i < piece_to.size(); i++) {
             if (piece_to.get(i).getType() == 'E') {
                 ennemi = true;
+            }
+            if (piece_to.get(i).getType() == 'J') {
+                ami = true;
             }
         }
         // if (p.getType() == 'J' && ennemi==true) {
@@ -303,7 +307,7 @@ class Plateau {
         p.setIndice(piece_to.size());
         this.getCase(to).add(p);
         
-        if (p.getType() == 'J'&& ennemi==true) {
+        if (p.getType() == 'J' && ennemi==true) {
             if (p.capacite(piece_to.get(0), f) == true) {
                 Fenetre victoire = new Fenetre("Pas de combat", 500, 700);
                 // victoire.ajouter(new Texture("./images/" + p.getNomLong() + ".png", new Point(0, 200)));
@@ -351,6 +355,65 @@ class Plateau {
                     }
                     
                 }    
+            }
+                    
+            // System.out.println(p.combat(piece_to.get(0)));
+        }
+        
+        // si c'est un alien qui va sur la case d'un joueur
+        if (p.getType() == 'E' && ami==true) {
+            Piece amiP = piece_to.get(0);
+            System.out.println(amiP.getNomCourt());
+            System.out.println(p.getNomCourt());
+            if (amiP.capacite(piece_to.get(0), f) == true) {
+                Fenetre victoire = new Fenetre("Pas de combat", 500, 700);
+                // victoire.ajouter(new Texture("./images/" + p.getNomLong() + ".png", new Point(0, 200)));
+                // victoire.ajouter(new Texture("./images/vic.png", new Point(0, 0)));
+                victoire.rafraichir();
+                try {
+                    Thread.sleep(1500);
+                } catch (Exception e) {}
+                victoire.fermer();
+            }
+            else {
+                int com = amiP.combat(p, f);
+                System.out.println(com);
+                if (com == 1) {
+                    // Panneau save = f.getP();
+                    Fenetre victoire = new Fenetre("Victoire", 500, 700);
+                    victoire.ajouter(new Texture("./images/" + amiP.getNomLong() + ".png", new Point(0, 200)));
+                    victoire.ajouter(new Texture("./images/vic.png", new Point(0, 0)));
+                    victoire.rafraichir();
+                    try {
+                        Thread.sleep(1500);
+                    } catch (Exception e) {}
+                    victoire.fermer();
+                }
+                else if (com == 0) {
+                    if (amiP.getPV() ==0) {
+                        Fenetre perdu = new Fenetre("Mort", 500, 700);
+                        perdu.ajouter(new Texture("./images/" + amiP.getNomLong() + ".png", new Point(0, 200)));
+                        perdu.ajouter(new Texture("./images/mort.png", new Point(0, 0)));
+                        perdu.rafraichir();
+                        try {
+                            Thread.sleep(1500);
+                        } catch (Exception e) {}
+                        perdu.fermer();
+                        this.remove(p);
+                    }
+                    else {
+                        Fenetre perdu = new Fenetre("Perdu", 500, 700);
+                        perdu.ajouter(new Texture("./images/" + amiP.getNomLong() + ".png", new Point(0, 200)));
+                        perdu.ajouter(new Texture("./images/pdv.png", new Point(0, 0)));
+                        perdu.rafraichir();
+                        try {
+                            Thread.sleep(1500);
+                        } catch (Exception e) {}
+                        perdu.fermer();
+                    }
+                }  else {
+                    System.out.println("retour -1 ?");
+                }  
             }
                     
             // System.out.println(p.combat(piece_to.get(0)));

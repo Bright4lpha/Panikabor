@@ -142,7 +142,7 @@ public class Gamin extends Joueur {
     // Le but est d'éviter le combat ou l'annuler
     // Gamin peut fuir devant Roswell, Crituma et Patatiso
     public boolean capacite(Piece ennemi, Fenetre f) {
-        if (ennemi.getNomCourt() == "Te_E") {
+        if (ennemi.getNomCourt().equals("Te_E")) {
             return false;
         }
         else {
@@ -175,7 +175,7 @@ public class Gamin extends Joueur {
     }
 
     public int combat(Piece ennemi, Fenetre f) {
-        if (ennemi.getNomCourt() == "Te_E") {
+        if (ennemi.getNomCourt().equals("TeE")) {
             this.passe_tour = false;
             return -1;
         }

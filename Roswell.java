@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 
 import MG2D.Fenetre;
+import MG2D.geometrie.Point;
+import MG2D.geometrie.Texture;
 
 public class Roswell extends Ennemi {
     public Roswell() {
@@ -133,7 +135,7 @@ public class Roswell extends Ennemi {
         return false;
     }
 
-    public int combat(Piece ennemi, Fenetre f) {
-        return -2;
+    public int combat(Piece joueur, Fenetre f) {
+        return joueur.combat(this, f);
     }
 }
