@@ -43,12 +43,15 @@ class Menu {
         if ((to.getX()>=300) && (to.getX()<=450) && (to.getY()>=100) && (to.getY()<=200)) {
             return 2;
         }
+        // quitte
         else if ((to.getX()>=550) && (to.getX()<=700) && (to.getY()>=100) && (to.getY()<=200)) {
             return 3;
         }
+        // jouer
         else if ((to.getX()>=300) && (to.getX()<=700) && (to.getY()>=300) && (to.getY()<=400)) {
-            return 1;
+            return 4;
         }
+        //menu
         else {
             return 0;
         }
