@@ -35,6 +35,7 @@ class MainGraphique {
                 }
             }
         }
+        f.ajouter(new Texture("./images/case_bureau.jpg", new Point(500, 400), 100, 100));
         // ajout des pieces sur le plateau
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 7; j++) {
@@ -93,6 +94,7 @@ class MainGraphique {
                 }
             }
         }
+        f.ajouter(new Texture("./images/case_bureau.jpg", new Point(500, 400), 100, 100));
         // ajout des pieces sur le plateau
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 7; j++) {
