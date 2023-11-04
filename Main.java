@@ -1,7 +1,9 @@
 import MG2D.Fenetre;
 import MG2D.Souris;
 import MG2D.geometrie.Point;
+import MG2D.audio.Bruitage;
 import MG2D.audio.Musique;
+import MG2D.audio.MusiqueATester;
 
 // import java.util.ArrayList;
 
@@ -29,8 +31,7 @@ public class Main {
         boolean dep_piece = false;
         int last_indice = 0;
         int actual_indice = 0;
-        Musique son = new Musique("D:\\Music\\this_is_what_space_feels_like.mp3");
-        son.lecture();
+
 
         // System.out.println("Déplacements");
         // Piece ma_piece = plato.getCase(34).get(1);
@@ -43,6 +44,7 @@ public class Main {
 
             // menu et changement de fenetre
             if (souris.getClicGauche()) {
+                
                 // stockage de la position de la souris
                 pos = new Point(souris.getPosition());
                 
