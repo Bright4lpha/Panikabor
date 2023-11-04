@@ -19,11 +19,13 @@ class Plateau {
         // this.plateau.get(53).add(new Crituma("D6", 0));//53
         // this.plateau.get(42).add(new Roswell("C5", 0));//42
 
-        this.plateau.get(43).add(new Gamin("E4", 0));//34
-        this.plateau.get(33).add(new Tentacule("D4", 0));//33
-        this.plateau.get(32).add(new Roswell("C4", 0));//33
-        this.plateau.get(31).add(new Capitaine("B4", 0));//33
-        //this.plateau.get(23).add(new Mecano("D3", 0));//33
+        this.plateau.get(43).add(new Gamin("E4", 0));
+        this.plateau.get(33).add(new Tentacule("D4", 0));
+        this.plateau.get(32).add(new Roswell("C4", 0));
+        this.plateau.get(31).add(new Capitaine("B4", 0));
+        this.plateau.get(23).add(new Patatiso("D3", 0));
+        this.plateau.get(13).add(new Crituma("D2", 0));
+        this.plateau.get(22).add(new Mecano("C2", 0));
     }
 
 /*
