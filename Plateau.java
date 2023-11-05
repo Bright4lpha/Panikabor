@@ -12,20 +12,14 @@ class Plateau {
         for (int i = 0; i <= 70; i++) {
             this.plateau.add(new ArrayList<Piece>());
         }
-        this.plateau.get(34).add(new Bibledum("E4", 0));//34
-        // this.plateau.get(34).add(new Capitaine("E4", 1));//34
-        // this.plateau.get(13).add(new Tache("D2", 0));//13
-        // this.plateau.get(31).add(new Gamin("B4", 0));//31
-        // this.plateau.get(53).add(new Crituma("D6", 0));//53
-        // this.plateau.get(42).add(new Roswell("C5", 0));//42
-
-        this.plateau.get(43).add(new Gamin("D5", 0));
-        this.plateau.get(33).add(new Tentacule("D4", 0));
-        this.plateau.get(32).add(new Roswell("C4", 0));
-        this.plateau.get(31).add(new Capitaine("B4", 0));
-        this.plateau.get(23).add(new Patatiso("D3", 0));
         this.plateau.get(13).add(new Crituma("D2", 0));
         this.plateau.get(22).add(new Mecano("C3", 0));
+        this.plateau.get(23).add(new Patatiso("D3", 0));
+        this.plateau.get(31).add(new Capitaine("B4", 0));
+        this.plateau.get(32).add(new Roswell("C4", 0));
+        this.plateau.get(33).add(new Tentacule("D4", 0));
+        this.plateau.get(34).add(new Bibledum("E4", 0));
+        this.plateau.get(43).add(new Gamin("D5", 0));
     }
 
 /*

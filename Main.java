@@ -54,7 +54,7 @@ public class Main {
                 actual_pos_souris.setX(pos.getX());
                 actual_pos_souris.setY(pos.getY());
 
-                System.out.println(pos);
+                // System.out.println(pos);
                 // si on est dans le jeu alors les deplacements sont ceux du jeu
                 if (num_fenetre == 1) {
                     num_fenetre = graphique.deplacements_souris(f, pos);
@@ -263,7 +263,7 @@ public class Main {
                         if (num_fenetre == 1) {
                             num_fenetre = graphique.deplacements_souris(f, pos);
                         }
-                        System.out.println("num fenetre " + num_fenetre);
+                        // System.out.println("num fenetre " + num_fenetre);
                         actual_pos_souris.setX(pos.getX()/100);
                         actual_pos_souris.setY(pos.getY()/100);
 
@@ -279,16 +279,16 @@ public class Main {
                         
                         
                         // test les actions à effectuer en fonction de la position de la souris
-                        System.out.println("last_pos_souris : " + last_pos_souris);
-                        System.out.println("actual_pos_souris : "+ actual_pos_souris);
-                        System.out.println("indice : "+ last_indice);
+                        // System.out.println("last_pos_souris : " + last_pos_souris);
+                        // System.out.println("actual_pos_souris : "+ actual_pos_souris);
+                        // System.out.println("indice : "+ last_indice);
                         
                         dep_piece = graphique.deplacements_souris(f, last_pos_souris, actual_pos_souris, plato, last_indice, actual_indice, tour);
                         
                         
                         System.out.println(plato); 
 
-                        System.out.println(dep_piece);
+                        // System.out.println(dep_piece);
                         if (dep_piece == true) {
                             actual_pos_souris = new Position(-1, -1);
                             actual_indice = plato.trouve_indice(a, b);

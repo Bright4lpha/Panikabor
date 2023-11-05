@@ -156,7 +156,7 @@ class MainGraphique {
         }
     }
 
-    public void deplacements_possibles_pieces(Fenetre f, Position p, Plateau plato) {
+    public void deplacements_possibles_pieces(Fenetre f, Position p, Plateau plato, int actual_indice) {
         ArrayList<Piece> pieces = plato.getCase(p);
         ArrayList<Position> pieces_poss;
         if (pieces != null) {
@@ -164,16 +164,26 @@ class MainGraphique {
                 pieces_poss = pieces.get(0).getDeplacementPossible(plato);
                 this.afficher_cercle(f, pieces_poss);
             }
+            else if ((pieces.size() > 1) && (pieces.size()<5)) {
+                pieces_poss = pieces.get(actual_indice).getDeplacementPossible(plato);
+                this.afficher_cercle(f, pieces_poss);
+            }
         }
     }
 
-    public void retirer_deplacements_possibles_pieces(Fenetre f, Position p, Plateau plato) {
+    public void retirer_deplacements_possibles_pieces(Fenetre f, Position p, Plateau plato, int last_indice) {
         ArrayList<Piece> pieces = plato.getCase(p);
         ArrayList<Position> pieces_poss;
         if (pieces != null) {
             if (pieces.size() == 1) {
                 pieces_poss = pieces.get(0).getDeplacementPossible(plato);
-            this.supprimer_cercle(f, pieces_poss);
+                this.supprimer_cercle(f, pieces_poss);
+            }
+            else if ((pieces.size() >= 2) && (pieces.size()<5)) {
+                // System.out.println("pieces.size() : " + pieces.size());
+                // System.out.println("pieces.get(actual_indice) : " + pieces.get(last_indice));
+                pieces_poss = pieces.get(last_indice).getDeplacementPossible(plato);
+                this.supprimer_cercle(f, pieces_poss);
             }
         }
     }
@@ -194,15 +204,15 @@ class MainGraphique {
         ArrayList<Piece> piece_to = plato.getCase(to);
         ArrayList<Position> pieces;
 
-        System.out.println("Pos from :" + from + " to :" + to);
-        System.out.println("piece_from : " + piece_from);
-        System.out.println("piece_to : " + piece_to);
+        // System.out.println("Pos from :" + from + " to :" + to);
+        // System.out.println("piece_from : " + piece_from);
+        // System.out.println("piece_to : " + piece_to);
 
         // si il y a une piece sur la case de départ
         if (piece_from != null) {
             // récupère les déplacements possibles de la pièce
-            System.out.println("piece_from : " + piece_from);
-            System.out.println("bool : " + (piece_from == null));
+            // System.out.println("piece_from : " + piece_from);
+            // System.out.println("bool : " + (piece_from == null));
             // Si il n'y a pas de pièce au départ
             if (piece_from.size() == 0) {
                 return dep_piece;
@@ -214,9 +224,9 @@ class MainGraphique {
                 // System.out.println(t);
                 // System.out.println(p.getNomCourt().substring(p.getNomCourt().length() - 1));
                 if (p.getNomCourt().substring(p.getNomCourt().length() - 1).equals(t)) {
-                    System.out.println("position : " + p.getPosition());
+                    // System.out.println("position : " + p.getPosition());
                     pieces = piece_from.get(0).getDeplacementPossible(plato);
-                    System.out.println("pieces 1 " + pieces);
+                    // System.out.println("pieces 1 " + pieces);
                 }
                 else {
                     Fenetre victoire = new Fenetre("Ce n'est pas ton tour !", 500, 200);
@@ -249,7 +259,7 @@ class MainGraphique {
                 }
                 if (p.getNomCourt().substring(p.getNomCourt().length() - 1).equals(t)) {
                     pieces = p.getDeplacementPossible(plato);
-                    System.out.println(pieces);
+                    // System.out.println(pieces);
                 }
                 else {
                     Fenetre victoire = new Fenetre("Ce n'est pas ton tour !", 500, 200);
@@ -263,31 +273,36 @@ class MainGraphique {
                 }
             }
             // System.out.println(pieces);
-            System.out.println(pieces);
             // Le clic est-il un déplacement ?
             // est-ce que la position d'arrivée est dans les déplacements possibles
             boolean trouve = pieces.contains(to);
             // System.out.println("trouve : " + trouve);
             // si oui
             if (trouve == true) {
-                if (piece_from.size() == 1) {
+                if ((piece_from.size() == 1)&&(piece_to.size()<5)) {
                     plato.deplacer(piece_from.get(0), from, to, last_indice, actual_indice, f); // déplace la pièce sur le plateau
-                }
-                if (piece_from.size() > 1) {
-                    // System.out.println("deplace == 2");
-                    plato.deplacer(piece_from.get(last_indice), from, to, last_indice, actual_indice, f); // déplace la pièce sur le plateau
+                     this.supprimer_cercle(f, pieces); // supprime les cercles
+                    dep_piece = true;
                     f.rafraichir();
                 }
-                this.supprimer_cercle(f, pieces); // supprime les cercles
-                dep_piece = true;
-                f.rafraichir();
+                if ((piece_from.size() > 1)&&(piece_to.size()<5)) {
+                    // System.out.println("deplace == 2");
+                    plato.deplacer(piece_from.get(last_indice), from, to, last_indice, actual_indice, f); // déplace la pièce sur le plateau
+                    //f.rafraichir();
+                    this.supprimer_cercle(f, pieces); // supprime les cercles
+                    dep_piece = true;
+                    f.rafraichir();
+                }
+                // this.supprimer_cercle(f, pieces); // supprime les cercles
+                // dep_piece = true;
+                // f.rafraichir();
             }
             // si non
             else {
-                this.retirer_deplacements_possibles_pieces(f, from, plato);
+                this.retirer_deplacements_possibles_pieces(f, from, plato, last_indice);
                 // si la pièce d'arriver est de la couleur du joueur
                 if (piece_to != null) {
-                    this.deplacements_possibles_pieces(f, to, plato);
+                    this.deplacements_possibles_pieces(f, to, plato, actual_indice);
                 }
                 
                 f.rafraichir();
@@ -297,8 +312,8 @@ class MainGraphique {
         else {
             if (piece_to != null) {
                 //if (piece_to.getCouleur() == joueur) {
-                    this.retirer_deplacements_possibles_pieces(f, from, plato);
-                    this.deplacements_possibles_pieces(f, to, plato);
+                    this.retirer_deplacements_possibles_pieces(f, from, plato, last_indice);
+                    this.deplacements_possibles_pieces(f, to, plato, actual_indice);
                     f.rafraichir();
                 //}
                 // else {
