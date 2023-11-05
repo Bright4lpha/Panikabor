@@ -194,25 +194,29 @@ class MainGraphique {
         ArrayList<Piece> piece_to = plato.getCase(to);
         ArrayList<Position> pieces;
 
-        System.out.println("piece_from" + piece_from);
-        System.out.println("piece_to" + piece_to);
+        System.out.println("Pos from :" + from + " to :" + to);
+        System.out.println("piece_from : " + piece_from);
+        System.out.println("piece_to : " + piece_to);
 
         // si il y a une piece sur la case de départ
         if (piece_from != null) {
             // récupère les déplacements possibles de la pièce
             System.out.println("piece_from : " + piece_from);
             System.out.println("bool : " + (piece_from == null));
+            // Si il n'y a pas de pièce au départ
             if (piece_from.size() == 0) {
                 return dep_piece;
             }
+            // Si il y a 1 pièce au départ
             else if (piece_from.size() == 1) {
                 Piece p = piece_from.get(0);
-                System.out.println(p.getNomCourt());
-                System.out.println(t);
-                System.out.println(p.getNomCourt().substring(p.getNomCourt().length() - 1));
+                // System.out.println(p.getNomCourt());
+                // System.out.println(t);
+                // System.out.println(p.getNomCourt().substring(p.getNomCourt().length() - 1));
                 if (p.getNomCourt().substring(p.getNomCourt().length() - 1).equals(t)) {
+                    System.out.println("position : " + p.getPosition());
                     pieces = piece_from.get(0).getDeplacementPossible(plato);
-                    System.out.println(pieces);
+                    System.out.println("pieces 1 " + pieces);
                 }
                 else {
                     Fenetre victoire = new Fenetre("Ce n'est pas ton tour !", 500, 200);
