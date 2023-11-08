@@ -18,7 +18,8 @@ class Menu {
         
         //f.ajouter(new Rectangle(Couleur.CYAN, new Point(300, 300), 400, 100, true));
         f.ajouter(new Texture("./images/jouer.png", new Point(300, 200)));
-        f.ajouter(new Rectangle(Couleur.MAGENTA, new Point(300, 500), 400, 100, true));
+        //f.ajouter(new Rectangle(Couleur.MAGENTA, new Point(300, 500), 400, 100, true));
+        f.ajouter(new Texture("./images/panikabor.png", new Point(210, 390)));
         f.rafraichir();
     }
 
@@ -34,7 +35,8 @@ class Menu {
         
         // f.ajouter(new Rectangle(Couleur.CYAN, new Point(300, 300), 400, 100, true));
         f.ajouter(new Texture("./images/jouer.png", new Point(300, 200)));
-        f.ajouter(new Rectangle(Couleur.MAGENTA, new Point(300, 500), 400, 100, true));
+        //f.ajouter(new Rectangle(Couleur.MAGENTA, new Point(300, 500), 400, 100, true));
+        f.ajouter(new Texture("./images/panikabor.png", new Point(210, 390)));
         f.rafraichir();
     }
 
@@ -49,7 +51,8 @@ class Menu {
         }
         // jouer
         else if ((to.getX()>=300) && (to.getX()<=700) && (to.getY()>=300) && (to.getY()<=400)) {
-            return 4;
+            return 1;
+            // 4 pour les choix
         }
         //menu
         else {

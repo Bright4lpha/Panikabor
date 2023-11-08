@@ -6,6 +6,7 @@ class Plateau {
     // attributs
     private ArrayList<ArrayList<Piece>> plateau = new ArrayList<ArrayList<Piece>>();
     public ArrayList<Position> interdit = new ArrayList<Position>();
+    private ArrayList<Tache> liste_taches = new ArrayList<Tache>();
 
     // methodes
     public Plateau() {
@@ -20,6 +21,10 @@ class Plateau {
         this.plateau.get(33).add(new Tentacule("D4", 0));
         this.plateau.get(34).add(new Bibledum("E4", 0));
         this.plateau.get(43).add(new Gamin("D5", 0));
+
+        this.liste_taches.add(new Tache("D2"));
+        this.liste_taches.add(new Tache("B4"));
+        this.liste_taches.add(new Tache("D6"));
     }
 
 /*
@@ -140,18 +145,16 @@ class Plateau {
 
     // getPieces
 
-    public ArrayList<Piece> getPiecesTache() {
-        ArrayList<Piece> tache = new ArrayList<Piece>();
-        for (ArrayList<Piece> p : this.plateau) {
-            if (p.size() != 0) {
-                for (int i = 0; i < p.size(); i++) {
-                    if (p.get(i).getType() == 'T') {
-                        tache.add(p.get(i));
-                    } 
-                }
-            }
+    public ArrayList<Tache> getPiecesTache() {
+        return this.liste_taches;
+    }
+
+    public ArrayList<Position> getPositionTache() {
+        ArrayList<Position> positions = new ArrayList<Position>();
+        for (int i = 0; i < this.liste_taches.size(); i++) {
+            positions.add(new Position(liste_taches.get(i).getPosition()));
         }
-        return tache;
+        return positions;
     }
 
     public ArrayList<Piece> getPiecesEnnemi() {

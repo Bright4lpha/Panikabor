@@ -256,6 +256,14 @@ public class Main {
                         Thread.sleep(40);
                     } catch (Exception e) {}
 
+                    // Conditions de victoire :
+                    // 3 tâches réalisées
+                    // 2 joueurs sur la case 63 (G4)
+
+                    if (plato.getCase(6,3).size() == 2) {
+                        System.out.println("c'est la bonne case");
+                    }
+
                     // si il y a un clic
                     if (souris.getClicGauche()) {
                         // stockage de la position de la souris

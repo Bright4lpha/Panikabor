@@ -39,6 +39,14 @@ class MainGraphique {
         // ajout des pieces sur le plateau
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 7; j++) {
+                // affichage des tâches
+                ArrayList<Position> positions = plato.getPositionTache();
+                for (int t=0; t < positions.size(); t++) {
+                    if (positions.get(t).equals(new Position(i, j))) {
+                        f.ajouter(new Texture("./images/tache.png", new Point(i*100, j*100), 100, 100));
+                    }
+                }
+
                 ArrayList<Piece> pieces_case = plato.getCase(i, j);
                 // pour chaque piece de la case
                 for (int a = 0; a < pieces_case.size(); a++) {
@@ -98,6 +106,14 @@ class MainGraphique {
         // ajout des pieces sur le plateau
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 7; j++) {
+                // affichage des tâches
+                ArrayList<Position> positions = plato.getPositionTache();
+                for (int t=0; t < positions.size(); t++) {
+                    if (positions.get(t).equals(new Position(i, j))) {
+                        f.ajouter(new Texture("./images/tache.png", new Point(i*100, j*100), 100, 100));
+                    }
+                }
+                
                 ArrayList<Piece> pieces_case = plato.getCase(i, j);
                 // pour chaque piece de la case
                 for (int a = 0; a < pieces_case.size(); a++) {
