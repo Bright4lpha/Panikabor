@@ -55,6 +55,7 @@ class Tache {
         return active;
     }
 
+
     // Setter
     public void setPosition(Position p) {
         this.position = p;
@@ -62,4 +63,25 @@ class Tache {
     public void setActive(boolean a) {
         this.active = a;
     }
+
+    /**
+     * Fonction de lancer de dé à 6 faces
+     * @return int
+     */
+    public int lancer_de() {
+        return (int)((Math.random() * (5 + 1))+1);
+    }
+
+
+    public boolean activation() {
+        int de = lancer_de();
+        if (de>4) {
+            this.active = true;
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
 }

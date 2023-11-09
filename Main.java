@@ -260,7 +260,7 @@ public class Main {
                     // 3 tâches réalisées
                     // 2 joueurs sur la case 63 (G4)
 
-                    if (plato.getCase(6,3).size() == 2) {
+                    if ((plato.getCase(6,3).size() == 2)&&(plato.allActive()==true)) {
                         System.out.println("c'est la bonne case");
                     }
 

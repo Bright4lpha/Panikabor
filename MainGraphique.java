@@ -1,4 +1,5 @@
 // import java.lang.reflect.Array;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import MG2D.*;
@@ -40,10 +41,15 @@ class MainGraphique {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 7; j++) {
                 // affichage des tâches
-                ArrayList<Position> positions = plato.getPositionTache();
-                for (int t=0; t < positions.size(); t++) {
-                    if (positions.get(t).equals(new Position(i, j))) {
-                        f.ajouter(new Texture("./images/tache.png", new Point(i*100, j*100), 100, 100));
+                ArrayList<Tache> taches = plato.getPiecesTache();
+                for (int t=0; t < taches.size(); t++) {
+                    if (taches.get(t).getPosition().equals(new Position(i, j))) {
+                        if (taches.get(t).getActive()==true) {
+                            f.ajouter(new Texture("./images/tache_A.png", new Point(i*100, j*100), 100, 100));
+                        }
+                        else {
+                            f.ajouter(new Texture("./images/tache_D.png", new Point(i*100, j*100), 100, 100));
+                        }
                     }
                 }
 
@@ -107,10 +113,15 @@ class MainGraphique {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 7; j++) {
                 // affichage des tâches
-                ArrayList<Position> positions = plato.getPositionTache();
-                for (int t=0; t < positions.size(); t++) {
-                    if (positions.get(t).equals(new Position(i, j))) {
-                        f.ajouter(new Texture("./images/tache.png", new Point(i*100, j*100), 100, 100));
+                ArrayList<Tache> taches = plato.getPiecesTache();
+                for (int t=0; t < taches.size(); t++) {
+                    if (taches.get(t).getPosition().equals(new Position(i, j))) {
+                        if (taches.get(t).getActive()==true) {
+                            f.ajouter(new Texture("./images/tache_A.png", new Point(i*100, j*100), 100, 100));
+                        }
+                        else {
+                            f.ajouter(new Texture("./images/tache_D.png", new Point(i*100, j*100), 100, 100));
+                        }
                     }
                 }
                 

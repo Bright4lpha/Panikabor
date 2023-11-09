@@ -13,10 +13,10 @@ class Plateau {
         for (int i = 0; i <= 70; i++) {
             this.plateau.add(new ArrayList<Piece>());
         }
-        this.plateau.get(13).add(new Crituma("D2", 0));
+        this.plateau.get(14).add(new Crituma("E2", 0));
         this.plateau.get(22).add(new Mecano("C3", 0));
         this.plateau.get(23).add(new Patatiso("D3", 0));
-        this.plateau.get(31).add(new Capitaine("B4", 0));
+        this.plateau.get(41).add(new Capitaine("B5", 0));
         this.plateau.get(32).add(new Roswell("C4", 0));
         this.plateau.get(33).add(new Tentacule("D4", 0));
         this.plateau.get(34).add(new Bibledum("E4", 0));
@@ -185,6 +185,22 @@ class Plateau {
         return joueur;
     }
 
+    public boolean allActive() {
+        int cmpt = 0;
+        for (int i = 0; i < liste_taches.size(); i++) {
+            if (liste_taches.get(i).getActive() == true) {
+                cmpt++;
+            }
+        }
+        if (cmpt == liste_taches.size()) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+
     public void remove(Piece p) {
         for (ArrayList<Piece> pl : this.plateau) {
             if (pl.size() != 0) {
@@ -296,10 +312,7 @@ class Plateau {
                 ami = true;
             }
         }
-        // if (p.getType() == 'J' && ennemi==true) {
-        //     int de = this.lancer_de();
-        //     System.out.println("Lancer de dé : " + de);
-        // }
+        
         p.setPosition(to);
         p.setIndice(piece_to.size());
         this.getCase(to).add(p);
@@ -353,7 +366,6 @@ class Plateau {
                     
                 }    
             }
-                    
             // System.out.println(p.combat(piece_to.get(0)));
         }
         
@@ -418,6 +430,23 @@ class Plateau {
                     
             // System.out.println(p.combat(piece_to.get(0)));
         }
+
+        // tâches
+        if (p.getType()=='J') {
+            for (int i=0; i<liste_taches.size(); i++) {
+                Tache uneTache = liste_taches.get(i);
+                if (p.getPosition().equals(uneTache.getPosition())) {
+                    if (uneTache.activation()) {
+                        System.out.println("activé");
+                    }
+                    else {
+                        System.out.println("raté");
+                    }
+                }
+            }
+        }
+
+
     }
 
     /**
