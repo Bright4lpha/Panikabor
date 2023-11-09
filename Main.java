@@ -1,25 +1,20 @@
 import MG2D.Fenetre;
 import MG2D.Souris;
 import MG2D.geometrie.Point;
-import MG2D.audio.Bruitage;
-import MG2D.audio.Musique;
-import MG2D.audio.MusiqueATester;
-
 // import java.util.ArrayList;
 
 //import MG2D.*;
 //import MG2D.geometrie.*;
 
-// test
 public class Main {
 
     public static void main(String[] args) {
 
-        // Menu d'accueil
-        // Main main;
+        // Initialisation des variables
         Plateau plato = new Plateau();        
         Fenetre f = new Fenetre("Mon jeu", 1000, 700);
         Credits credits = new Credits(f);
+        Victoire victoire = new Victoire(f);
         MainGraphique graphique = new MainGraphique(f, plato);
         ChoixJ choix = new ChoixJ(f);
         ChoixP choix_p = new ChoixP(f);
@@ -224,6 +219,10 @@ public class Main {
                 if (num_fenetre == 0) {
                     num_fenetre = menu.deplacements_souris(f, pos);
                 }
+                // si on est dans la victoire on peut quitter
+                if (num_fenetre == 5) {
+                    num_fenetre = victoire.deplacements_souris(f, pos);
+                }
                 
                 // System.out.println("indice " + num_fenetre);
 
@@ -243,6 +242,10 @@ public class Main {
                 if (num_fenetre == 4) {
                     choix.afficher(f);
                 }
+                // si on est dans la victoire alors on l'affiche
+                if (num_fenetre == 5) {
+                    victoire.afficher(f);
+                }
 
                 if (num_fenetre == 3) {
                     f.fermer();
@@ -255,14 +258,6 @@ public class Main {
                     try {
                         Thread.sleep(40);
                     } catch (Exception e) {}
-
-                    // Conditions de victoire :
-                    // 3 tâches réalisées
-                    // 2 joueurs sur la case 63 (G4)
-
-                    if ((plato.getCase(6,3).size() == 2)&&(plato.allActive()==true)) {
-                        System.out.println("c'est la bonne case");
-                    }
 
                     // si il y a un clic
                     if (souris.getClicGauche()) {
@@ -330,6 +325,14 @@ public class Main {
                         // System.out.println(last_pos_souris);
                     }
                     f.rafraichir();
+
+                    // Conditions de victoire :
+                    // 3 tâches réalisées
+                    // 2 joueurs sur la case 63 (G4)
+
+                    if ((plato.getCase(6,3).size() == 2)&&(plato.allActive()==true)) {
+                        num_fenetre = 5;
+                    }
                 }
             }
         }

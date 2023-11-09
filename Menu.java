@@ -1,6 +1,3 @@
-// import java.lang.reflect.Array;
-import java.util.ArrayList;
-
 import MG2D.*;
 import MG2D.geometrie.*;
 
@@ -41,23 +38,22 @@ class Menu {
     }
 
     public int deplacements_souris(Fenetre f, Point to) {
-        // Crédits
+        // bouton crédits
         if ((to.getX()>=300) && (to.getX()<=450) && (to.getY()>=100) && (to.getY()<=200)) {
             return 2;
         }
-        // quitte
+        // bouton quitter
         else if ((to.getX()>=550) && (to.getX()<=700) && (to.getY()>=100) && (to.getY()<=200)) {
             return 3;
         }
-        // jouer
+        // bouton jouer
         else if ((to.getX()>=300) && (to.getX()<=700) && (to.getY()>=300) && (to.getY()<=400)) {
             return 1;
             // 4 pour les choix
         }
-        //menu
+        // reste sur la page menu
         else {
             return 0;
         }
     }
-    }
-//}
+}

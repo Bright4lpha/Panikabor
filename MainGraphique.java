@@ -6,13 +6,6 @@ import MG2D.*;
 import MG2D.geometrie.*;
 
 class MainGraphique {
-
-    // public MainGraphique(Fenetre f) {
-    //     f.ajouter(new Rectangle(Couleur.CYAN, new Point(300, 100), 150, 100, true));
-    //     f.ajouter(new Rectangle(Couleur.CYAN, new Point(550, 100), 150, 100, true));
-    //     f.ajouter(new Rectangle(Couleur.CYAN, new Point(300, 300), 400, 100, true));
-    //     f.ajouter(new Rectangle(Couleur.MAGENTA, new Point(300, 500), 400, 100, true));
-    // }
     
     public MainGraphique(Fenetre f, Plateau plato) {
         // f.ajouter(new Rectangle(Couleur.BLANC, new Point(0,0), 1000, 700, true));
