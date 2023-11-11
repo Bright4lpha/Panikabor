@@ -10,26 +10,54 @@ class MainGraphique {
     public MainGraphique(Fenetre f, Plateau plato) {
         // f.ajouter(new Rectangle(Couleur.BLANC, new Point(0,0), 1000, 700, true));
         f.ajouter(new Texture("./images/space.png", new Point(0, 0)));
-        for (int i=0;i<10;i++) { // lignes
-            for (int j=0;j<7;j++) { // colonnes
-                if ((i==0) | (i==7) | (j==0) | (j==6)| (i==8) | (i==9)) {
-                    //f.ajouter(new Carre(Couleur.JAUNE, new Point(i*100, j*100), 100, true));
-                }
-                else if (((i==1 && (j==1|j==5))) | ((i==5 && (j==1|j==5)))){
-                    //f.ajouter(new Carre(Couleur.JAUNE, new Point(i*100, j*100), 100, true));
-                }
-                else if (((i==6 && (j==1|j==2|j==4|j==5)))) {
-                    //f.ajouter(new Carre(Couleur.JAUNE, new Point(i*100, j*100), 100, true));
-                }
-                else if ((i%2==0 && j%2==1) | (i%2==1 && j%2==0)) {
-                    f.ajouter(new Carre(Couleur.BLANC, new Point(i*100, j*100), 100, true));
-                }
-                else {
-                    f.ajouter(new Carre(Couleur.GRIS_FONCE, new Point(i*100, j*100), 100, true));
-                }
-            }
-        }
-        // f.ajouter(new Texture("./images/case_bureau.jpg", new Point(500, 400), 100, 100));
+        // for (int i=0;i<10;i++) { // lignes
+        //     for (int j=0;j<7;j++) { // colonnes
+        //         if ((i==0) | (i==7) | (j==0) | (j==6)| (i==8) | (i==9)) {
+        //             //f.ajouter(new Carre(Couleur.JAUNE, new Point(i*100, j*100), 100, true));
+        //         }
+        //         else if (((i==1 && (j==1|j==5))) | ((i==5 && (j==1|j==5)))){
+        //             //f.ajouter(new Carre(Couleur.JAUNE, new Point(i*100, j*100), 100, true));
+        //         }
+        //         else if (((i==6 && (j==1|j==2|j==4|j==5)))) {
+        //             //f.ajouter(new Carre(Couleur.JAUNE, new Point(i*100, j*100), 100, true));
+        //         }
+        //         else if ((i%2==0 && j%2==1) | (i%2==1 && j%2==0)) {
+        //             f.ajouter(new Carre(Couleur.BLANC, new Point(i*100, j*100), 100, true));
+        //         }
+        //         else {
+        //             f.ajouter(new Carre(Couleur.GRIS_FONCE, new Point(i*100, j*100), 100, true));
+        //         }
+        //     }
+        // }
+
+
+        f.ajouter(new Texture("./images/case1.png", new Point(500, 300), 100, 100));
+        f.ajouter(new Texture("./images/case2.png", new Point(400, 300), 100, 100));
+        f.ajouter(new Texture("./images/case3.png", new Point(300, 300), 100, 100));
+        f.ajouter(new Texture("./images/case4.png", new Point(200, 300), 100, 100));
+        f.ajouter(new Texture("./images/case5.png", new Point(600, 300), 100, 100));
+        f.ajouter(new Texture("./images/case6.png", new Point(100, 300), 100, 100));
+
+        f.ajouter(new Texture("./images/case7.png", new Point(100, 200), 100, 100));
+        f.ajouter(new Texture("./images/case8.png", new Point(200, 200), 100, 100));
+        f.ajouter(new Texture("./images/case9.png", new Point(300, 200), 100, 100));
+        f.ajouter(new Texture("./images/case10.png", new Point(400, 200), 100, 100));
+        f.ajouter(new Texture("./images/case11.png", new Point(500, 200), 100, 100));
+
+        f.ajouter(new Texture("./images/case12.png", new Point(200, 100), 100, 100));
+        f.ajouter(new Texture("./images/case13.png", new Point(300, 100), 100, 100));
+        f.ajouter(new Texture("./images/case14.png", new Point(400, 100), 100, 100));
+
+        f.ajouter(new Texture("./images/case15.png", new Point(200, 500), 100, 100));
+        f.ajouter(new Texture("./images/case16.png", new Point(300, 500), 100, 100));
+        f.ajouter(new Texture("./images/case17.png", new Point(400, 500), 100, 100));
+
+        f.ajouter(new Texture("./images/case18.png", new Point(500, 400), 100, 100));
+        f.ajouter(new Texture("./images/case19.png", new Point(400, 400), 100, 100));
+        f.ajouter(new Texture("./images/case20.png", new Point(300, 400), 100, 100));
+        f.ajouter(new Texture("./images/case21.png", new Point(200, 400), 100, 100));
+        f.ajouter(new Texture("./images/case22.png", new Point(100, 400), 100, 100));
+
         // ajout des pieces sur le plateau
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 7; j++) {
@@ -53,21 +81,26 @@ class MainGraphique {
                     if (pieces_case.size() == 1) {
                         if (pieces_case.get(a).getIndice() == 0) {
                             f.ajouter(new Texture("./images/" + pieces_case.get(a).getNomLong() + ".png", new Point(i * 100, j * 100), 100, 100));
+                            this.affichePV(f, pieces_case.get(a));
                         }
                     }
                     // si il y a plusieurs pièces
                     else {
                         if (pieces_case.get(a).getIndice() == 0) {
                             f.ajouter(new Texture("./images/" + pieces_case.get(a).getNomLong() + ".png", new Point(i * 100, j * 100), 50, 50));
+                            this.affichePV(f, pieces_case.get(a));
                         }
                         if (pieces_case.get(a).getIndice() == 1) {
                             f.ajouter(new Texture("./images/" + pieces_case.get(a).getNomLong() + ".png", new Point((i * 100)+50, (j * 100)), 50, 50));
+                            this.affichePV(f, pieces_case.get(a));
                         }
                         if (pieces_case.get(a).getIndice() == 2) {
                             f.ajouter(new Texture("./images/" + pieces_case.get(a).getNomLong() + ".png", new Point((i * 100), (j * 100)+50), 50, 50));
+                            this.affichePV(f, pieces_case.get(a));
                         }
                         if (pieces_case.get(a).getIndice() == 3) {
                             f.ajouter(new Texture("./images/" + pieces_case.get(a).getNomLong() + ".png", new Point((i * 100)+50, (j * 100)+50), 50, 50));
+                            this.affichePV(f, pieces_case.get(a));
                         }
                     }
                     
@@ -82,25 +115,53 @@ class MainGraphique {
     public void afficher(Fenetre f, Plateau plato) {
         // f.ajouter(new Rectangle(Couleur.BLANC, new Point(0,0), 1000, 700, true));
         f.ajouter(new Texture("./images/space.png", new Point(0, 0)));
-        for (int i=0;i<10;i++) { // lignes
-            for (int j=0;j<7;j++) { // colonnes
-                if ((i==0) | (i==7) | (j==0) | (j==6)| (i==8) | (i==9)) {
-                    // f.ajouter(new Carre(Couleur.JAUNE, new Point(i*100, j*100), 100, true));
-                }
-                else if (((i==1 && (j==1|j==5))) | ((i==5 && (j==1|j==5)))){
-                    // f.ajouter(new Carre(Couleur.JAUNE, new Point(i*100, j*100), 100, true));
-                }
-                else if (((i==6 && (j==1|j==2|j==4|j==5)))) {
-                    //f.ajouter(new Carre(Couleur.JAUNE, new Point(i*100, j*100), 100, true));
-                }
-                else if ((i%2==0 && j%2==1) | (i%2==1 && j%2==0)) {
-                    f.ajouter(new Carre(Couleur.BLANC, new Point(i*100, j*100), 100, true));
-                }
-                else {
-                    f.ajouter(new Carre(Couleur.GRIS_FONCE, new Point(i*100, j*100), 100, true));
-                }
-            }
-        }
+        // for (int i=0;i<10;i++) { // lignes
+        //     for (int j=0;j<7;j++) { // colonnes
+        //         if ((i==0) | (i==7) | (j==0) | (j==6)| (i==8) | (i==9)) {
+        //             // f.ajouter(new Carre(Couleur.JAUNE, new Point(i*100, j*100), 100, true));
+        //         }
+        //         else if (((i==1 && (j==1|j==5))) | ((i==5 && (j==1|j==5)))){
+        //             // f.ajouter(new Carre(Couleur.JAUNE, new Point(i*100, j*100), 100, true));
+        //         }
+        //         else if (((i==6 && (j==1|j==2|j==4|j==5)))) {
+        //             //f.ajouter(new Carre(Couleur.JAUNE, new Point(i*100, j*100), 100, true));
+        //         }
+        //         else if ((i%2==0 && j%2==1) | (i%2==1 && j%2==0)) {
+        //             f.ajouter(new Carre(Couleur.BLANC, new Point(i*100, j*100), 100, true));
+        //         }
+        //         else {
+        //             f.ajouter(new Carre(Couleur.GRIS_FONCE, new Point(i*100, j*100), 100, true));
+        //         }
+        //     }
+        // }
+
+        f.ajouter(new Texture("./images/case1.png", new Point(500, 300), 100, 100));
+        f.ajouter(new Texture("./images/case2.png", new Point(400, 300), 100, 100));
+        f.ajouter(new Texture("./images/case3.png", new Point(300, 300), 100, 100));
+        f.ajouter(new Texture("./images/case4.png", new Point(200, 300), 100, 100));
+        f.ajouter(new Texture("./images/case5.png", new Point(600, 300), 100, 100));
+        f.ajouter(new Texture("./images/case6.png", new Point(100, 300), 100, 100));
+
+        f.ajouter(new Texture("./images/case7.png", new Point(100, 400), 100, 100));
+        f.ajouter(new Texture("./images/case8.png", new Point(200, 400), 100, 100));
+        f.ajouter(new Texture("./images/case9.png", new Point(300, 400), 100, 100));
+        f.ajouter(new Texture("./images/case10.png", new Point(400, 400), 100, 100));
+        f.ajouter(new Texture("./images/case11.png", new Point(500, 400), 100, 100));
+
+        f.ajouter(new Texture("./images/case12.png", new Point(200, 500), 100, 100));
+        f.ajouter(new Texture("./images/case13.png", new Point(300, 500), 100, 100));
+        f.ajouter(new Texture("./images/case14.png", new Point(400, 500), 100, 100));
+
+        f.ajouter(new Texture("./images/case15.png", new Point(200, 100), 100, 100));
+        f.ajouter(new Texture("./images/case16.png", new Point(300, 100), 100, 100));
+        f.ajouter(new Texture("./images/case17.png", new Point(400, 100), 100, 100));
+
+        f.ajouter(new Texture("./images/case18.png", new Point(500, 200), 100, 100));
+        f.ajouter(new Texture("./images/case19.png", new Point(400, 200), 100, 100));
+        f.ajouter(new Texture("./images/case20.png", new Point(300, 200), 100, 100));
+        f.ajouter(new Texture("./images/case21.png", new Point(200, 200), 100, 100));
+        f.ajouter(new Texture("./images/case22.png", new Point(100, 200), 100, 100));
+
         // f.ajouter(new Texture("./images/case_bureau.jpg", new Point(500, 400), 100, 100));
         // ajout des pieces sur le plateau
         for (int i = 0; i < 8; i++) {
@@ -125,6 +186,9 @@ class MainGraphique {
                     if (pieces_case.size() == 1) {
                         if (pieces_case.get(a).getIndice() == 0) {
                             f.ajouter(new Texture("./images/" + pieces_case.get(a).getNomLong() + ".png", new Point(i * 100, j * 100), 100, 100));
+                            if (pieces_case.get(a).getNom().equals("capitaine")) {
+                                f.ajouter(new Texture("./images/" + pieces_case.get(a).getNomLong() + ".png", new Point(0, 0), 100, 100));
+                            }
                         }
                     }
                     // si il y a plusieurs pièces
@@ -151,6 +215,25 @@ class MainGraphique {
         }   
     }
 
+    public void affichePV(Fenetre f, Piece p) {
+        if (p.getNom().equals("capitaine")) {
+            f.ajouter(new Texture("./images/" + p.getNomLong() + ".png", new Point(0, 0), 100, 100));
+            f.ajouter(new Texture("./images/pv_" + p.getPV() + ".png", new Point(100, 0), 100, 100));
+        }
+        if (p.getNom().equals("bibledum")) {
+            f.ajouter(new Texture("./images/" + p.getNomLong() + ".png", new Point(900, 0), 100, 100));
+            f.ajouter(new Texture("./images/pv_" + p.getPV() + ".png", new Point(800, 0), 100, 100));
+        }
+        if (p.getNom().equals("mecano")) {
+            f.ajouter(new Texture("./images/" + p.getNomLong() + ".png", new Point(0, 600), 100, 100));
+            f.ajouter(new Texture("./images/pv_" + p.getPV() + ".png", new Point(100, 600), 100, 100));
+        }
+        if (p.getNom().equals("gamin")) {
+            f.ajouter(new Texture("./images/" + p.getNomLong() + ".png", new Point(900, 600), 100, 100));
+            f.ajouter(new Texture("./images/pv_" + p.getPV() + ".png", new Point(800, 600), 100, 100));
+        }
+        f.rafraichir();
+    }
 
     public void afficher_cercle(Fenetre f, ArrayList<Position> dep) {
         int x, y;

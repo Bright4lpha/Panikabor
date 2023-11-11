@@ -21,7 +21,6 @@ public class Main {
         Defaite defaite = new Defaite(f); //6
         MainGraphique graphique = new MainGraphique(f, plato);
         ChoixJ choix = new ChoixJ(f);
-        ChoixP choix_p = new ChoixP(f);
         Menu menu = new Menu(f);
         Souris souris = f.getSouris();
         Position last_pos_souris = new Position(-1, -1);
@@ -30,10 +29,6 @@ public class Main {
         boolean dep_piece = false;
         int last_indice = 0;
         int actual_indice = 0;
-        Joueur J1 = new Capitaine();
-        Joueur J2 = new Gamin();
-        Joueur J3 = new Bibledum();
-        Joueur J4 = new Mecano();
         String tour = "E";
         int cmpt_tour = 0;
 

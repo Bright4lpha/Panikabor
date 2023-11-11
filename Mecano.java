@@ -40,7 +40,7 @@ public class Mecano extends Joueur {
     // Getter //
 
     public String getNom() {
-        return "Mecano";
+        return "mecano";
     }
 
     public int getPV() {
