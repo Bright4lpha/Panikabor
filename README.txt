@@ -12,3 +12,15 @@ Aliens :
 
 
 Tous les joueurs sont ensemble contre les aliens
+
+
+
+
+
+Fonctionnalités :
+- menu
+- crédits
+- jeu
+- quitter
+- page de victoire
+- page de défaite

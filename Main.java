@@ -17,7 +17,8 @@ public class Main {
         Plateau plato = new Plateau();        
         Fenetre f = new Fenetre("Mon jeu", 1000, 700);
         Credits credits = new Credits(f);
-        Victoire victoire = new Victoire(f);
+        Victoire victoire = new Victoire(f); //5
+        Defaite defaite = new Defaite(f); //6
         MainGraphique graphique = new MainGraphique(f, plato);
         ChoixJ choix = new ChoixJ(f);
         ChoixP choix_p = new ChoixP(f);
@@ -75,6 +76,10 @@ public class Main {
                 if (num_fenetre == 5) {
                     num_fenetre = victoire.deplacements_souris(f, pos);
                 }
+                // si on est dans la defaite on peut quitter
+                if (num_fenetre == 6) {
+                    num_fenetre = defaite.deplacements_souris(f, pos);
+                }
                 
                 // System.out.println("indice " + num_fenetre);
 
@@ -101,6 +106,10 @@ public class Main {
                 // si on est dans la victoire alors on l'affiche
                 if (num_fenetre == 5) {
                     victoire.afficher(f);
+                }
+                // si on est dans la defaite alors on l'affiche
+                if (num_fenetre == 6) {
+                    defaite.afficher(f);
                 }
             }
 
@@ -187,6 +196,9 @@ public class Main {
 
                     if ((plato.getCase(6,3).size() == 2)&&(plato.allActive()==true)) {
                         num_fenetre = 5;
+                    }
+                    if ((plato.getPiecesJoueur().size() == 0)) {
+                        num_fenetre = 6;
                     }
                 }
             }
