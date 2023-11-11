@@ -14,13 +14,45 @@ class Plateau {
             this.plateau.add(new ArrayList<Piece>());
         }
         this.plateau.get(14).add(new Crituma("E2", 0));
-        this.plateau.get(22).add(new Mecano("C3", 0));
+        // this.plateau.get(22).add(new Mecano("C3", 0));
         this.plateau.get(23).add(new Patatiso("D3", 0));
-        this.plateau.get(41).add(new Capitaine("B5", 0));
+        // this.plateau.get(41).add(new Capitaine("B5", 0));
         this.plateau.get(32).add(new Roswell("C4", 0));
         this.plateau.get(33).add(new Tentacule("D4", 0));
-        this.plateau.get(34).add(new Bibledum("E4", 0));
-        this.plateau.get(43).add(new Gamin("D5", 0));
+        // this.plateau.get(34).add(new Bibledum("E4", 0));
+        // this.plateau.get(43).add(new Gamin("D5", 0));
+
+        this.liste_taches.add(new Tache("D2"));
+        this.liste_taches.add(new Tache("B4"));
+        this.liste_taches.add(new Tache("D6"));
+    }
+
+    public void ajouter_joueur(int nb_joueur) {
+        // for (int i = 0; i <= 70; i++) {
+        //     this.plateau.add(new ArrayList<Piece>());
+        // }
+        // this.plateau.get(14).add(new Crituma("E2", 0));
+        // this.plateau.get(23).add(new Patatiso("D3", 0));
+        // this.plateau.get(32).add(new Roswell("C4", 0));
+        // this.plateau.get(33).add(new Tentacule("D4", 0));
+        if (nb_joueur == 1) {
+            this.plateau.get(43).add(new Gamin("D5", 0));
+        }
+        if (nb_joueur == 2) {
+            this.plateau.get(43).add(new Gamin("D5", 0));
+            this.plateau.get(34).add(new Bibledum("E4", 0));
+        }
+        if (nb_joueur == 3) {
+            this.plateau.get(43).add(new Gamin("D5", 0));
+            this.plateau.get(34).add(new Bibledum("E4", 0));
+            this.plateau.get(41).add(new Capitaine("B5", 0));
+        }
+        if (nb_joueur == 4) {
+            this.plateau.get(43).add(new Gamin("D5", 0));
+            this.plateau.get(34).add(new Bibledum("E4", 0));
+            this.plateau.get(41).add(new Capitaine("B5", 0));
+            this.plateau.get(22).add(new Mecano("C3", 0));
+        }
 
         this.liste_taches.add(new Tache("D2"));
         this.liste_taches.add(new Tache("B4"));

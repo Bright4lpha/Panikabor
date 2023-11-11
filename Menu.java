@@ -48,7 +48,7 @@ class Menu {
         }
         // bouton jouer
         else if ((to.getX()>=300) && (to.getX()<=700) && (to.getY()>=300) && (to.getY()<=400)) {
-            return 1;
+            return 4;
             // 4 pour les choix
         }
         // reste sur la page menu

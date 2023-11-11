@@ -1,6 +1,3 @@
-// import java.lang.reflect.Array;
-import java.util.ArrayList;
-
 import MG2D.*;
 import MG2D.geometrie.*;
 
@@ -29,18 +26,16 @@ class Credits {
     }
 
     public int deplacements_souris(Fenetre f, Point to) {
-        // Retour vers menu
-        // if ((to.getX()>=400) && (to.getX()<=600) && (to.getY()>=100) && (to.getY()<=200)) {
+        // bouton retour vers menu
         if ((to.getX()>=400) && (to.getX()<=600) && (to.getY()>=100) && (to.getY()<=200)) {
             return 0;
         }
-        // Reste sur les crédits
+        // reste sur les crédits
         else {
             return 2;
         }
     }
-    }
-//}
+}
 
 /*
  * Auteur du jeu et développement : Mathilde Henrion

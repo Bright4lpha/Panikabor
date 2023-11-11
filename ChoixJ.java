@@ -1,4 +1,3 @@
-// import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import MG2D.*;
@@ -31,26 +30,40 @@ class ChoixJ {
         f.rafraichir();
     }
 
-    public int deplacements_souris(Fenetre f, Point to) {
+    public ArrayList<Integer> deplacements_souris(Fenetre f, Point to, int nb_joueur) {
+        ArrayList<Integer> result = new ArrayList<Integer>();
         // Retour vers menu
         if ((to.getX()>=400) && (to.getX()<=600) && (to.getY()>=100) && (to.getY()<=200)) {
-            return 0;
+            result.add(0);
+            result.add(0);
+            return result;
         }
+        // Nombre de joueur
         if ((to.getX()>=300) && (to.getX()<=400) && (to.getY()>=500) && (to.getY()<=600)) {
-            return 11;
+            result.add(1);
+            result.add(1);
+            return result;
         }
         if ((to.getX()>=600) && (to.getX()<=700) && (to.getY()>=500) && (to.getY()<=600)) {
-            return 12;
+            result.add(2);
+            result.add(1);
+            return result;
         }
         if ((to.getX()>=300) && (to.getX()<=400) && (to.getY()>=300) && (to.getY()<=400)) {
-            return 13;
+            result.add(3);
+            result.add(1);
+            return result;
         }
         if ((to.getX()>=600) && (to.getX()<=700) && (to.getY()>=300) && (to.getY()<=400)) {
-            return 14;
+            result.add(4);
+            result.add(1);
+            return result;
         }
         // Reste sur les choix
         else {
-            return 4;
+            result.add(0);
+            result.add(4);
+            return result;
         }
     }
     }

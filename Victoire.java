@@ -25,5 +25,4 @@ class Victoire {
             return 5;
         }
     }
-    }
-//}
+}
