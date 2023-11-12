@@ -10,7 +10,7 @@ class Credits {
         // f.ajouter(new Rectangle(Couleur.ORANGE, new Point(300, 300), 400, 100, true));
         f.ajouter(new Texture("./images/credits_txt.png", new Point(100, 200)));
         
-        f.ajouter(new Texture("./images/vaisseau.png", new Point(500, 300)));
+        f.ajouter(new Texture("./images/vaisseau.png", new Point(490, 240), 658, 400));
 
         // f.ajouter(new Rectangle(Couleur.GRIS_CLAIR, new Point(400, 100), 200, 100, true));
         f.ajouter(new Texture("./images/retour.png", new Point(350, 100)));
@@ -25,7 +25,7 @@ class Credits {
         // f.ajouter(new Rectangle(Couleur.ORANGE, new Point(300, 300), 400, 100, true));
         f.ajouter(new Texture("./images/credits_txt.png", new Point(100, 200)));
 
-        f.ajouter(new Texture("./images/vaisseau.png", new Point(500, 240), 560, 400));
+        f.ajouter(new Texture("./images/vaisseau.png", new Point(490, 240), 658, 400));
 
         // f.ajouter(new Rectangle(Couleur.GRIS_CLAIR, new Point(450, 100), 100, 100, true));
         f.ajouter(new Texture("./images/retour.png", new Point(350, 0)));
