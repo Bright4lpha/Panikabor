@@ -4,6 +4,7 @@ import MG2D.Fenetre;
 import MG2D.Souris;
 import MG2D.geometrie.Point;
 // import java.util.ArrayList;
+import MG2D.geometrie.Texture;
 
 //import MG2D.*;
 //import MG2D.geometrie.*;
@@ -112,76 +113,101 @@ public class Main {
             if (num_fenetre == 1) {
                 plato.ajouter_joueur(nb_joueur);
                 graphique = new MainGraphique(f, plato);
+                
                 while(num_fenetre == 1) {
                     try {
                         Thread.sleep(40);
                     } catch (Exception e) {}
 
-                    // si il y a un clic
-                    if (souris.getClicGauche()) {
-                        System.out.println(nb_joueur);
-                        // stockage de la position de la souris
-                        pos = new Point(souris.getPosition());
-                        if (num_fenetre == 1) {
-                            num_fenetre = graphique.deplacements_souris(f, pos);
-                        }
-                        // System.out.println("num fenetre " + num_fenetre);
-                        actual_pos_souris.setX(pos.getX()/100);
-                        actual_pos_souris.setY(pos.getY()/100);
-
-                        // position actuelle de la souris
-                        int a = pos.getX();
-                        int b = pos.getY();
-
-                        // position ancienne de la souris
-                        int c = pos.getX();
-                        int d = pos.getY(); 
-
-                        actual_indice = plato.trouve_indice(a, b);
-                        
-                        
-                        // test les actions à effectuer en fonction de la position de la souris
-                        // System.out.println("last_pos_souris : " + last_pos_souris);
-                        // System.out.println("actual_pos_souris : "+ actual_pos_souris);
-                        // System.out.println("indice : "+ last_indice);
-                        
-                        dep_piece = graphique.deplacements_souris(f, last_pos_souris, actual_pos_souris, plato, last_indice, actual_indice, tour);
-                        
-                        
-                        System.out.println(plato); 
-
-                        // System.out.println(dep_piece);
-                        if (dep_piece == true) {
-                            actual_pos_souris = new Position(-1, -1);
-                            actual_indice = plato.trouve_indice(a, b);
-                            last_pos_souris.setX(-1);
-                            last_pos_souris.setY(-1);
-                            last_indice = 0;
+                    if (tour.equals("E")) {
+                        System.out.println("tour des ennemis");
+                        ArrayList<Piece> p = plato.getPiecesEnnemi();
+                        for (int i = 0; i < p.size(); i++) {
+                            Fenetre depEnnemi = new Fenetre("Deplacement", 500, 500);
+                            depEnnemi.ajouter(new Texture("./images/case3.png", new Point(0, 0), 500, 500));
+                            depEnnemi.ajouter(new Texture("./images/"+p.get(i).getNomLong()+".png", new Point(0, 0)));
+                            depEnnemi.rafraichir();
+                            try {
+                                Thread.sleep(1000);
+                            } catch (Exception e) {}
+                            depEnnemi.fermer();
+                            graphique.deplacementEnnemi(plato, p.get(i), f);
                             graphique = new MainGraphique(f, plato);
-
-                            // changement de joueur
-                            if (tour.equals("E")) {
-                                tour = "J";
-                                cmpt_tour += 1; 
+                            f.rafraichir();
+                        }
+                        tour = "J";
+                        cmpt_tour += 1;
+                        num_fenetre = 1;
+                        f.rafraichir();
+                    }
+                    else {
+                        f.rafraichir();
+                        // si il y a un clic
+                        if (souris.getClicGauche()) {
+                            System.out.println(nb_joueur);
+                            // stockage de la position de la souris
+                            pos = new Point(souris.getPosition());
+                            if (num_fenetre == 1) {
+                                num_fenetre = graphique.deplacements_souris(f, pos);
                             }
-                            else {
-                                if (cmpt_tour < nb_joueur) {
+                            // System.out.println("num fenetre " + num_fenetre);
+                            actual_pos_souris.setX(pos.getX()/100);
+                            actual_pos_souris.setY(pos.getY()/100);
+
+                            // position actuelle de la souris
+                            int a = pos.getX();
+                            int b = pos.getY();
+
+                            // position ancienne de la souris
+                            int c = pos.getX();
+                            int d = pos.getY(); 
+
+                            actual_indice = plato.trouve_indice(a, b);
+                            
+                            
+                            // test les actions à effectuer en fonction de la position de la souris
+                            // System.out.println("last_pos_souris : " + last_pos_souris);
+                            // System.out.println("actual_pos_souris : "+ actual_pos_souris);
+                            // System.out.println("indice : "+ last_indice);
+                            
+                            dep_piece = graphique.deplacements_souris(f, last_pos_souris, actual_pos_souris, plato, last_indice, actual_indice, tour);
+                            
+                            
+                            System.out.println(plato); 
+
+                            // System.out.println(dep_piece);
+                            if (dep_piece == true) {
+                                actual_pos_souris = new Position(-1, -1);
+                                actual_indice = plato.trouve_indice(a, b);
+                                last_pos_souris.setX(-1);
+                                last_pos_souris.setY(-1);
+                                last_indice = 0;
+                                graphique = new MainGraphique(f, plato);
+
+                                // changement de joueur
+                                if (tour.equals("E")) {
                                     tour = "J";
-                                    cmpt_tour += 1;
+                                    cmpt_tour += 1; 
                                 }
                                 else {
-                                    tour = "E";
-                                    cmpt_tour = 0;
+                                    if (cmpt_tour < nb_joueur) {
+                                        tour = "J";
+                                        cmpt_tour += 1;
+                                    }
+                                    else {
+                                        tour = "E";
+                                        cmpt_tour = 0;
+                                    }
                                 }
                             }
+                            else {
+                                last_pos_souris.setX(actual_pos_souris.getX());
+                                last_pos_souris.setY(actual_pos_souris.getY());
+                                last_indice = actual_indice;
+                            }
+                            // System.out.println(actual_pos_souris);
+                            // System.out.println(last_pos_souris);
                         }
-                        else {
-                            last_pos_souris.setX(actual_pos_souris.getX());
-                            last_pos_souris.setY(actual_pos_souris.getY());
-                            last_indice = actual_indice;
-                        }
-                        // System.out.println(actual_pos_souris);
-                        // System.out.println(last_pos_souris);
                     }
                     f.rafraichir();
 
@@ -196,6 +222,7 @@ public class Main {
                         num_fenetre = 6;
                     }
                 }
+                f.rafraichir();
             }
         }
     }
