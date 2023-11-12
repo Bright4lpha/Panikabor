@@ -324,7 +324,7 @@ class Plateau {
         // Bien placer la pièce sur la case d'arrivée
         // Y a t il un ennemi sur la case d'arrivée
         boolean ennemi = false;
-        boolean ami = true;
+        boolean ami = false;
         for (int i = 0; i < piece_to.size(); i++) {
             if (piece_to.get(i).getType() == 'E') {
                 ennemi = true;
