@@ -153,7 +153,7 @@ public class Capitaine extends Joueur {
 
     public ArrayList<Integer> combat(Piece ennemi, Fenetre f) {
         ArrayList<Integer> temp = new ArrayList<Integer>();
-        System.out.println("Combat :");
+        // System.out.println("Combat :");
         // if (ennemi.getNomCourt().equals("TeE")) {
         //     this.passe_tour = false;
         //     return -1;

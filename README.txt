@@ -1,26 +1,21 @@
+Jeu PANIKABOR
+
+Vous faites partie d'un équipage spatial et vous êtes attaqués par des aliens. Pour vous sauver vous devez réparer le vaisseau en activant les trois tâches (ronds bleus).
+Une fois le vaisseau réparer, un joueur doit retourner sur le pont pour démarrer le vaisseau.
+
+Chaque joueur peux se déplacer dans toutes les directions, a 3 points de vie et bat un alien en faisant 5 ou 6 au dé.
+Mais certains personnages ont des capacités en plus !
+
 Personnages jouables :
-- Capitaine
-- Bibledum
-- Gamin
-- Mecano
+- Capitaine (4 points de vie)
+- Bibledum (Peut éviter le combat avec Crituma, Tentacule et Roswell)
+- Gamin (Peut éviter le combat avec Roswell, Crituma et Patatiso)
+- Mecano (Ajoute 1 à son lancé de dé)
 
 Aliens :
 - Tentacule
-- Crituma
+- Crituma (se déplace de 2 cases en ligne droite)
 - Roswell
 - Patatiso
 
-
-Tous les joueurs sont ensemble contre les aliens
-
-
-
-
-
-Fonctionnalités :
-- menu
-- crédits
-- jeu
-- quitter
-- page de victoire
-- page de défaite
+Alors faites équipe, réparer le vaisseau et sauvez-vous !
