@@ -151,27 +151,30 @@ public class Capitaine extends Joueur {
         return false;
     }
 
-    public int combat(Piece ennemi, Fenetre f) {
+    public ArrayList<Integer> combat(Piece ennemi, Fenetre f) {
+        ArrayList<Integer> temp = new ArrayList<Integer>();
         System.out.println("Combat :");
-        if (ennemi.getNomCourt().equals("TeE")) {
-            this.passe_tour = false;
-            return -1;
-        }
-        else {
+        // if (ennemi.getNomCourt().equals("TeE")) {
+        //     this.passe_tour = false;
+        //     return -1;
+        // }
+        // else {
             int de_joueur = this.lancer_de();
-            System.out.println("Lancer de dé : " + de_joueur);
+            temp.add(de_joueur);
+            // System.out.println("Lancer de dé : " + de_joueur);
             f.ajouter(new Texture("./images/de_" + de_joueur + ".png", new Point(800, 300), 100, 100));
             f.rafraichir();
             if (de_joueur > 3) {
-                return 1;
+                temp.add(1);
+                return temp;
             }   
             else {
-                System.out.println("PV : " + this.getPV());
+                // System.out.println("PV : " + this.getPV());
                 this.pv = this.pv -1;
-                System.out.println("PV : " + this.getPV());
-                return 0;
+                // System.out.println("PV : " + this.getPV());
+                temp.add(0);
+                return temp;
             }
-        }
+        // }
     }
-
 }
