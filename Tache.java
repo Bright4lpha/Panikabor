@@ -1,7 +1,5 @@
 import java.util.ArrayList;
 
-import MG2D.Fenetre;
-
 class Tache {
     // attributs
     private Position position;
