@@ -36,8 +36,8 @@ class MainGraphique {
         f.ajouter(new Texture("./images/case21.png", new Point(200, 400), 100, 100));
         f.ajouter(new Texture("./images/case22.png", new Point(100, 400), 100, 100));
 
-        f.ajouter(new Texture("./images/reacteur.png", new Point(100, 100), 100, 100));
-        f.ajouter(new Texture("./images/reacteur.png", new Point(100, 500), 100, 100));
+        // f.ajouter(new Texture("./images/reacteur.png", new Point(100, 100), 100, 100));
+        // f.ajouter(new Texture("./images/reacteur.png", new Point(100, 500), 100, 100));
 
         // ajout des pieces sur le plateau
         for (int i = 0; i < 8; i++) {
@@ -123,8 +123,8 @@ class MainGraphique {
         f.ajouter(new Texture("./images/case21.png", new Point(200, 200), 100, 100));
         f.ajouter(new Texture("./images/case22.png", new Point(100, 200), 100, 100));
 
-        f.ajouter(new Texture("./images/reacteur.png", new Point(100, 100), 100, 100));
-        f.ajouter(new Texture("./images/reacteur.png", new Point(100, 500), 100, 100));
+        // f.ajouter(new Texture("./images/reacteur.png", new Point(100, 100), 100, 100));
+        // f.ajouter(new Texture("./images/reacteur.png", new Point(100, 500), 100, 100));
 
         // f.ajouter(new Texture("./images/case_bureau.jpg", new Point(500, 400), 100, 100));
         // ajout des pieces sur le plateau
