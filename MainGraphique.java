@@ -1,5 +1,4 @@
 // import java.lang.reflect.Array;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import MG2D.*;
@@ -8,28 +7,7 @@ import MG2D.geometrie.*;
 class MainGraphique {
     
     public MainGraphique(Fenetre f, Plateau plato) {
-        // f.ajouter(new Rectangle(Couleur.BLANC, new Point(0,0), 1000, 700, true));
         f.ajouter(new Texture("./images/space.png", new Point(0, 0)));
-        // for (int i=0;i<10;i++) { // lignes
-        //     for (int j=0;j<7;j++) { // colonnes
-        //         if ((i==0) | (i==7) | (j==0) | (j==6)| (i==8) | (i==9)) {
-        //             //f.ajouter(new Carre(Couleur.JAUNE, new Point(i*100, j*100), 100, true));
-        //         }
-        //         else if (((i==1 && (j==1|j==5))) | ((i==5 && (j==1|j==5)))){
-        //             //f.ajouter(new Carre(Couleur.JAUNE, new Point(i*100, j*100), 100, true));
-        //         }
-        //         else if (((i==6 && (j==1|j==2|j==4|j==5)))) {
-        //             //f.ajouter(new Carre(Couleur.JAUNE, new Point(i*100, j*100), 100, true));
-        //         }
-        //         else if ((i%2==0 && j%2==1) | (i%2==1 && j%2==0)) {
-        //             f.ajouter(new Carre(Couleur.BLANC, new Point(i*100, j*100), 100, true));
-        //         }
-        //         else {
-        //             f.ajouter(new Carre(Couleur.GRIS_FONCE, new Point(i*100, j*100), 100, true));
-        //         }
-        //     }
-        // }
-
 
         f.ajouter(new Texture("./images/case1.png", new Point(500, 300), 100, 100));
         f.ajouter(new Texture("./images/case2.png", new Point(400, 300), 100, 100));
@@ -57,6 +35,9 @@ class MainGraphique {
         f.ajouter(new Texture("./images/case20.png", new Point(300, 400), 100, 100));
         f.ajouter(new Texture("./images/case21.png", new Point(200, 400), 100, 100));
         f.ajouter(new Texture("./images/case22.png", new Point(100, 400), 100, 100));
+
+        f.ajouter(new Texture("./images/reacteur.png", new Point(100, 100), 100, 100));
+        f.ajouter(new Texture("./images/reacteur.png", new Point(100, 500), 100, 100));
 
         // ajout des pieces sur le plateau
         for (int i = 0; i < 8; i++) {
@@ -113,27 +94,7 @@ class MainGraphique {
     }
 
     public void afficher(Fenetre f, Plateau plato) {
-        // f.ajouter(new Rectangle(Couleur.BLANC, new Point(0,0), 1000, 700, true));
         f.ajouter(new Texture("./images/space.png", new Point(0, 0)));
-        // for (int i=0;i<10;i++) { // lignes
-        //     for (int j=0;j<7;j++) { // colonnes
-        //         if ((i==0) | (i==7) | (j==0) | (j==6)| (i==8) | (i==9)) {
-        //             // f.ajouter(new Carre(Couleur.JAUNE, new Point(i*100, j*100), 100, true));
-        //         }
-        //         else if (((i==1 && (j==1|j==5))) | ((i==5 && (j==1|j==5)))){
-        //             // f.ajouter(new Carre(Couleur.JAUNE, new Point(i*100, j*100), 100, true));
-        //         }
-        //         else if (((i==6 && (j==1|j==2|j==4|j==5)))) {
-        //             //f.ajouter(new Carre(Couleur.JAUNE, new Point(i*100, j*100), 100, true));
-        //         }
-        //         else if ((i%2==0 && j%2==1) | (i%2==1 && j%2==0)) {
-        //             f.ajouter(new Carre(Couleur.BLANC, new Point(i*100, j*100), 100, true));
-        //         }
-        //         else {
-        //             f.ajouter(new Carre(Couleur.GRIS_FONCE, new Point(i*100, j*100), 100, true));
-        //         }
-        //     }
-        // }
 
         f.ajouter(new Texture("./images/case1.png", new Point(500, 300), 100, 100));
         f.ajouter(new Texture("./images/case2.png", new Point(400, 300), 100, 100));
@@ -161,6 +122,9 @@ class MainGraphique {
         f.ajouter(new Texture("./images/case20.png", new Point(300, 200), 100, 100));
         f.ajouter(new Texture("./images/case21.png", new Point(200, 200), 100, 100));
         f.ajouter(new Texture("./images/case22.png", new Point(100, 200), 100, 100));
+
+        f.ajouter(new Texture("./images/reacteur.png", new Point(100, 100), 100, 100));
+        f.ajouter(new Texture("./images/reacteur.png", new Point(100, 500), 100, 100));
 
         // f.ajouter(new Texture("./images/case_bureau.jpg", new Point(500, 400), 100, 100));
         // ajout des pieces sur le plateau
@@ -428,5 +392,13 @@ class MainGraphique {
         f.rafraichir();
         return dep_piece;
     }
+
+    public void deplacementEnnemi(Plateau plato, Piece p, Fenetre f) {
+        ArrayList<Position> positions = p.getDeplacementPossible(plato);
+        int indice = (int)((Math.random() * (positions.size()))+0);
+        System.out.println(positions.get(indice));
+        plato.deplacer(p, p.getPosition(), positions.get(indice), p.getIndice(), 0, f);
+        f.rafraichir();
     }
-//}
+
+}
