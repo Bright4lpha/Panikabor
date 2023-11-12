@@ -148,22 +148,26 @@ public class Mecano extends Joueur {
         return false;
     }
 
-    public int combat(Piece ennemi, Fenetre f) {
-        if (ennemi.getNomCourt().equals("TeE")) {
-            this.passe_tour = false;
-            return -1;
-        }
-        else {
+    public ArrayList<Integer> combat(Piece ennemi, Fenetre f) {
+        ArrayList<Integer> temp = new ArrayList<Integer>();
+        // if (ennemi.getNomCourt().equals("TeE")) {
+        //     this.passe_tour = false;
+        //     return -1;
+        // }
+        // else {
             int de_joueur = this.lancer_de();
+            temp.add(de_joueur);
             f.ajouter(new Texture("./images/de_" + de_joueur + ".png", new Point(800, 300), 100, 100));
             f.rafraichir();
             if (de_joueur > 4) {
-                return 1;
+                temp.add(1);
+                return temp;
             }   
             else {
                 this.pv = this.pv-1;
-                return 0;
+                temp.add(0);
+                return temp;
             }
-        }
+        // }
     }
 }

@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 import MG2D.*;
 // import MG2D.geometrie.*;
 
@@ -68,6 +70,6 @@ abstract class Joueur extends Piece {
     // -1 --> passe son tour
     // 0 --> perdu
     // 1 --> gagné
-    public abstract int combat(Piece ennemi, Fenetre f);
+    public abstract ArrayList<Integer> combat(Piece ennemi, Fenetre f);
 
 }

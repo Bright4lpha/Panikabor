@@ -400,5 +400,4 @@ class MainGraphique {
         plato.deplacer(p, p.getPosition(), positions.get(indice), p.getIndice(), 0, f);
         f.rafraichir();
     }
-
 }

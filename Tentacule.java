@@ -133,7 +133,7 @@ public class Tentacule extends Ennemi {
         return false;
     }
 
-    public int combat(Piece ennemi, Fenetre f) {
-        return -2;
+    public ArrayList<Integer> combat(Piece joueur, Fenetre f) {
+        return joueur.combat(this, f);
     }
 }

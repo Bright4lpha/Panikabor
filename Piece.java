@@ -104,7 +104,7 @@ abstract class Piece {
         return chaine;
     }
 
-    public abstract int combat(Piece Ennemi, Fenetre f);
+    public abstract ArrayList<Integer> combat(Piece Ennemi, Fenetre f);
     public abstract int getPV();
     public abstract boolean capacite(Piece Ennemi, Fenetre f);
 

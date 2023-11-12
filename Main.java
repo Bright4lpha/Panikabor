@@ -119,6 +119,7 @@ public class Main {
                         Thread.sleep(40);
                     } catch (Exception e) {}
 
+                    // Si c'est le tour des ennemis
                     if (tour.equals("E")) {
                         System.out.println("tour des ennemis");
                         ArrayList<Piece> p = plato.getPiecesEnnemi();
