@@ -28,7 +28,7 @@ class MainGraphique {
 
         f.ajouter(new Texture("./images/case15.png", new Point(200, 500), 100, 100));
         f.ajouter(new Texture("./images/case16.png", new Point(300, 500), 100, 100));
-        f.ajouter(new Texture("./images/case17.png", new Point(400, 500), 100, 100));
+        f.ajouter(new Texture("./images/case18.png", new Point(400, 500), 100, 100));
 
         f.ajouter(new Texture("./images/case18.png", new Point(500, 400), 100, 100));
         f.ajouter(new Texture("./images/case19.png", new Point(400, 400), 100, 100));
@@ -115,7 +115,7 @@ class MainGraphique {
 
         f.ajouter(new Texture("./images/case15.png", new Point(200, 100), 100, 100));
         f.ajouter(new Texture("./images/case16.png", new Point(300, 100), 100, 100));
-        f.ajouter(new Texture("./images/case17.png", new Point(400, 100), 100, 100));
+        f.ajouter(new Texture("./images/case18.png", new Point(400, 100), 100, 100));
 
         f.ajouter(new Texture("./images/case18.png", new Point(500, 200), 100, 100));
         f.ajouter(new Texture("./images/case19.png", new Point(400, 200), 100, 100));
@@ -297,7 +297,8 @@ class MainGraphique {
                 }
                 else {
                     Fenetre victoire = new Fenetre("Ce n'est pas ton tour !", 500, 200);
-                    victoire.ajouter(new Texture("./images/tour.png", new Point(0, 000)));
+                    victoire.ajouter(new Texture("./images/space.png", new Point(0, 0)));
+                    victoire.ajouter(new Texture("./images/tour.png", new Point(0, 0)));
                     victoire.rafraichir();
                     try {
                         Thread.sleep(1000);

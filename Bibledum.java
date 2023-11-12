@@ -150,8 +150,11 @@ public class Bibledum extends Joueur {
             f.ajouter(new Texture("./images/de_" + de_joueur + ".png", new Point(800, 300), 100, 100));
             f.rafraichir();
             if (de_joueur > 4) {
-                Fenetre victoire = new Fenetre("Capacite", 500, 700);
+                Fenetre victoire = new Fenetre("Capacite", 1100, 700);
+                victoire.ajouter(new Texture("./images/space.png", new Point(0, 0), 1100, 700));
                 victoire.ajouter(new Texture("./images/" + this.getNomLong() + ".png", new Point(0, 200)));
+                victoire.ajouter(new Texture("./images/de_" + de_joueur + ".png", new Point(500, 200), 100, 100));
+                victoire.ajouter(new Texture("./images/" + ennemi.getNomLong() + ".png", new Point(600, 200)));
                 victoire.ajouter(new Texture("./images/vic.png", new Point(0, 0)));
                 victoire.rafraichir();
                 try {
@@ -161,9 +164,12 @@ public class Bibledum extends Joueur {
                 return true;
             }   
             else {
-                Fenetre perdu = new Fenetre("Capacite", 500, 700);
+                Fenetre perdu = new Fenetre("Capacite", 1100, 700);
+                perdu.ajouter(new Texture("./images/space.png", new Point(0, 0), 1100, 700));
                 perdu.ajouter(new Texture("./images/" + this.getNomLong() + ".png", new Point(0, 200)));
-                // perdu.ajouter(new Texture("./images/.png", new Point(0, 0)));
+                perdu.ajouter(new Texture("./images/de_" + de_joueur + ".png", new Point(500, 200), 100, 100));
+                perdu.ajouter(new Texture("./images/" + ennemi.getNomLong() + ".png", new Point(600, 200)));
+                perdu.ajouter(new Texture("./images/perdu.png", new Point(0, 0)));
                 perdu.rafraichir();
                 try {
                     Thread.sleep(1500);

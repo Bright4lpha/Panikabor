@@ -73,14 +73,18 @@ class Tache {
     }
 
 
-    public boolean activation() {
+    public ArrayList<Integer> activation() {
+        ArrayList<Integer> result = new ArrayList<Integer>();
         int de = lancer_de();
+        result.add(de);
         if (de>4) {
             this.active = true;
-            return true;
+            result.add(1);
+            return result;
         }
         else {
-            return false;
+            result.add(0);
+            return result;
         }
     }
 

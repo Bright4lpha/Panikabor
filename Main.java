@@ -160,8 +160,8 @@ public class Main {
                             int b = pos.getY();
 
                             // position ancienne de la souris
-                            int c = pos.getX();
-                            int d = pos.getY(); 
+                            // int c = pos.getX();
+                            // int d = pos.getY(); 
 
                             actual_indice = plato.trouve_indice(a, b);
                             
@@ -214,10 +214,12 @@ public class Main {
 
                     // Conditions de victoire :
                     // 3 tâches réalisées
-                    // 2 joueurs sur la case 63 (G4)
+                    // 1 joueur sur la case 63 (G4)
 
-                    if ((plato.getCase(6,3).size() == 2)&&(plato.allActive()==true)) {
-                        num_fenetre = 5;
+                    if ((plato.getCase(6,3).size() == 1)&&(plato.allActive()==true)) {
+                        if ((plato.getCase(6,3).get(0).getType() == 'J')) {
+                            num_fenetre = 5;
+                        }
                     }
                     if ((plato.getPiecesJoueur().size() == 0)) {
                         num_fenetre = 6;
