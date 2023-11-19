@@ -18,4 +18,4 @@ Aliens :
 - Roswell
 - Patatiso
 
-Alors faites équipe, réparer le vaisseau et sauvez-vous !
+Alors faites équipe, réparez le vaisseau et sauvez-vous !
