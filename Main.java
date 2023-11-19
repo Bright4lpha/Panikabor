@@ -1,28 +1,26 @@
+/*
+ * JEU PANIKABOR - SAE
+ * HENRION Mathilde
+ */
 import java.util.ArrayList;
-
 import MG2D.Fenetre;
 import MG2D.Souris;
 import MG2D.geometrie.Point;
-// import java.util.ArrayList;
 import MG2D.geometrie.Texture;
 
-//import MG2D.*;
-//import MG2D.geometrie.*;
-
 public class Main {
-
     public static void main(String[] args) {
-
         // Initialisation des variables
-        int nb_joueur = 4;
-        Plateau plato = new Plateau();        
         Fenetre f = new Fenetre("Mon jeu", 1000, 700);
-        Credits credits = new Credits(f);
-        Victoire victoire = new Victoire(f); //5
+        int nb_joueur = 4;
+        Plateau plato = new Plateau();
         Defaite defaite = new Defaite(f); //6
-        MainGraphique graphique = new MainGraphique(f, plato);
-        ChoixJ choix = new ChoixJ(f);
-        Menu menu = new Menu(f);
+        Victoire victoire = new Victoire(f); //5
+        ChoixJ choix = new ChoixJ(f); // 4
+        Credits credits = new Credits(f); // 2
+        // 3 - Quitter
+        MainGraphique graphique = new MainGraphique(f, plato); // 1
+        Menu menu = new Menu(f); // 0
         Souris souris = f.getSouris();
         Position last_pos_souris = new Position(-1, -1);
         Position actual_pos_souris = new Position(-1, -1);
@@ -32,8 +30,8 @@ public class Main {
         int actual_indice = 0;
         String tour = "E";
         int cmpt_tour = 0;
+        int num_fenetre = 0; // On commence sur le menu
 
-        int num_fenetre = 0;
         while(true) {
             try {
                 Thread.sleep(40);
@@ -48,7 +46,6 @@ public class Main {
                 actual_pos_souris.setX(pos.getX());
                 actual_pos_souris.setY(pos.getY());
 
-                // System.out.println(pos);
                 // MODIFICATION DE LA FENETRE SUR LES BOUTONS
                 // si on est dans le menu alors on peu aller dans les crédits, le jeu ou quitter
                 if (num_fenetre == 0) {
@@ -76,9 +73,8 @@ public class Main {
                 if (num_fenetre == 6) {
                     num_fenetre = defaite.deplacements_souris(f, pos);
                 }
-                
-                // System.out.println("indice " + num_fenetre);
 
+                // AFFICHAGE DE LA FENETRE
                 // si on est dans le menu alors on l'affiche
                 if (num_fenetre == 0) {
                     menu.afficher(f);
@@ -141,6 +137,7 @@ public class Main {
                         num_fenetre = 1;
                         f.rafraichir();
                     }
+                    // C'est le tour des joueurs
                     else {
                         f.rafraichir();
                         // si il y a un clic
@@ -159,24 +156,9 @@ public class Main {
                             int a = pos.getX();
                             int b = pos.getY();
 
-                            // position ancienne de la souris
-                            // int c = pos.getX();
-                            // int d = pos.getY(); 
-
                             actual_indice = plato.trouve_indice(a, b);
-                            
-                            
-                            // test les actions à effectuer en fonction de la position de la souris
-                            // System.out.println("last_pos_souris : " + last_pos_souris);
-                            // System.out.println("actual_pos_souris : "+ actual_pos_souris);
-                            // System.out.println("indice : "+ last_indice);
-                            
                             dep_piece = graphique.deplacements_souris(f, last_pos_souris, actual_pos_souris, plato, last_indice, actual_indice, tour);
-                            
-                            
-                            System.out.println(plato); 
 
-                            // System.out.println(dep_piece);
                             if (dep_piece == true) {
                                 actual_pos_souris = new Position(-1, -1);
                                 actual_indice = plato.trouve_indice(a, b);
@@ -206,8 +188,6 @@ public class Main {
                                 last_pos_souris.setY(actual_pos_souris.getY());
                                 last_indice = actual_indice;
                             }
-                            // System.out.println(actual_pos_souris);
-                            // System.out.println(last_pos_souris);
                         }
                     }
                     f.rafraichir();

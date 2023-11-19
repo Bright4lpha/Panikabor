@@ -1,35 +1,61 @@
 import java.util.ArrayList;
-
 import MG2D.Fenetre;
 import MG2D.geometrie.Point;
 import MG2D.geometrie.Texture;
 
+/**
+ * Cette classe décrit les caractéristiques du joueur Bibledum.
+ * @author Mathilde Henrion
+ * @version 1.0
+ */
+
 public class Mecano extends Joueur {
     
+    // Constructeurs
+
+    /**
+     * Permet de créer un Mecano par défaut
+     */
     public Mecano() {
         this.position = new Position(0,1);
         this.indice = 0;
     }
     
-    // constructeur par copie
-    public Mecano(Mecano p) {
-        this.position = p.getPosition();
-        this.indice = p.getIndice();
+    /**
+     * Permet de créer un Mecano par copie
+     * @param m Mecano
+     */
+    public Mecano(Mecano m) {
+        this.position = m.getPosition();
+        this.indice = m.getIndice();
     }
     
-    // constructeur avec paramètres int
+    /**
+     * Permet de créer un Mecano avec la position en paramètre entier
+     * @param x position en x sur le plateau
+     * @param y position en y sur le plateau
+     * @param i indice dans la case
+     */
     public Mecano(int x, int y, int i) {
         this.position = new Position(x, y);
         this.indice = i;
     }
     
-    // constructeur avec paramètres position
+    /**
+     * permet de créer un Mecano avec la position en paramètre position
+     * @param pos position sur le plateau
+     * @param i indice dans la case
+     */
     public Mecano(Position pos, int i) {
         this.position = new Position(pos);
         this.indice = i;
     }
 
-    // constructeur avec paramètres string
+    /**
+     * Permet de créer un Mecano avec la position par chaine de caractères
+     * @param str position par chaine de caractères
+     * @param i indice dans la case
+     */
     public Mecano(String str, int i) {
         this.position = new Position(str);
         this.indice = i;
@@ -39,14 +65,27 @@ public class Mecano extends Joueur {
 
     // Getter //
 
+    /**
+     * Retourne le nom de la piece
+     * @return le nom
+     */
     public String getNom() {
         return "mecano";
     }
 
+    /**
+     * Retourne le nombre de point de vie
+     * @return le nb de point de vie
+     */
     public int getPV() {
         return this.pv;
     }
 
+    /**
+     * Retourne la liste des deplacements possibles de la pièce
+     * @param p le plateau
+     * @return la liste des déplacements
+     */
     public ArrayList<Position> getDeplacementPossible(Plateau p) {
         ArrayList<Position> pos = new ArrayList<Position>();
         int x = this.position.getX();
@@ -127,24 +166,35 @@ public class Mecano extends Joueur {
         return pos;
     }
 
-
-
     /**
      * Fonction de lancer de dé à 6 faces
-     * Elle a la capacité d'ajouter 1 à son lancé
+     * Mecano a la capacité d'ajouter 1 à son lancé
      * @return int
      */
     public int lancer_de() {
         return (int)((Math.random() * (5 + 1))+2);
     }
 
-    // Les capacités sont effectués AVANT les combats.
-    // Le but est d'éviter le combat ou l'annuler
-    // Mecano ne peut annuler aucun combat
+    /**
+     * Fonction qui active les capacités du joueur.
+     * Les capacités sont effectués AVANT les combats.
+     * Le but est d'éviter le combat ou l'annuler
+     * Mecano ne peut annuler aucun combat
+     * @param ennemi la piece de l'ennemi à combattre
+     * @param f la fenetre du jeu
+     * @return true ou false si victoire ou défaite
+     */
     public boolean capacite(Piece ennemi, Fenetre f) {
         return false;
     }
 
+    /**
+     * Fonction de combat du joueur
+     * Le combat est réussi si le résultat du dé est 5 ou 6
+     * @param ennemi la pièce de l'ennemi à combattre
+     * @param f la fenetre du jeu
+     * @return le premier entier indique le résultat du dé, le deuxième la victoire ou la défaite
+     */
     public ArrayList<Integer> combat(Piece ennemi, Fenetre f) {
         ArrayList<Integer> temp = new ArrayList<Integer>();
         // if (ennemi.getNomCourt().equals("TeE")) {

@@ -2,36 +2,63 @@ import java.util.ArrayList;
 import MG2D.*;
 import MG2D.geometrie.*;
 
+/**
+ * Cette classe décrit les caractéristiques du joueur Capitaine.
+ * @author Mathilde Henrion
+ * @version 1.0
+ */
+
 public class Capitaine extends Joueur {
     
+    // Constructeurs
+
+    /**
+     * Permet de créer un Capitaine par défaut
+     */
     public Capitaine() {
         this.position = new Position(0,1);
         this.indice = 0;
         this.pv = 4;
     }
     
-    // constructeur par copie
-    public Capitaine(Capitaine p) {
-        this.position = p.getPosition();
-        this.indice = p.getIndice();
+    /**
+     * Permet de créer un Capitaine par copie
+     * @param c Capitaine
+     */
+    public Capitaine(Capitaine c) {
+        this.position = c.getPosition();
+        this.indice = c.getIndice();
         this.pv = 4;
     }
     
-    // constructeur avec paramètres int
+    /**
+     * Permet de créer un Capitaine avec la position en paramètre entier
+     * @param x position en x sur le plateau
+     * @param y position en y sur le plateau
+     * @param i indice dans la case
+     */
     public Capitaine(int x, int y, int i) {
         this.position = new Position(x, y);
         this.indice = i;
         this.pv = 4;
     }
     
-    // constructeur avec paramètres position
+    /**
+     * permet de créer un Capitaine avec la position en paramètre position
+     * @param pos position sur le plateau
+     * @param i indice dans la case
+     */
     public Capitaine(Position pos, int i) {
         this.position = new Position(pos);
         this.indice = i;
         this.pv = 4;
     }
 
-    // constructeur avec paramètres string
+    /**
+     * Permet de créer un Capitaine avec la position par chaine de caractères
+     * @param str position par chaine de caractères
+     * @param i indice dans la case
+     */
     public Capitaine(String str, int i) {
         this.position = new Position(str);
         this.indice = i;
@@ -42,14 +69,27 @@ public class Capitaine extends Joueur {
 
     // Getter //
 
+    /**
+     * Retourne le nom de la piece
+     * @return le nom
+     */
     public String getNom() {
         return "capitaine";
     }
 
+    /**
+     * Retourne le nombre de point de vie
+     * @return le nb de point de vie
+     */
     public int getPV() {
         return this.pv;
     }
 
+    /**
+     * Retourne la liste des deplacements possibles de la pièce
+     * @param p le plateau
+     * @return la liste des déplacements
+     */
     public ArrayList<Position> getDeplacementPossible(Plateau p) {
         ArrayList<Position> pos = new ArrayList<Position>();
         int x = this.position.getX();
@@ -138,14 +178,26 @@ public class Capitaine extends Joueur {
         return (int)((Math.random() * (5 + 1))+1);
     }
     
-
-    // Les capacités sont effectués AVANT les combats.
-    // Le but est d'éviter le combat ou l'annuler
-    // Capitaine ne peut annuler aucun combat
+    /**
+     * Fonction qui active les capacités du joueur.
+     * Les capacités sont effectués AVANT les combats.
+     * Le but est d'éviter le combat ou l'annuler
+     * Capitaine ne peut annuler aucun combat
+     * @param ennemi la piece de l'ennemi à combattre
+     * @param f la fenetre du jeu
+     * @return true ou false si victoire ou défaite
+     */
     public boolean capacite(Piece Ennemi, Fenetre f) {
         return false;
     }
 
+    /**
+     * Fonction de combat du joueur
+     * Le combat est réussi si le résultat du dé est 5 ou 6
+     * @param ennemi la pièce de l'ennemi à combattre
+     * @param f la fenetre du jeu
+     * @return le premier entier indique le résultat du dé, le deuxième la victoire ou la défaite
+     */
     public ArrayList<Integer> combat(Piece ennemi, Fenetre f) {
         ArrayList<Integer> temp = new ArrayList<Integer>();
         // System.out.println("Combat :");
