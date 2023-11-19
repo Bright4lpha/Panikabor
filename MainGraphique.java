@@ -397,7 +397,7 @@ class MainGraphique {
     public void deplacementEnnemi(Plateau plato, Piece p, Fenetre f) {
         ArrayList<Position> positions = p.getDeplacementPossible(plato);
         int indice = (int)((Math.random() * (positions.size()))+0);
-        System.out.println(positions.get(indice));
+        // System.out.println(positions.get(indice));
         plato.deplacer(p, p.getPosition(), positions.get(indice), p.getIndice(), 0, f);
         f.rafraichir();
     }

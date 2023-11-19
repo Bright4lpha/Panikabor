@@ -117,7 +117,6 @@ public class Main {
 
                     // Si c'est le tour des ennemis
                     if (tour.equals("E")) {
-                        System.out.println("tour des ennemis");
                         ArrayList<Piece> p = plato.getPiecesEnnemi();
                         for (int i = 0; i < p.size(); i++) {
                             Fenetre depEnnemi = new Fenetre("Deplacement", 500, 500);
@@ -142,13 +141,11 @@ public class Main {
                         f.rafraichir();
                         // si il y a un clic
                         if (souris.getClicGauche()) {
-                            System.out.println(nb_joueur);
                             // stockage de la position de la souris
                             pos = new Point(souris.getPosition());
                             if (num_fenetre == 1) {
                                 num_fenetre = graphique.deplacements_souris(f, pos);
                             }
-                            // System.out.println("num fenetre " + num_fenetre);
                             actual_pos_souris.setX(pos.getX()/100);
                             actual_pos_souris.setY(pos.getY()/100);
 

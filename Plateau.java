@@ -452,8 +452,8 @@ class Plateau {
                         amiP = piece_to.get(i);
                     }
                 }
-                System.out.println(amiP.getNomCourt());
-                System.out.println(p.getNomCourt());
+                //System.out.println(amiP.getNomCourt());
+                // System.out.println(p.getNomCourt());
                 if (p.capacite(amiP, f) == true) {
                     Fenetre pasCombat = new Fenetre("Pas de combat", 400, 300);
                     pasCombat.ajouter(new Texture("./images/space.png", new Point(0, 0)));
@@ -466,7 +466,7 @@ class Plateau {
                 }
                 else {
                     ArrayList<Integer> com = p.combat(amiP, f);
-                    System.out.println(com);
+                    // System.out.println(com);
                     if (com.get(1) == 1) {
                         Fenetre victoire = new Fenetre("Victoire", 1100, 700);
                         victoire.ajouter(new Texture("./images/space.png", new Point(0, 0), 1100, 700));
@@ -509,7 +509,7 @@ class Plateau {
                         }
                     }  
                     else {
-                        System.out.println("retour -1 ?");
+                        // System.out.println("retour -1 ?");
                     }  
                 }
             }
@@ -537,7 +537,7 @@ class Plateau {
                     else {
                         // System.out.println("ratée");
                         Fenetre perdu = new Fenetre("Tâche ratée", 1100, 500);
-                        System.out.println("tâche 1 ?");
+                        // System.out.println("tâche 1 ?");
                         perdu.ajouter(new Texture("./images/space.png", new Point(0, 0), 1100, 500));
                         perdu.ajouter(new Texture("./images/" + p.getNomLong() + ".png", new Point(0, 0)));
                         perdu.ajouter(new Texture("./images/de_" + activation.get(0) + ".png", new Point(500, 200), 100, 100));
@@ -589,7 +589,7 @@ class Plateau {
     }
 
     // main pour tests
-
+/*
     public static void main(String[] args) {
         System.out.println("Test de Plateau");
         System.out.println("création d'un plateau plato");
@@ -637,5 +637,5 @@ class Plateau {
         for (int i = 0; i < 10; i++) {
             System.out.println(plato.lancer_de());
         }
-    }
+    }*/
 }
