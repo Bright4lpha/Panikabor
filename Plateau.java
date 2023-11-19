@@ -58,10 +58,6 @@ class Plateau {
         this.plateau.get(42).add(new Roswell("C5", 0));
         this.plateau.get(44).add(new Tentacule("E5", 0));
 
-        this.liste_taches.add(new Tache("D2"));
-        this.liste_taches.add(new Tache("B4"));
-        this.liste_taches.add(new Tache("D6"));
-
         if (nb_joueur == 1) {
             this.plateau.get(33).add(new Capitaine("D4", 0));
         }
@@ -541,6 +537,7 @@ class Plateau {
                     else {
                         // System.out.println("ratée");
                         Fenetre perdu = new Fenetre("Tâche ratée", 1100, 500);
+                        System.out.println("tâche 1 ?");
                         perdu.ajouter(new Texture("./images/space.png", new Point(0, 0), 1100, 500));
                         perdu.ajouter(new Texture("./images/" + p.getNomLong() + ".png", new Point(0, 0)));
                         perdu.ajouter(new Texture("./images/de_" + activation.get(0) + ".png", new Point(500, 200), 100, 100));
