@@ -50,40 +50,50 @@ public class Crituma extends Ennemi {
         ArrayList<Position> pos = new ArrayList<Position>();
         int x = this.position.getX();
         int y = this.position.getY();
-
         // à droite
         if ((0<x+1)&&(x+1<7)&&(0<y)&&(y<6)) {
-            pos.add(new Position(x+1, y));
+            if (p.getCase(x+1, y).size() < 4) {
+                pos.add(new Position(x+1, y));
+            }
         }
         if ((0<x+2)&&(x+2<7)&&(0<y)&&(y<6)) {
-            pos.add(new Position(x+2, y));
+            if (p.getCase(x+2, y).size() < 4) {
+                pos.add(new Position(x+2, y));
+            }
         }
-        
         // en bas
         if ((0<x)&&(x<7)&&(0<y-1)&&(y-1<6)) {
-            pos.add(new Position(x, y-1));
+            if (p.getCase(x, y-1).size() < 4) {
+                pos.add(new Position(x, y-1));
+            }
         }
         if ((0<x)&&(x<7)&&(0<y-2)&&(y-2<6)) {
-            pos.add(new Position(x, y-2));
+            if (p.getCase(x, y-2).size() < 4) {
+                pos.add(new Position(x, y-2));
+            }
         }
-        
         // à gauche
         if ((0<x-1)&&(x-1<7)&&(0<y)&&(y<6)) {
-            pos.add(new Position(x-1, y));
+            if (p.getCase(x-1, y).size() < 4) {
+                pos.add(new Position(x-1, y));
+            }
         }
         if ((0<x-2)&&(x-2<7)&&(0<y)&&(y<6)) {
-            pos.add(new Position(x-2, y));
+            if (p.getCase(x-2, y).size() < 4) {
+                pos.add(new Position(x-2, y));
+            }
         }
-
         // en haut
         if ((0<x)&&(x<7)&&(0<y+1)&&(y+1<6)) {
-            pos.add(new Position(x, y+1));
+            if (p.getCase(x, y+1).size() < 4) {
+                pos.add(new Position(x, y+1));
+            }
         }
         if ((0<x)&&(x<7)&&(0<y+2)&&(y+2<6)) {
-            pos.add(new Position(x, y+2));
+            if (p.getCase(x, y+2).size() < 4) {
+                pos.add(new Position(x, y+2));
+            }
         }
-
-
         Position temp;
         if (pos.contains(temp = new Position(1,1))) {
             pos.remove(temp);
@@ -108,8 +118,7 @@ public class Crituma extends Ennemi {
         }
         if (pos.contains(temp = new Position(6,5))) {
             pos.remove(temp);
-        }        
-
+        }
         return pos;
     }
 
