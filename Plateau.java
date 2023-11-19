@@ -48,6 +48,44 @@ class Plateau {
         // this.liste_taches.add(new Tache("D6"));
     }
 
+    public void nv_plateau(int nb_joueur) {
+        plateau = new ArrayList<ArrayList<Piece>>();
+        for (int i = 0; i <= 70; i++) {
+            this.plateau.add(new ArrayList<Piece>());
+        }
+        this.plateau.get(22).add(new Crituma("C3", 0));
+        this.plateau.get(24).add(new Patatiso("E3", 0));
+        this.plateau.get(42).add(new Roswell("C5", 0));
+        this.plateau.get(44).add(new Tentacule("E5", 0));
+
+        this.liste_taches.add(new Tache("D2"));
+        this.liste_taches.add(new Tache("B4"));
+        this.liste_taches.add(new Tache("D6"));
+
+        if (nb_joueur == 1) {
+            this.plateau.get(33).add(new Capitaine("D4", 0));
+        }
+        if (nb_joueur == 2) {
+            this.plateau.get(33).add(new Capitaine("D4", 0));
+            this.plateau.get(33).add(new Bibledum("D4", 1));
+        }
+        if (nb_joueur == 3) {
+            this.plateau.get(33).add(new Capitaine("D4", 0));
+            this.plateau.get(33).add(new Bibledum("D4", 1));
+            this.plateau.get(33).add(new Mecano("D4", 2));
+        }
+        if (nb_joueur == 4) {
+            this.plateau.get(33).add(new Capitaine("D4", 0));
+            this.plateau.get(33).add(new Bibledum("D4", 1));
+            this.plateau.get(33).add(new Mecano("D4", 2));
+            this.plateau.get(33).add(new Gamin("D4", 3));
+        }
+
+        // this.liste_taches.add(new Tache("D2"));
+        // this.liste_taches.add(new Tache("B4"));
+        // this.liste_taches.add(new Tache("D6"));
+    }
+
 /*
  * Pour les positions des cases et leurs références
  * Les positions de la classe Position utilisent la notation normalisée des échecs abscisses puis ordonnées.
