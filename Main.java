@@ -111,7 +111,7 @@ public class Main {
 
             // jeu principal
             if (num_fenetre == 1) {
-                plato.ajouter_joueur(nb_joueur);
+                plato.nv_plateau(nb_joueur);
                 graphique = new MainGraphique(f, plato);
                 
                 while(num_fenetre == 1) {
