@@ -74,22 +74,7 @@ class Tache {
         return (int)((Math.random() * (5 + 1))+1);
     }
 
-
-    public ArrayList<Integer> activation(Piece joueur) {
-        // ArrayList<Integer> result = new ArrayList<Integer>();
-        // int de = lancer_de();
-        // result.add(de);
-        // if (de>4) {
-        //     this.active = true;
-        //     result.add(1);
-        //     return result;
-        // }
-        // else {
-        //     result.add(0);
-        //     return result;
-        // }
-
-        // combat avec clic ?
+    public void activation(Piece joueur) {
         ArrayList<Integer> temp = new ArrayList<Integer>();
         boolean en_cours = true;
         Fenetre ftache = new Fenetre("Tâche", 1100, 700);
@@ -125,7 +110,6 @@ class Tache {
                         ftache.fermer();
                         en_cours = false;
                         this.active = true;
-                        return temp;
                     }   
                     else {
                         affiche_tache.afficher_perdu(ftache);
@@ -135,15 +119,9 @@ class Tache {
                         } catch (Exception e) {}
                         ftache.fermer();
                         en_cours = false;
-                        return temp;
                     }
                 }
             }
         }
-        return temp;
-
-
-
     }
-
 }

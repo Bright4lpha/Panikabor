@@ -520,43 +520,10 @@ class Plateau {
             for (int i=0; i<liste_taches.size(); i++) {
                 Tache uneTache = liste_taches.get(i);
                 if (p.getPosition().equals(uneTache.getPosition())) {
-                    ArrayList<Integer> activation = uneTache.activation(p);
-
-
-
-
-                    // if (activation.get(1) == 1) {
-                    //     // System.out.println("activée");
-                    //     Fenetre active = new Fenetre("Tâche activée", 1100, 500);
-                    //     active.ajouter(new Texture("./images/space.png", new Point(0, 0), 1100, 500));
-                    //     active.ajouter(new Texture("./images/" + p.getNomLong() + ".png", new Point(0, 0)));
-                    //     active.ajouter(new Texture("./images/de_" + activation.get(0) + ".png", new Point(500, 200), 100, 100));
-                    //     active.ajouter(new Texture("./images/tache_A.png", new Point(600, 0)));
-                    //     active.rafraichir();
-                    //     try {
-                    //         Thread.sleep(1500);
-                    //     } catch (Exception e) {}
-                    //     active.fermer();
-                    // }
-                    // else {
-                    //     // System.out.println("ratée");
-                    //     Fenetre perdu = new Fenetre("Tâche ratée", 1100, 500);
-                    //     System.out.println("tâche 1 ?");
-                    //     perdu.ajouter(new Texture("./images/space.png", new Point(0, 0), 1100, 500));
-                    //     perdu.ajouter(new Texture("./images/" + p.getNomLong() + ".png", new Point(0, 0)));
-                    //     perdu.ajouter(new Texture("./images/de_" + activation.get(0) + ".png", new Point(500, 200), 100, 100));
-                    //     perdu.ajouter(new Texture("./images/tache_D.png", new Point(600, 0)));
-                    //     perdu.rafraichir();
-                    //     try {
-                    //         Thread.sleep(1500);
-                    //     } catch (Exception e) {}
-                    //     perdu.fermer();
-                    // }
+                    uneTache.activation(p);
                 }
             }
         }
-
-
     }
 
     /**
