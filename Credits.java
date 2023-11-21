@@ -46,7 +46,7 @@ class Credits {
 
 /*
  * Auteur du jeu et développement : Mathilde Henrion
- * Création graphique : Priscille Lagouardille et Charlotte Henrion
+ * Création graphique : Priscille et Charlotte Henrion
  * Testeurs : Mathilde Henrion
  * Musique : 
  * Remerciements spéciaux : ma famille et mes amis qui m'ont partagé leurs idées et leur soutien

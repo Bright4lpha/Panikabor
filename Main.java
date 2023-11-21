@@ -9,7 +9,7 @@ import MG2D.geometrie.Point;
 import MG2D.geometrie.Texture;
 
 public class Main {
-    public static void main(String[] args) {
+     public static void main(String[] args) {
         // Initialisation des variables
         Fenetre f = new Fenetre("Mon jeu", 1000, 700);
         int nb_joueur = 4;
