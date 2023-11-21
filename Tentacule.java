@@ -8,7 +8,6 @@ public class Tentacule extends Ennemi {
         this.position = new Position(0,1);
         this.indice = 0;
     }
-    
     // constructeur par copie
     public Tentacule(Tentacule p) {
         this.position = p.getPosition();

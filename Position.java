@@ -170,7 +170,6 @@ class Position {
         return chaine;
     }
 
-    /*
     public static void main(String[] args) {
         System.out.println("Test de Position");
         Position a = new Position();
@@ -217,5 +216,5 @@ class Position {
         String str = e.toString();
         System.out.println(str);
 
-    }*/
+    }
 }

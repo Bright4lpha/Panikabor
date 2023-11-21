@@ -392,26 +392,7 @@ class Plateau {
             }
             else {
                 ArrayList<Integer> com = p.combat(piece_to.get(indiceE), f);
-                if (com.get(1) == 1) {
-                    // Panneau save = f.getP();
-                    // Fenetre victoire = new Fenetre("Victoire", 500, 700);
-                    // victoire.ajouter(new Texture("./images/" + p.getNomLong() + ".png", new Point(0, 200)));
-                    // victoire.ajouter(new Texture("./images/vic.png", new Point(0, 0)));
-                    // victoire.rafraichir();
-
-                    // Fenetre victoire = new Fenetre("Victoire", 1100, 700);
-                    // victoire.ajouter(new Texture("./images/space.png", new Point(0, 0), 1100, 700));
-                    // victoire.ajouter(new Texture("./images/" + p.getNomLong() + ".png", new Point(0, 200)));
-                    // victoire.ajouter(new Texture("./images/de_" + com.get(0) + ".png", new Point(500, 200), 100, 100));
-                    // victoire.ajouter(new Texture("./images/" + piece_to.get(indiceE).getNomLong() + ".png", new Point(600, 200)));
-                    // victoire.ajouter(new Texture("./images/vic.png", new Point(0, 0)));
-                    // victoire.rafraichir();
-                    // try {
-                    //     Thread.sleep(1500);
-                    // } catch (Exception e) {}
-                    // victoire.fermer();
-                }
-                else if (com.get(1) == 0) {
+                if (com.get(1) == 0) {
                     if (p.getPV() ==0) {
                         Fenetre perdu = new Fenetre("Mort", 500, 700);
                         perdu.ajouter(new Texture("./images/space.png", new Point(0, 0)));
@@ -423,22 +404,7 @@ class Plateau {
                         } catch (Exception e) {}
                         perdu.fermer();
                         this.remove(p);
-                    }
-                    else {
-                        // Fenetre perdu = new Fenetre("Perdu", 1100, 700);
-                        // perdu.ajouter(new Texture("./images/space.png", new Point(0, 0), 1100, 700));
-                        // perdu.ajouter(new Texture("./images/" + p.getNomLong() + ".png", new Point(0, 200)));
-                        // perdu.ajouter(new Texture("./images/de_" + com.get(0) + ".png", new Point(500, 200), 100, 100));
-                        // perdu.ajouter(new Texture("./images/" + piece_to.get(indiceE).getNomLong() + ".png", new Point(600, 200)));
-                        // perdu.ajouter(new Texture("./images/pdv.png", new Point(0, 0)));
-                        // perdu.rafraichir();
-
-                        // try {
-                        //     Thread.sleep(1500);
-                        // } catch (Exception e) {}
-                        // perdu.fermer();
-                    }
-                    
+                    }                    
                 }    
             }
         }
@@ -452,35 +418,9 @@ class Plateau {
                         amiP = piece_to.get(i);
                     }
                 }
-                //System.out.println(amiP.getNomCourt());
-                // System.out.println(p.getNomCourt());
-                if (p.capacite(amiP, f) == true) {
-                    // Fenetre pasCombat = new Fenetre("Pas de combat", 400, 300);
-                    // pasCombat.ajouter(new Texture("./images/space.png", new Point(0, 0)));
-                    // pasCombat.ajouter(new Texture("./images/pas_combat.png", new Point(0, 0)));
-                    // pasCombat.rafraichir();
-                    // try {
-                    //     Thread.sleep(1500);
-                    // } catch (Exception e) {}
-                    // pasCombat.fermer();
-                }
-                else {
+                if (p.capacite(amiP, f) == false) {
                     ArrayList<Integer> com = p.combat(amiP, f);
-                    // System.out.println(com);
-                    if (com.get(1) == 1) {
-                        // Fenetre victoire = new Fenetre("Victoire", 1100, 700);
-                        // victoire.ajouter(new Texture("./images/space.png", new Point(0, 0), 1100, 700));
-                        // victoire.ajouter(new Texture("./images/" + amiP.getNomLong() + ".png", new Point(0, 200)));
-                        // victoire.ajouter(new Texture("./images/de_" + com.get(0) + ".png", new Point(500, 200), 100, 100));
-                        // victoire.ajouter(new Texture("./images/" + p.getNomLong() + ".png", new Point(600, 200)));
-                        // victoire.ajouter(new Texture("./images/vic.png", new Point(0, 0)));
-                        // victoire.rafraichir();
-                        // try {
-                        //     Thread.sleep(1500);
-                        // } catch (Exception e) {}
-                        // victoire.fermer();
-                    }
-                    else if (com.get(1) == 0) {
+                    if (com.get(1) == 0) {
                         if (amiP.getPV() ==0) {
                             Fenetre perdu = new Fenetre("Mort", 500, 700);
                             perdu.ajouter(new Texture("./images/space.png", new Point(0, 0)));
@@ -493,24 +433,7 @@ class Plateau {
                             perdu.fermer();
                             this.remove(p);
                         }
-                        else {
-                            // Fenetre perdu = new Fenetre("Perdu", 1100, 700);
-                            // perdu.ajouter(new Texture("./images/space.png", new Point(0, 0), 1100, 700));
-                            // perdu.ajouter(new Texture("./images/" + amiP.getNomLong() + ".png", new Point(0, 200)));
-                            // perdu.ajouter(new Texture("./images/de_" + com.get(0) + ".png", new Point(500, 200), 100, 100));
-                            // perdu.ajouter(new Texture("./images/" + p.getNomLong() + ".png", new Point(600, 200)));
-                            // perdu.ajouter(new Texture("./images/pdv.png", new Point(0, 0)));
-                            // perdu.rafraichir();
-
-                            // try {
-                            //     Thread.sleep(1500);
-                            // } catch (Exception e) {}
-                            // perdu.fermer();
-                        }
-                    }  
-                    else {
-                        // System.out.println("retour -1 ?");
-                    }  
+                    }
                 }
             }
         }

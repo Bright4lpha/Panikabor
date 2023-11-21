@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-
 import MG2D.Fenetre;
 
 public class Patatiso extends Ennemi{
