@@ -87,7 +87,7 @@ class MainGraphique {
                     }
                     
                 }
-        f.ajouter(new Texture("./images/de.png", new Point(800, 300), 100, 100));
+        // f.ajouter(new Texture("./images/de.png", new Point(800, 300), 100, 100));
         f.ajouter(new Texture("./images/retour_2.png", new Point(0,300)));
         // f.ajouter(new Carre(Couleur.ROSE, new Point(0,340), 20, true));
         f.rafraichir(); 
@@ -174,7 +174,7 @@ class MainGraphique {
                     }
                     
                 }
-        f.ajouter(new Texture("./images/de.png", new Point(800, 300), 100, 100));
+        // f.ajouter(new Texture("./images/de.png", new Point(800, 300), 100, 100));
         f.ajouter(new Texture("./images/retour_2.png", new Point(0,300)));
         f.rafraichir(); 
             }
@@ -207,7 +207,7 @@ class MainGraphique {
             x = p.getX()*100+50;
             y = p.getY()*100+50;
             for (int i = 0; i <5; i++) {
-                f.ajouter(new Cercle(Couleur.ROUGE, new Point(x,y), 45+i));
+                f.ajouter(new Cercle(Couleur.BLEU, new Point(x,y), 45+i));
             }
             f.rafraichir();
         }
@@ -219,7 +219,7 @@ class MainGraphique {
             x = p.getX()*100+50;
             y = p.getY()*100+50;
             for (int i = 0; i <5; i++) {
-                f.supprimer(new Cercle(Couleur.ROUGE, new Point(x,y), 45+i));
+                f.supprimer(new Cercle(Couleur.BLEU, new Point(x,y), 45+i));
             }
             f.rafraichir();
         }
@@ -229,24 +229,26 @@ class MainGraphique {
         String nom = joueur.getNom();
         if (nom.equals("capitaine")) {
             for (int i = 0; i <5; i++) {
-                f.ajouter(new Cercle(Couleur.ROUGE, new Point(50, 50), 45+i));
+                f.ajouter(new Cercle(Couleur.BLEU, new Point(50, 50), 45+i));
+                
             }
         }
         if (nom.equals("bibledum")) {
             for (int i = 0; i <5; i++) {
-                f.ajouter(new Cercle(Couleur.ROUGE, new Point(950, 50), 45+i));
+                f.ajouter(new Cercle(Couleur.BLEU, new Point(950, 50), 45+i));
             }
         }
         if (nom.equals("mecano")) {
             for (int i = 0; i <5; i++) {
-                f.ajouter(new Cercle(Couleur.ROUGE, new Point(50, 650), 45+i));
+                f.ajouter(new Cercle(Couleur.BLEU, new Point(50, 650), 45+i));
             }
         }
         if (nom.equals("gamin")) {
             for (int i = 0; i <5; i++) {
-                f.ajouter(new Cercle(Couleur.ROUGE, new Point(950, 650), 45+i));
+                f.ajouter(new Cercle(Couleur.BLEU, new Point(950, 650), 45+i));
             }
         }
+        f.ajouter(new Texture("./images/"+joueur.getNomLong()+".png", new Point(800, 300), 100, 100));
     }
 
     public void deplacements_possibles_pieces(Fenetre f, Position p, Plateau plato, int actual_indice) {
@@ -283,7 +285,7 @@ class MainGraphique {
 
     public int deplacements_souris(Fenetre f, Point to) {
         // Crédits
-        if ((to.getX()>=0) && (to.getX()<=250) && (to.getY()>=340) && (to.getY()<=360)) {
+        if ((to.getX()>=0) && (to.getX()<=100) && (to.getY()>=340) && (to.getY()<=360)) {
             return 0;
         }
         else {

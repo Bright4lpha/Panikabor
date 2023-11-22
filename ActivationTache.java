@@ -13,6 +13,8 @@ class ActivationTache {
     public void afficher(Piece joueur, Fenetre f) {
         f.ajouter(new Texture("./images/space.png", new Point(0, 0), 1100, 700));
         f.ajouter(new Texture("./images/" + joueur.getNomLong() + ".png", new Point(0, 200)));
+        f.ajouter(new Texture("./images/tache_txt.png", new Point(400, 400)));
+        f.ajouter(new Texture("./images/de_txt.png", new Point(400, 300)));
         f.ajouter(new Texture("./images/de.png", new Point(500, 200), 100, 100));
         f.ajouter(this.TD);
         f.rafraichir();
@@ -26,6 +28,8 @@ class ActivationTache {
     public void afficher_vic(Piece joueur, int de, Fenetre f) {
         f.ajouter(new Texture("./images/space.png", new Point(0, 0), 1100, 700));
         f.ajouter(new Texture("./images/" + joueur.getNomLong() + ".png", new Point(0, 200)));
+        f.ajouter(new Texture("./images/tache_txt.png", new Point(400, 400)));
+        f.ajouter(new Texture("./images/de_txt.png", new Point(400, 300)));
         f.ajouter(new Texture("./images/de_" + de + ".png", new Point(500, 200), 100, 100));
         f.ajouter(new Texture("./images/vic.png", new Point(0, 0)));
         f.ajouter(this.TA);

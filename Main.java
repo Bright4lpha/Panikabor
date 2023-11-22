@@ -163,8 +163,9 @@ public class Main {
                         System.out.println("tour des ennemis");
                         ArrayList<Piece> p = plato.getPiecesEnnemi();
                         for (int i = 0; i < p.size(); i++) {
-                            Fenetre depEnnemi = new Fenetre("Deplacement", 500, 500);
+                            Fenetre depEnnemi = new Fenetre("Deplacement", 500, 600);
                             depEnnemi.ajouter(new Texture("./images/case3.png", new Point(0, 0), 500, 500));
+                            depEnnemi.ajouter(new Texture("./images/deplacement.png", new Point(0, 500)));
                             depEnnemi.ajouter(new Texture("./images/"+p.get(i).getNomLong()+".png", new Point(0, 0)));
                             depEnnemi.rafraichir();
                             try {

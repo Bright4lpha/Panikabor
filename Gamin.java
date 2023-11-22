@@ -92,12 +92,12 @@ public class Gamin extends Joueur {
         // }
         // à gauche
         if ((0<x-1)&&(x-1<7)&&(0<y)&&(y<6)) {
-            if (p.getCase(x+1, y+1).size() < 4) {
+            if (p.getCase(x-1, y).size() < 4) {
                 pos.add(new Position(x-1, y));
             }
         }
         if ((0<x-2)&&(x-2<7)&&(0<y)&&(y<6)) {
-            if (p.getCase(x+2, y+2).size() < 4) {
+            if (p.getCase(x-2, y).size() < 4) {
                 pos.add(new Position(x-2, y));
             }
         }

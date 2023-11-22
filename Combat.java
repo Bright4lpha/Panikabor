@@ -9,8 +9,9 @@ class Combat {
     }
 
     public void afficher(Piece ennemi, Piece joueur, Fenetre f) {
-        f.ajouter(new Texture("./images/space.png", new Point(0, 0)));
         f.ajouter(new Texture("./images/space.png", new Point(0, 0), 1100, 700));
+        f.ajouter(new Texture("./images/combat_txt.png", new Point(400, 400)));
+        f.ajouter(new Texture("./images/de_txt_2.png", new Point(400, 300)));
         f.ajouter(new Texture("./images/" + joueur.getNomLong() + ".png", new Point(0, 200)));
         f.ajouter(new Texture("./images/de.png", new Point(500, 200), 100, 100));
         f.ajouter(new Texture("./images/" + ennemi.getNomLong() + ".png", new Point(600, 200)));
