@@ -163,7 +163,7 @@ public class Capitaine extends Joueur {
 
         while (en_cours==true) {
             try {
-                Thread.sleep(40);
+                Thread.sleep(30);
             } catch (Exception e) {}
             if (souris.getClicGauche()) {
                 pos = new Point(souris.getPosition());

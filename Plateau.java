@@ -48,6 +48,16 @@ class Plateau {
         // this.liste_taches.add(new Tache("D6"));
     }
 
+    public void ajouter_joueur(ArrayList<Piece> liste_joueur) {
+        for (Piece joueur : liste_joueur) {
+            this.plateau.get(33).add(joueur);
+        }
+
+        // this.liste_taches.add(new Tache("D2"));
+        // this.liste_taches.add(new Tache("B4"));
+        // this.liste_taches.add(new Tache("D6"));
+    }
+
     public void nv_plateau(int nb_joueur) {
         plateau = new ArrayList<ArrayList<Piece>>();
         for (int i = 0; i <= 70; i++) {
@@ -273,7 +283,8 @@ class Plateau {
         this.remove(p);
     }
 
-    public void deplacer(Piece p, Position from, Position to, int last_indice, int actual_indice, Fenetre f) {
+    public int deplacer(Piece p, Position from, Position to, int last_indice, int actual_indice, Fenetre f) {
+        int mort = 0;
         ArrayList<Piece> piece_from = this.getCase(from);
         ArrayList<Piece> piece_to = this.getCase(to);
 
@@ -413,6 +424,7 @@ class Plateau {
                 }
                 else if (com.get(1) == 0) {
                     if (p.getPV() ==0) {
+                        mort = 1;
                         Fenetre perdu = new Fenetre("Mort", 500, 700);
                         perdu.ajouter(new Texture("./images/space.png", new Point(0, 0)));
                         perdu.ajouter(new Texture("./images/" + p.getNomLong() + ".png", new Point(0, 200)));
@@ -524,6 +536,7 @@ class Plateau {
                 }
             }
         }
+        return mort;
     }
 
     /**

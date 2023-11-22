@@ -7,6 +7,7 @@ import MG2D.geometrie.*;
 class MainGraphique {
     
     public MainGraphique(Fenetre f, Plateau plato) {
+        f.supprimer(new Texture("./images/space.png", new Point(0, 0)));
         f.ajouter(new Texture("./images/space.png", new Point(0, 0)));
 
         f.ajouter(new Texture("./images/case1.png", new Point(500, 300), 100, 100));
@@ -87,7 +88,8 @@ class MainGraphique {
                     
                 }
         f.ajouter(new Texture("./images/de.png", new Point(800, 300), 100, 100));
-        f.ajouter(new Carre(Couleur.ROSE, new Point(0,340), 20, true));
+        f.ajouter(new Texture("./images/retour_2.png", new Point(0,300)));
+        // f.ajouter(new Carre(Couleur.ROSE, new Point(0,340), 20, true));
         f.rafraichir(); 
             }
         }   
@@ -173,7 +175,7 @@ class MainGraphique {
                     
                 }
         f.ajouter(new Texture("./images/de.png", new Point(800, 300), 100, 100));
-        f.ajouter(new Carre(Couleur.ROSE, new Point(0,340), 20, true));
+        f.ajouter(new Texture("./images/retour_2.png", new Point(0,300)));
         f.rafraichir(); 
             }
         }   
@@ -223,6 +225,30 @@ class MainGraphique {
         }
     }
 
+    public void afficher_tour(Fenetre f, Piece joueur) {
+        String nom = joueur.getNom();
+        if (nom.equals("capitaine")) {
+            for (int i = 0; i <5; i++) {
+                f.ajouter(new Cercle(Couleur.ROUGE, new Point(50, 50), 45+i));
+            }
+        }
+        if (nom.equals("bibledum")) {
+            for (int i = 0; i <5; i++) {
+                f.ajouter(new Cercle(Couleur.ROUGE, new Point(950, 50), 45+i));
+            }
+        }
+        if (nom.equals("mecano")) {
+            for (int i = 0; i <5; i++) {
+                f.ajouter(new Cercle(Couleur.ROUGE, new Point(50, 650), 45+i));
+            }
+        }
+        if (nom.equals("gamin")) {
+            for (int i = 0; i <5; i++) {
+                f.ajouter(new Cercle(Couleur.ROUGE, new Point(950, 650), 45+i));
+            }
+        }
+    }
+
     public void deplacements_possibles_pieces(Fenetre f, Position p, Plateau plato, int actual_indice) {
         ArrayList<Piece> pieces = plato.getCase(p);
         ArrayList<Position> pieces_poss;
@@ -257,7 +283,7 @@ class MainGraphique {
 
     public int deplacements_souris(Fenetre f, Point to) {
         // Crédits
-        if ((to.getX()>=0) && (to.getX()<=20) && (to.getY()>=340) && (to.getY()<=360)) {
+        if ((to.getX()>=0) && (to.getX()<=250) && (to.getY()>=340) && (to.getY()<=360)) {
             return 0;
         }
         else {
@@ -265,21 +291,14 @@ class MainGraphique {
         }
     }
 
-    public boolean deplacements_souris(Fenetre f, Position from, Position to, Plateau plato, int last_indice, int actual_indice, String t) {
-        boolean dep_piece = false;
+    public int deplacements_souris(Fenetre f, Position from, Position to, Plateau plato, int last_indice, int actual_indice, String t, Piece actual_joueur) {
+        int dep_piece = 0;
         ArrayList<Piece> piece_from = plato.getCase(from);
         ArrayList<Piece> piece_to = plato.getCase(to);
         ArrayList<Position> pieces;
 
-        // System.out.println("Pos from :" + from + " to :" + to);
-        // System.out.println("piece_from : " + piece_from);
-        // System.out.println("piece_to : " + piece_to);
-
         // si il y a une piece sur la case de départ
         if (piece_from != null) {
-            // récupère les déplacements possibles de la pièce
-            // System.out.println("piece_from : " + piece_from);
-            // System.out.println("bool : " + (piece_from == null));
             // Si il n'y a pas de pièce au départ
             if (piece_from.size() == 0) {
                 return dep_piece;
@@ -290,7 +309,7 @@ class MainGraphique {
                 // System.out.println(p.getNomCourt());
                 // System.out.println(t);
                 // System.out.println(p.getNomCourt().substring(p.getNomCourt().length() - 1));
-                if (p.getNomCourt().substring(p.getNomCourt().length() - 1).equals(t)) {
+                if ((p.getNomCourt().substring(p.getNomCourt().length() - 1).equals(t))&&(p.equals(actual_joueur))) {
                     // System.out.println("position : " + p.getPosition());
                     pieces = piece_from.get(0).getDeplacementPossible(plato);
                     // System.out.println("pieces 1 " + pieces);
@@ -325,7 +344,7 @@ class MainGraphique {
                     p = piece_from.get(3);
                     // pieces = piece_from.get(3).getDeplacementPossible(plato);
                 }
-                if (p.getNomCourt().substring(p.getNomCourt().length() - 1).equals(t)) {
+                if ((p.getNomCourt().substring(p.getNomCourt().length() - 1).equals(t))&&(p.equals(actual_joueur))) {
                     pieces = p.getDeplacementPossible(plato);
                     // System.out.println(pieces);
                 }
@@ -348,17 +367,30 @@ class MainGraphique {
             // si oui
             if (trouve == true) {
                 if ((piece_from.size() == 1)&&(piece_to.size()<5)) {
-                    plato.deplacer(piece_from.get(0), from, to, last_indice, actual_indice, f); // déplace la pièce sur le plateau
-                     this.supprimer_cercle(f, pieces); // supprime les cercles
-                    dep_piece = true;
+                    int mort = 0;
+                    mort = plato.deplacer(piece_from.get(0), from, to, last_indice, actual_indice, f); // déplace la pièce sur le plateau
+                    this.supprimer_cercle(f, pieces); // supprime les cercles
+                    if (mort == 1){
+                        dep_piece = 2;
+                    }
+                    else {
+                        dep_piece = 1;
+                    }
+                    
                     f.rafraichir();
                 }
                 if ((piece_from.size() > 1)&&(piece_to.size()<5)) {
                     // System.out.println("deplace == 2");
-                    plato.deplacer(piece_from.get(last_indice), from, to, last_indice, actual_indice, f); // déplace la pièce sur le plateau
+                    int mort = 0;
+                    mort = plato.deplacer(piece_from.get(last_indice), from, to, last_indice, actual_indice, f); // déplace la pièce sur le plateau
                     //f.rafraichir();
                     this.supprimer_cercle(f, pieces); // supprime les cercles
-                    dep_piece = true;
+                    if (mort == 1){
+                        dep_piece = 2;
+                    }
+                    else {
+                        dep_piece = 1;
+                    }
                     f.rafraichir();
                 }
                 // this.supprimer_cercle(f, pieces); // supprime les cercles

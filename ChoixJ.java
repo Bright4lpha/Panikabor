@@ -40,7 +40,7 @@ class ChoixJ {
         f.rafraichir();
     }
 
-    public ArrayList<Integer> deplacements_souris(Fenetre f, Point to, int nb_joueur) {
+    public ArrayList<Integer> deplacements_souris(Fenetre f, Point to) {
         ArrayList<Integer> result = new ArrayList<Integer>();
         // Retour vers menu
         if ((to.getX()>=400) && (to.getX()<=600) && (to.getY()>=100) && (to.getY()<=200)) {

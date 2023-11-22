@@ -216,7 +216,7 @@ public class Bibledum extends Joueur {
                         }   
                         else {
                             // System.out.println("PV : " + this.getPV());
-                            this.pv = this.pv -1;
+                            // this.pv = this.pv -1;
                             // System.out.println("PV : " + this.getPV());
                             affiche_capacite.afficher_perdu(fcapacite);
                             try {
@@ -250,7 +250,7 @@ public class Bibledum extends Joueur {
 
         while (en_cours==true) {
             try {
-                Thread.sleep(40);
+                Thread.sleep(30);
             } catch (Exception e) {}
             if (souris.getClicGauche()) {
                 pos = new Point(souris.getPosition());

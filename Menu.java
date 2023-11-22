@@ -17,6 +17,8 @@ class Menu {
         f.ajouter(new Texture("./images/jouer.png", new Point(300, 200)));
         //f.ajouter(new Rectangle(Couleur.MAGENTA, new Point(300, 500), 400, 100, true));
         f.ajouter(new Texture("./images/panikabor.png", new Point(210, 390)));
+
+        f.ajouter(new Texture("./images/regles_2.png", new Point(-50, -100)));
         f.rafraichir();
     }
 
@@ -34,6 +36,7 @@ class Menu {
         f.ajouter(new Texture("./images/jouer.png", new Point(300, 200)));
         //f.ajouter(new Rectangle(Couleur.MAGENTA, new Point(300, 500), 400, 100, true));
         f.ajouter(new Texture("./images/panikabor.png", new Point(210, 390)));
+        f.ajouter(new Texture("./images/regles_2.png", new Point(-50, -100)));
         f.rafraichir();
     }
 
@@ -50,6 +53,10 @@ class Menu {
         else if ((to.getX()>=300) && (to.getX()<=700) && (to.getY()>=300) && (to.getY()<=400)) {
             return 4;
             // 4 pour les choix
+        }
+        // bouton regles
+        else if ((to.getX()>=0) && (to.getX()<=200) && (to.getY()>=0) && (to.getY()<=100)) {
+            return 7;
         }
         // reste sur la page menu
         else {

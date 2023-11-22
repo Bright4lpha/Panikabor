@@ -51,52 +51,71 @@ public class Gamin extends Joueur {
         ArrayList<Position> pos = new ArrayList<Position>();
         int x = this.position.getX();
         int y = this.position.getY();
-        // en haut à droite
-        if ((0<x+1)&&(x+1<7)&&(0<y+1)&&(y+1<6)) {
-            if (p.getCase(x+1, y+1).size() < 4) {
-                pos.add(new Position(x+1, y+1));
-            }
-        }
+        // // en haut à droite
+        // if ((0<x+1)&&(x+1<7)&&(0<y+1)&&(y+1<6)) {
+        //     if (p.getCase(x+1, y+1).size() < 4) {
+        //         pos.add(new Position(x+1, y+1));
+        //     }
+        // }
         // à droite
         if ((0<x+1)&&(x+1<7)&&(0<y)&&(y<6)) {
             if (p.getCase(x+1, y).size() < 4) {
                 pos.add(new Position(x+1, y));
             }
-        }
-        // en bas à droite
-        if ((0<x+1)&&(x+1<7)&&(0<y-1)&&(y-1<6)) {
-            if (p.getCase(x+1, y-1).size() < 4) {
-                pos.add(new Position(x+1, y-1));
+        }if ((0<x+2)&&(x+2<7)&&(0<y)&&(y<6)) {
+            if (p.getCase(x+2, y).size() < 4) {
+                pos.add(new Position(x+2, y));
             }
         }
+        // // en bas à droite
+        // if ((0<x+1)&&(x+1<7)&&(0<y-1)&&(y-1<6)) {
+        //     if (p.getCase(x+1, y-1).size() < 4) {
+        //         pos.add(new Position(x+1, y-1));
+        //     }
+        // }
         // en bas
         if ((0<x)&&(x<7)&&(0<y-1)&&(y-1<6)) {
             if (p.getCase(x, y-1).size() < 4) {
                 pos.add(new Position(x, y-1));
             }
         }
-        // en bas à gauche
-        if ((0<x-1)&&(x-1<7)&&(0<y-1)&&(y-1<6)) {
-            if (p.getCase(x-1, y-1).size() < 4) {
-                pos.add(new Position(x-1, y-1));
+        if ((0<x)&&(x<7)&&(0<y-2)&&(y-2<6)) {
+            if (p.getCase(x, y-2).size() < 4) {
+                pos.add(new Position(x, y-2));
             }
         }
+        // // en bas à gauche
+        // if ((0<x-1)&&(x-1<7)&&(0<y-1)&&(y-1<6)) {
+        //     if (p.getCase(x-1, y-1).size() < 4) {
+        //         pos.add(new Position(x-1, y-1));
+        //     }
+        // }
         // à gauche
         if ((0<x-1)&&(x-1<7)&&(0<y)&&(y<6)) {
             if (p.getCase(x+1, y+1).size() < 4) {
                 pos.add(new Position(x-1, y));
             }
         }
-        // en haut à gauche
-        if ((0<x-1)&&(x-1<7)&&(0<y+1)&&(y+1<6)) {
-            if (p.getCase(x-1, y+1).size() < 4) {
-                pos.add(new Position(x-1, y+1));
+        if ((0<x-2)&&(x-2<7)&&(0<y)&&(y<6)) {
+            if (p.getCase(x+2, y+2).size() < 4) {
+                pos.add(new Position(x-2, y));
             }
         }
+        // // en haut à gauche
+        // if ((0<x-1)&&(x-1<7)&&(0<y+1)&&(y+1<6)) {
+        //     if (p.getCase(x-1, y+1).size() < 4) {
+        //         pos.add(new Position(x-1, y+1));
+        //     }
+        // }
         // en haut
         if ((0<x)&&(x<7)&&(0<y+1)&&(y+1<6)) {
             if (p.getCase(x, y+1).size() < 4) {
                 pos.add(new Position(x, y+1));
+            }
+        }
+        if ((0<x)&&(x<7)&&(0<y+2)&&(y+2<6)) {
+            if (p.getCase(x, y+2).size() < 4) {
+                pos.add(new Position(x, y+2));
             }
         }
         Position temp;
@@ -176,59 +195,59 @@ public class Gamin extends Joueur {
         //     }
         // }
 
-        // combat avec clic ?
-        if (ennemi.getNomCourt().equals("Te_E")) {
-            return false;
-        }
-        else {
-            boolean en_cours = true;
-            Fenetre fcapacite = new Fenetre("Capacite", 1100, 700);
-            Capacite affiche_capacite = new Capacite(fcapacite);
-            affiche_capacite.afficher(ennemi, this, fcapacite);
-            Souris souris = fcapacite.getSouris();
-            Point pos;
-            Position actual_pos_souris = new Position(-1, -1);
-            int de_joueur=0;
+        // // combat avec clic ?
+        // if (ennemi.getNomCourt().equals("Te_E")) {
+        //     return false;
+        // }
+        // else {
+        //     boolean en_cours = true;
+        //     Fenetre fcapacite = new Fenetre("Capacite", 1100, 700);
+        //     Capacite affiche_capacite = new Capacite(fcapacite);
+        //     affiche_capacite.afficher(ennemi, this, fcapacite);
+        //     Souris souris = fcapacite.getSouris();
+        //     Point pos;
+        //     Position actual_pos_souris = new Position(-1, -1);
+        //     int de_joueur=0;
 
-            while (en_cours==true) {
-                try {
-                    Thread.sleep(40);
-                } catch (Exception e) {}
-                if (souris.getClicGauche()) {
-                    pos = new Point(souris.getPosition());
-                    actual_pos_souris.setX(pos.getX()/100);
-                    actual_pos_souris.setY(pos.getY()/100);
+        //     while (en_cours==true) {
+        //         try {
+        //             Thread.sleep(30);
+        //         } catch (Exception e) {}
+        //         if (souris.getClicGauche()) {
+        //             pos = new Point(souris.getPosition());
+        //             actual_pos_souris.setX(pos.getX()/100);
+        //             actual_pos_souris.setY(pos.getY()/100);
 
-                    int res = affiche_capacite.deplacements_souris(fcapacite, pos);
-                    if (res == 0) {
-                        // lancer le dé
-                        res = 1;
-                        de_joueur = this.lancer_de();
-                        affiche_capacite.afficher_de(de_joueur, fcapacite);
-                        if (de_joueur > 4) {
-                            affiche_capacite.afficher_vic(fcapacite);
-                            try {
-                                Thread.sleep(1500);
-                            } catch (Exception e) {}
-                            fcapacite.fermer();
-                            en_cours = false;
-                            return true;
-                        }   
-                        else {
-                            // System.out.println("PV : " + this.getPV());
-                            this.pv = this.pv -1;
-                            // System.out.println("PV : " + this.getPV());
-                            affiche_capacite.afficher_perdu(fcapacite);
-                            try {
-                                Thread.sleep(1500);
-                            } catch (Exception e) {}
-                            fcapacite.fermer();
-                            en_cours = false;
-                        }
-                    }
-                }
-            }
-        }
+        //             int res = affiche_capacite.deplacements_souris(fcapacite, pos);
+        //             if (res == 0) {
+        //                 // lancer le dé
+        //                 res = 1;
+        //                 de_joueur = this.lancer_de();
+        //                 affiche_capacite.afficher_de(de_joueur, fcapacite);
+        //                 if (de_joueur > 4) {
+        //                     affiche_capacite.afficher_vic(fcapacite);
+        //                     try {
+        //                         Thread.sleep(1500);
+        //                     } catch (Exception e) {}
+        //                     fcapacite.fermer();
+        //                     en_cours = false;
+        //                     return true;
+        //                 }   
+        //                 else {
+        //                     // System.out.println("PV : " + this.getPV());
+        //                     // this.pv = this.pv -1;
+        //                     // System.out.println("PV : " + this.getPV());
+        //                     affiche_capacite.afficher_perdu(fcapacite);
+        //                     try {
+        //                         Thread.sleep(1500);
+        //                     } catch (Exception e) {}
+        //                     fcapacite.fermer();
+        //                     en_cours = false;
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
         return false;
     }
 
