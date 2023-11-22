@@ -133,7 +133,7 @@ public class Main {
                             } catch (Exception e) {}
                             depEnnemi.fermer();
                             graphique.deplacementEnnemi(plato, p.get(i), f);
-                            graphique = new MainGraphique(f, plato);
+                            // graphique = new MainGraphique(f, plato);
                             f.rafraichir();
                         }
                         tour = "J";

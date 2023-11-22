@@ -199,6 +199,27 @@ class MainGraphique {
         f.rafraichir();
     }
 
+    public void afficher_dep(Fenetre f, int a, int b, Piece nv_en, Position pos) {
+        int a_i = a;
+        int a_j = b;
+        System.out.println(a_i);
+        System.out.println(a_j);
+
+        int nv_i = nv_en.position.getX();
+        int nv_j = nv_en.position.getY();
+        System.out.println(a_i);
+        System.out.println(a_j);
+        // Component compo = f.getComponentAt(nv_i*100, nv_j*100);
+        f.list();
+        f.supprimer(new Texture("./images/" + nv_en.getNomLong() + ".png", new Point(2 * 100, 2 * 100), 100, 100));
+        f.supprimer(new Texture("./images/" + nv_en.getNomLong() + ".png", new Point(4 * 100, 2 * 100), 100, 100));
+        f.supprimer(new Texture("./images/" + nv_en.getNomLong() + ".png", new Point(2 * 100, 4 * 100), 100, 100));
+        f.supprimer(new Texture("./images/" + nv_en.getNomLong() + ".png", new Point(4 * 100, 4 * 100), 100, 100));
+
+        f.supprimer(new Texture("./images/" + nv_en.getNomLong() + ".png", new Point(a_i * 100, a_j * 100), 100, 100));
+        // f.ajouter(new Texture("./images/" + nv_en.getNomLong() + ".png", new Point(nv_i * 100, nv_j * 100), 100, 100f.supprimer(new Texture("./images/" + nv_en.getNomLong() + ".png", new Point(a_i * 100, a_j * 100), 100, 100));));
+
+    }
     public void afficher_cercle(Fenetre f, ArrayList<Position> dep) {
         int x, y;
         for (Position p : dep) {
@@ -398,7 +419,11 @@ class MainGraphique {
         ArrayList<Position> positions = p.getDeplacementPossible(plato);
         int indice = (int)((Math.random() * (positions.size()))+0);
         System.out.println(positions.get(indice));
+        // Piece ancien_p = p;
+        int a_i = p.getPosition().getX();
+        int a_j = p.getPosition().getY();
         plato.deplacer(p, p.getPosition(), positions.get(indice), p.getIndice(), 0, f);
+        this.afficher_dep(f, a_i, a_j, p, p.getPosition());
         f.rafraichir();
     }
 }
