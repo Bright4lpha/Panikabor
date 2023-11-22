@@ -218,7 +218,7 @@ class MainGraphique {
 
         f.supprimer(new Texture("./images/" + nv_en.getNomLong() + ".png", new Point(a_i * 100, a_j * 100), 100, 100));
         // f.ajouter(new Texture("./images/" + nv_en.getNomLong() + ".png", new Point(nv_i * 100, nv_j * 100), 100, 100f.supprimer(new Texture("./images/" + nv_en.getNomLong() + ".png", new Point(a_i * 100, a_j * 100), 100, 100));));
-
+        f.rafraichir();
     }
     public void afficher_cercle(Fenetre f, ArrayList<Position> dep) {
         int x, y;

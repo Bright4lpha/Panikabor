@@ -116,7 +116,7 @@ public class Main {
                 
                 while(num_fenetre == 1) {
                     try {
-                        Thread.sleep(40);
+                        Thread.sleep(20);
                     } catch (Exception e) {}
 
                     // Si c'est le tour des ennemis
