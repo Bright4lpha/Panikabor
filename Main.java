@@ -66,7 +66,9 @@ public class Main {
                 }
                 // si on est dans le choix des joueurs // à continuer ne fonctionne pas
                 if (num_fenetre == 4) {
+                    nb_joueur = new ArrayList<Piece>();
                     ArrayList<Integer> rep = choix.deplacements_souris(f, pos);
+                    tour = "E";
                     int nb = rep.get(0);
                     if (nb == 1) {
                         Capitaine capitaine = new Capitaine();
@@ -149,6 +151,7 @@ public class Main {
 
             // jeu principal
             if (num_fenetre == 1) {
+                plato = new Plateau();
                 // plato.nv_plateau(nb_joueur);
                 plato.ajouter_joueur(nb_joueur);
                 graphique = new MainGraphique(f, plato);
