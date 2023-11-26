@@ -31,7 +31,7 @@ public class Main {
         int dep_piece = 0;
         int last_indice = 0;
         int actual_indice = 0;
-        String tour = "E";
+        String tour = "J";
         int cmpt_tour = 0;
 
         int num_fenetre = 0;
